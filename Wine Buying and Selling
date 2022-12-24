@@ -1,0 +1,9 @@
+  long long int wineSelling(vector<int>& Arr, int N){
+      //Code here.
+      long long int sum=0,ans=0;
+      for(int i=0;i<N;i++){
+          sum+=Arr[i];
+          ans+=abs(sum);
+      }
+      return ans;
+  }
