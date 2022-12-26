@@ -1,0 +1,50 @@
+    void precompute()
+    {
+        // Code Here
+        for(int i=0;i<63;i++){
+            for(int j=i+1;j<63;j++){
+                for(int k=j+1;k<63;k++){
+                    long long int temp= pow(2,i)+pow(2,j)+pow(2,k);
+                    arr.push_back(temp);
+                }
+            }
+        }
+        sort(arr.begin(),arr.end());
+    }
+    
+    long long solve(long long l, long long r){
+        // Code Here
+        long long int start=0,end=arr.size()-1,mid,lindex,Rindex;
+        while(start<=end){
+            mid = (start+end)/2;
+            if(arr[mid]==l){
+                lindex=mid;
+                break;
+            }
+            else if(arr[mid]<l){
+                start=mid+1;
+            }
+            else{
+                end = mid-1;
+                lindex=mid;
+            }
+        }
+        start=0;
+        end=arr.size()-1;
+        while(start<=end){
+            mid = (start+end)/2;
+            if(arr[mid]==r){
+                Rindex=mid;
+                break;
+            }
+            else if(arr[mid]<r){
+                start=mid+1;
+                Rindex=mid;
+            }
+            else{
+                end=mid-1;
+            }
+        }
+        return Rindex-lindex+1;
+    }
+    
