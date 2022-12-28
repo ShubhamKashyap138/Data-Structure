@@ -1,0 +1,14 @@
+    int help(Node* root,int &ans){
+        if(!root)return 0;
+        int l = help(root->left,ans);
+        int r = help(root->right,ans);
+        ans = max(ans,root->data+l+r);
+        return root->data+l+r;
+    }
+    int findLargestSubtreeSum(Node* root)
+    {
+        //Write your code here
+        int ans=INT_MIN;
+        int t = help(root,ans);
+        return ans;
+    }
