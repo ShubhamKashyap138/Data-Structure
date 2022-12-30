@@ -1,0 +1,18 @@
+    int help(Node* root,int &ans){
+        if(!root)return -1;
+        int l = help(root->left,ans);
+        int r = help(root->right,ans);
+        if((l==-1 and r==-1) or (root->data==l and r==-1) or (root->data==r and l==-1)
+        or (root->data==l and root->data==r)){
+            ans++;
+            return root->data;
+        }
+        return -2;
+    }
+    int singlevalued(Node *root)
+    {
+        //code here
+        int ans =0;
+        int t = help(root,ans);
+        return ans;
+    }
