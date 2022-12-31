@@ -1,0 +1,19 @@
+    int minLaptops(int N, int start[], int end[]) {
+        // Code here
+        sort(start,start+N);
+        sort(end,end+N);
+        int ans=1,occu=1,j=0,i=1;
+        while(i<N and j<N){
+            if(start[i]>=end[j]){
+                occu--;
+                j++;
+                
+            }
+            else{
+                occu++;
+                i++;
+            }
+            ans=max(ans,occu);
+        }
+        return ans;
+    }
