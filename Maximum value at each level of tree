@@ -1,0 +1,41 @@
+Using DFS:-
+
+      void dfs(Node* node,vector<int> &ans,int level){
+        if(!node)return;
+        if(ans.size()==level)ans.push_back(node->data);
+        else{
+            ans[level]=max(ans[level],node->data);
+        }
+        level++;
+        dfs(node->left,ans,level);
+        dfs(node->right,ans,level);
+    }
+    vector<int> maximumValue(Node* node) {
+        //code here
+        vector<int> ans;
+        ans.push_back(INT_MIN);
+        dfs(node,ans,0);
+        return ans;
+    }
+   
+Using BFS:-
+
+      vector<int> maximumValue(Node* node) {
+        //code here
+        vector<int> ans;
+        queue<Node*> q;
+        q.push(node);
+        while(q.size()){
+            int s = q.size();
+            int mx=INT_MIN;
+            for(int i=0;i<s;i++){
+                Node* temp = q.front();
+                q.pop();
+                mx=max(mx,temp->data);
+                if(temp->left)q.push(temp->left);
+                if(temp->right)q.push(temp->right);
+            }
+            ans.push_back(mx);
+        }
+        return ans;
+    }
