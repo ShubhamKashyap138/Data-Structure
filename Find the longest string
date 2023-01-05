@@ -1,0 +1,22 @@
+    bool IsPresent(string str,unordered_map<string,int>&mm){
+        string temp="";
+        for(int i=0;i<str.length();i++){
+            temp+=str[i];
+            if(!mm[temp])return false;
+        }
+        return true;
+    }
+    string longestString(vector<string> &words)
+    {
+        // code here
+        string ans="";
+        unordered_map<string,int> mm;
+        for(string x:words)mm[x]++;
+        for(string x:words){
+            if(IsPresent(x,mm)){
+                if(x.length()>ans.length())ans=x;
+                else if(x.length()==ans.length())ans=min(ans,x);
+            }
+        }
+        return ans;
+    }
