@@ -1,0 +1,20 @@
+   Node* merge(Node* one, Node* two){
+        if(!one)return two;
+        if(!two)return one;
+        Node* temp;
+        if(one->data<two->data){
+            temp = one;
+            temp->bottom=merge(one->bottom,two);
+        }
+        else{
+            temp = two;
+            temp->bottom=merge(one,two->bottom);
+        }
+        return temp;
+    }
+    Node *flatten(Node *root)
+    {
+        // Your code here
+        if(!root)return root;
+        return merge(root,flatten(root->next));
+    }
