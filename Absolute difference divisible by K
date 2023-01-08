@@ -1,0 +1,27 @@
+    Brute Force:-
+    
+    long long countPairs(int n, int arr[], int k) {
+        // code here
+        long long ans=0;
+        for(int i=0;i<n-1;i++){
+            for(int j=i+1;j<n;j++){
+                if(abs(arr[i]-arr[j])%k==0)ans++;
+            }
+        }
+        return ans;
+    }    
+    
+    
+    Optimized Approach:-
+    
+    long long countPairs(int n, int arr[], int k) {
+        // code here
+        long long ans=0;
+        unordered_map<int,int> mm;
+        for(int i=0;i<n;i++)mm[arr[i]%k]++;
+        for(auto x:mm){
+            long long temp = (x.second*(x.second-1))/2;
+            ans+=temp;
+        }
+        return ans;
+    }
