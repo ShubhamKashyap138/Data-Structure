@@ -1,0 +1,14 @@
+    int help(Node *node){
+        if(!node)return 0;
+        int l = help(node->left);
+        int r = help(node->right);
+        int temp=node->data;
+        node->data=l+r;
+        return temp+l+r;
+        
+    }
+    void toSumTree(Node *node)
+    {
+        // Your code here
+        int t = help(node);
+    }
