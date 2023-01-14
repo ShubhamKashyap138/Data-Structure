@@ -1,0 +1,48 @@
+  vector<int> maximumToys(int N,vector<int> A,int Q,vector<vector<int>> Queries){
+      // code here
+      vector<pair<int,int>> arr;
+      vector<long long int> sum(N,0);
+      for(int i=0;i<N;i++)arr.push_back({A[i],i});
+      sort(arr.begin(),arr.end());
+      sum[0]=arr[0].first;
+      for(int i=1;i<N;i++){
+          sum[i]+=sum[i-1]+arr[i].first;
+      }
+      vector<int> ans;
+      for(auto x:Queries){
+          int paise = x[0];
+          int index = lower_bound(sum.begin(),sum.end(),paise)-sum.begin();
+          if(index==0 and sum[0]>paise){
+              ans.push_back(0);
+              continue;
+          }
+          if(index==N)index--;
+          if(sum[index]>paise)
+          int khilone = index+1;
+          paise-=sum[index];
+          int j=2;
+          unordered_set<int> totehue;
+          while(j<x.size()){
+              int broken = x[j]-1;
+              totehue.insert(broken);
+              if(A[broken]<arr[index].first){
+                  khilone--;
+                  paise+=A[broken];
+              }
+              else if(A[broken]==arr[index].first and broken<=arr[index].second){
+                  khilone--;
+                  paise+=A[broken];
+              }
+              j++;
+          }
+          int i=index+1;
+          for(int i=index+1;i<N and paise>=arr[i].first;i++){
+                if(totehue.find(arr[i].second)==totehue.end()){
+                    khilone++;
+                    paise-=arr[i].first;
+                }
+          }
+          ans.push_back(khilone);
+      }
+      return ans;
+  }
