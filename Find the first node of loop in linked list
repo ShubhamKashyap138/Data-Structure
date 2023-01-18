@@ -1,0 +1,23 @@
+    Node* ispresent(Node* head){
+        Node* slow=head,*fast=head;
+        while(fast and fast->next){
+            slow=slow->next;
+            fast=fast->next->next;
+            if(slow==fast)return slow;
+        }
+        return NULL;
+    }
+    int findFirstNode(Node* head)
+    {
+        // your code here
+        Node* loophai = ispresent(head);
+        if(loophai){
+            Node* temp=head;
+            while(temp!=loophai){
+                temp=temp->next;
+                loophai=loophai->next;
+            }
+            return loophai->data;
+        }
+        return -1;
+    }
