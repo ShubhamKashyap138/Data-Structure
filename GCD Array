@@ -1,0 +1,27 @@
+   int solve(int N, int K, vector<int> &arr) {
+        // code here
+        vector<int> factors;
+        int sum = 0;
+        sum=accumulate(arr.begin(),arr.end(),sum);
+        for(int i=1; i<=sqrt(sum); i++){
+            if(sum % i == 0){
+                factors.push_back(i);
+                factors.push_back(sum / i);
+            }
+        }
+        int ans = 1;
+        for(int x:factors){
+            int temp = 0;
+            sum=0;
+            for(auto y:arr){
+                sum+=y;
+                if(sum%x==0){
+                    temp++;
+                }
+            }
+            if(temp>= K){
+                ans = max(x,ans);
+            }
+        }
+        return ans;
+    }
