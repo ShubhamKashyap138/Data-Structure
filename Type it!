@@ -1,0 +1,15 @@
+    int minOperation(string s) {
+        // code here
+        int mx=0,ans=s.length();
+        for(int i=0;i<s.length();i++){
+            int first=0,end=i+1;
+            while(end<s.length() and first<=i and s[first]==s[end]){
+                first++;
+                end++;
+            }
+            if(first==i+1 and end==2*i+2)mx=i+1;
+        }
+        if(mx)
+        return ans-mx+1;
+        return ans;
+    }
