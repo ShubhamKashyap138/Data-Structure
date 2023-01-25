@@ -7,7 +7,7 @@
                 first++;
                 end++;
             }
-            if(first==i+1 and end==2*i+2)mx=i+1;
+            if(first==i+1)mx=i+1;
         }
         if(mx)
         return ans-mx+1;
