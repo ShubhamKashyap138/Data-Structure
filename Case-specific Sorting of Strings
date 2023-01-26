@@ -1,0 +1,27 @@
+    string caseSort(string str, int n)
+    {
+        // your code here
+        string chote="",bde="",ans="";
+        for(auto x:str){
+            if(isupper(x)){
+                bde+=x;
+            }
+            else{
+                chote+=x;
+            }
+        }
+        sort(chote.begin(),chote.end());
+        sort(bde.begin(),bde.end());
+        int i=0,j=0;
+        for(auto x:str){
+            if(isupper(x)){
+                ans+=bde[j];
+                j++;
+            }
+            else{
+                ans+=chote[i];
+                i++;
+            }
+        }
+        return ans;
+    }
