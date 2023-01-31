@@ -1,0 +1,14 @@
+    int minRepeats(string A, string B) {
+        // code here
+        int i=0,n=A.length(),m=B.length(),ans=1,j=0;
+        while(i<n and A[i]!=B[0])i++;
+        while(j<m and A[i]==B[j]){
+            i++;
+            i%=n;
+            if(i==0)ans++;
+            j++;
+        }
+        if(j!=m)return -1;
+        if(i==0)ans--;
+        return ans;
+    }
