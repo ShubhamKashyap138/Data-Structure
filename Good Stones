@@ -3,7 +3,7 @@
             return 1;
         }
         if(dfs[index])return 2;
-        if(vis[index]==2)return 2;
+        if(vis[index])return vis[index];
         vis[index]=1;
         dfs[index]=1;
         int next = index+arr[index];
