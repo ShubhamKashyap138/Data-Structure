@@ -1,0 +1,27 @@
+// JAVA CODE
+
+    static long __gcd(long a,long b){
+        if(a==0)return b;
+        return __gcd(b%a,a);
+    }
+    static List<Long> minimumSquares(long L, long B)
+    {
+        // code here
+        List<Long> ans = new ArrayList<>();
+        long a = __gcd(L,B);
+        long b = (L*B)/(a*a);
+        ans.add(b);
+        ans.add(a);
+        return ans;
+    }
+    
+    
+// C++ CODE
+
+    vector<long long int> minimumSquares(long long int L, long long int B)
+    {
+        // code here
+        long long int a = __gcd(L,B);
+        long long int b = (L*B)/(a*a);
+        return {b,a};
+    }
