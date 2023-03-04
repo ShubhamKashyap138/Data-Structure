@@ -1,0 +1,49 @@
+    //JAVA CODE
+    
+    public static long bestNode(int N, int[] A, int[] P) {
+        // code here
+        int sign[] = new int[N+1];
+        for(int i=1;i<=N;i++)sign[i]=0;
+        for(int i=1;i<N;i++){
+            sign[P[i]]++;
+        }
+        long ans=Integer.MIN_VALUE;
+        for(int i=1;i<=N;i++){
+            if(sign[i]==0){
+                int j = i;
+                long temp = 0;
+                while(j!=-1){
+                    temp+=A[j-1];
+                    j=P[j-1];
+                    ans=Math.max(ans,temp);
+                    temp*=-1;
+                }
+            }
+        }
+        return ans;
+    }
+    
+   // C++ CODE
+   
+       long long bestNode(int N, vector<int> &A, vector<int> &P) {
+        // code here
+        int sign[N+1];
+        for(int i=1;i<=N;i++)sign[i]=0;
+        for(int i=1;i<N;i++){
+            sign[P[i]]++;
+        }
+        long long ans=INT_MIN;
+        for(int i=1;i<=N;i++){
+            if(sign[i]==0){
+                int j = i;
+                long long temp = 0;
+                while(j!=-1){
+                    temp+=A[j-1];
+                    j=P[j-1];
+                    ans=max(ans,temp);
+                    temp*=-1;
+                }
+            }
+        }
+        return ans;
+    }
