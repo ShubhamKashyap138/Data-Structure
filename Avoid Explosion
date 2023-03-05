@@ -1,0 +1,79 @@
+// JAVA CODE
+
+class Solution {
+    static int parent[] = new int[1001];
+    static int findparent(int node){
+        if(node==parent[node])return node;
+        return parent[node]=findparent(parent[node]);
+    }
+    static void EkKardo(int a,int b){
+        int c = findparent(a);
+        int d = findparent(b);
+        if(c==d)return;
+        parent[c]=d;
+    }
+    ArrayList<String> avoidExlosion(int mix[][], int n, int danger[][], int m) {
+        // Code Her
+        ArrayList<String> ans = new ArrayList<>();
+        for(int i=1;i<=n;i++)parent[i]=i;
+        for(int i=0;i<n;i++){
+            int first = findparent(mix[i][0]);
+            int second = findparent(mix[i][1]);
+            boolean a=true;
+            for(int j=0;j<m;j++){
+                int one = findparent(danger[j][0]);
+                int two = findparent(danger[j][1]);
+                if((first==one && second==two) || (first==two && second==one))a=false;
+            }
+            if(a){
+                ans.add("Yes");
+                EkKardo(mix[i][0],mix[i][1]);
+            }
+            else{
+                ans.add("No");
+            }
+        }
+        return ans;
+    }
+}
+
+
+// C++ CODE
+
+vector<int> parent(1001);
+class Solution {
+  public:
+    int findparent(int node){
+        if(node==parent[node])return node;
+        return parent[node]=findparent(parent[node]);
+    }
+    void EkKardo(int a,int b){
+        int c = findparent(a);
+        int d = findparent(b);
+        if(c==d)return;
+        parent[c]=d;
+    }
+    vector<string> avoidExplosion(vector<vector<int>> mix, int n,
+                                  vector<vector<int>> danger, int m) {
+        vector<string> ans;
+        for(int i=1;i<=n;i++)parent[i]=i;
+        for(int i=0;i<n;i++){
+            int first = findparent(mix[i][0]);
+            int second = findparent(mix[i][1]);
+            bool a=true;
+            for(int j=0;j<m;j++){
+                int one = findparent(danger[j][0]);
+                int two = findparent(danger[j][1]);
+                if((first==one and second==two) or (first==two and second==one))a=false;
+            }
+            if(a){
+                ans.push_back("Yes");
+                EkKardo(mix[i][0],mix[i][1]);
+            }
+            else{
+                ans.push_back("No");
+            }
+        }
+        return ans;
+    }
+};
