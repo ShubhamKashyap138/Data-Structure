@@ -1,0 +1,43 @@
+//Java Code
+
+    public int maxLevelSum(Node root) {
+        // add code here.
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        int ans=Integer.MIN_VALUE;
+        while(q.size()!=0){
+            int s=q.size();
+            int sum=0;
+            for(int i=0;i<s;i++){
+                Node temp = q.remove();
+                if(temp.left!=null)q.add(temp.left);
+                if(temp.right!=null)q.add(temp.right);
+                sum+=temp.data;
+            }
+            ans=Math.max(ans,sum);
+        }
+        return ans;
+    }
+    
+
+//C++ Code
+
+    int maxLevelSum(Node* root) {
+        // Your code here
+        queue<Node*> q;
+        q.push(root);
+        int ans=INT_MIN;
+        while(q.size()){
+            int s=q.size();
+            int sum=0;
+            for(int i=0;i<s;i++){
+                Node* temp = q.front();
+                q.pop();
+                if(temp->left)q.push(temp->left);
+                if(temp->right)q.push(temp->right);
+                sum+=temp->data;
+            }
+            ans=max(ans,sum);
+        }
+        return ans;
+    }
