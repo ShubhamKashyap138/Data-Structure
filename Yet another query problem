@@ -1,0 +1,52 @@
+// C++ CODE
+
+    vector<int> solveQueries(int N, int num, vector<int> &A, vector<vector<int>> &Q) {
+        // code here
+        int arr[N];
+        for(int i=0;i<N;i++){
+            int c = 1;
+            for(int j=i+1;j<N;j++){
+                if(A[i] == A[j])c++;
+            }
+            arr[i]=c;
+        }
+        vector<int> ans;
+        for(int i=0;i<num;i++){
+            int start = Q[i][0];
+            int end = Q[i][1];
+            int k = Q[i][2];
+            int c=0;
+            for(int j=start;j<=end;j++){
+                if(arr[j]==k)c++;
+            }
+            ans.push_back(c);
+        }
+        return ans;
+    }
+    
+    
+// JAVA CODE
+
+    public static ArrayList<Integer> solveQueries(int N, int num, int[] A, int[][] Q) {
+        // code here
+        int arr[] = new int[N];
+        for(int i=0;i<N;i++){
+            int c = 1;
+            for(int j=i+1;j<N;j++){
+                if(A[i] == A[j])c++;
+            }
+            arr[i]=c;
+        }
+        ArrayList<Integer> ans=new ArrayList<>();
+        for(int i=0;i<num;i++){
+            int start = Q[i][0];
+            int end = Q[i][1];
+            int k = Q[i][2];
+            int c=0;
+            for(int j=start;j<=end;j++){
+                if(arr[j]==k)c++;
+            }
+            ans.add(c);
+        }
+        return ans;
+    }
