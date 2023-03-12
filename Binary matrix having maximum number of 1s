@@ -1,0 +1,33 @@
+// C++ CODE
+
+    vector<int> findMaxRow(vector<vector<int>> mat, int N) {
+        //code here
+        int one=0,row=0,j=N-1;
+        for(int i=0;i<N;i++){
+            while(j>=0 and mat[i][j]){
+                j--;
+                one++;
+                row=i;
+            }
+        }
+        return {row,one};
+    }
+    
+    
+// JAVA CODE
+
+    public int[] findMaxRow(int mat[][], int N) {
+        // code here
+        int one=0,row=0,j=N-1;
+        for(int i=0;i<N;i++){
+            while(j>=0 && (mat[i][j]==1)){
+                j--;
+                one++;
+                row=i;
+            }
+        }
+        int ans[] = new int[2];
+        ans[0]=row;
+        ans[1]=one;
+        return ans;
+    }
