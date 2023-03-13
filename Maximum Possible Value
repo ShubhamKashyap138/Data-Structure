@@ -1,0 +1,38 @@
+// JAVA CODE
+
+    long maxPossibleValue(int N, int A[] ,int B[]) { 
+        // code here
+        long sum=0;
+        int mn=Integer.MAX_VALUE,total=0;
+        for(int i=0;i<N;i++){
+            int temp = B[i]/2;
+            sum+=temp*2*A[i];
+            total+=temp*2;
+            if(temp!=0)
+            mn=Math.min(mn,A[i]);
+        }
+        if(total%4!=0){
+            sum-=mn*2;
+        }
+        return sum;
+    }
+    
+    
+//C++ CODE
+
+    long long maxPossibleValue(int N,vector<int> A, vector<int> B) {
+        // code here
+        long long sum=0;
+        int mn=INT_MAX,total=0;
+        for(int i=0;i<N;i++){
+            int temp = B[i]/2;
+            sum+=temp*2*A[i];
+            total+=temp*2;
+            if(temp)
+            mn=min(mn,A[i]);
+        }
+        if(total%4){
+            sum-=mn*2;
+        }
+        return sum;
+    }
