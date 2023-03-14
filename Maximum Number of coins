@@ -1,4 +1,4 @@
-C++ CODE
+// C++ CODE
 
       int help(int N,vector<int> &arr,vector<vector<int>> &dp,int start,int end){
           if(start>end)return 0;
@@ -35,12 +35,12 @@ C++ CODE
             return dp[start][end];
     }
     int maxCoins(int N, ArrayList<Integer> arr) {
-		//Write your code here
-		int dp[][] = new int[N][N];
-		for(int[] temp:dp){
-		    Arrays.fill(temp,-1);
-		}
-    return help(N,arr,dp,0,N-1);
+	//Write your code here
+	int dp[][] = new int[N][N];
+	for(int[] temp:dp){
+	    Arrays.fill(temp,-1);
 	}
+    	return help(N,arr,dp,0,N-1);
+    }
   
   
