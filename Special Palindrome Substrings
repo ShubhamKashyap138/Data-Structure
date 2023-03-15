@@ -1,0 +1,96 @@
+// JAVA CODE
+
+    static int palindrom(String s1,String s2,int start,int end){
+        int i=0,j=s1.length()-1,i2=0,j2=s2.length()-1;
+        int operation=0;
+        while(i<j){
+            if((i<start && j>end) || (j<start) || (i>end)){
+                if(s1.charAt(i)!=s1.charAt(j))operation++;
+            }
+            else if(j>end){
+                if(s2.charAt(i2)!=s1.charAt(j))operation++;
+                i2++;
+            }
+            else if(i<start){
+                if(s1.charAt(i)!=s2.charAt(j2))operation++;
+                j2--;
+            }
+            else{
+                if(s2.charAt(i2)!=s2.charAt(j2))return Integer.MAX_VALUE;
+                i2++;
+                j2--;
+            }
+            i++;
+            j--;
+        }
+        return operation;
+    }
+    public  static int specialPalindrome(String s1, String s2){
+       //Code Here
+        int ans = Integer.MAX_VALUE;
+        for(int i=0;i<=s1.length()-s2.length();i++){
+            int start = i;
+            int end = i+s2.length()-1;
+            int temp = 0;
+            int k = 0;
+            for(int j=start;j<=end;j++){
+                if(s1.charAt(j)!=s2.charAt(k))temp++;
+                k++;
+            }
+            int t = palindrom(s1,s2,start,end);
+            if(t==Integer.MAX_VALUE)temp=Integer.MAX_VALUE;
+            else temp+=t;
+            ans = Math.min(ans,temp);
+        }
+        if(ans==Integer.MAX_VALUE)return -1;
+        return ans;
+    }
+    
+    
+//C++ CODE
+
+    int palindrom(string s1,string s2,int start,int end){
+        int i=0,j=s1.length()-1,i2=0,j2=s2.length()-1;
+        int operation=0;
+        while(i<j){
+            if((i<start and j>end) or (j<start) or (i>end)){
+                if(s1[i]!=s1[j])operation++;
+            }
+            else if(j>end){
+                if(s2[i2]!=s1[j])operation++;
+                i2++;
+            }
+            else if(i<start){
+                if(s1[i]!=s2[j2])operation++;
+                j2--;
+            }
+            else{
+                if(s2[i2]!=s2[j2])return INT_MAX;
+                i2++;
+                j2--;
+            }
+            i++;
+            j--;
+        }
+        return operation;
+    }
+    int specialPalindrome(string s1, string s2){
+        //Code Here
+        int ans = INT_MAX;
+        for(int i=0;i<=s1.length()-s2.length();i++){
+            int start = i;
+            int end = i+s2.length()-1;
+            int temp = 0;
+            int k = 0;
+            for(int j=start;j<=end;j++){
+                if(s1[j]!=s2[k])temp++;
+                k++;
+            }
+            int t = palindrom(s1,s2,start,end);
+            if(t==INT_MAX)temp=INT_MAX;
+            else temp+=t;
+            ans = min(ans,temp);
+        }
+        if(ans==INT_MAX)return -1;
+        return ans;
+    }
