@@ -1,0 +1,33 @@
+//Java CODE
+
+	long no_of_subarrays(int N, int [] arr) {
+		//Write your code here
+    	long ans=0,c=0;
+        for(int i=0;i<N;i++){
+            if(arr[i]==0)c++;
+            else{
+                ans+=((c*(c+1)))/2;
+                c=0;
+            }
+        }
+        ans+=((c*(c+1)))/2;
+        return ans;
+	}
+  
+  
+  
+//C++ CODE
+
+long long int no_of_subarrays(int n, vector<int> &arr) {
+    // Write your code here.
+    long long int ans=0,c=0;
+    for(int i=0;i<n;i++){
+        if(arr[i]==0)c++;
+        else{
+            ans+=((c*(c+1)))/2;
+            c=0;
+        }
+    }
+    ans+=((c*(c+1)))/2;
+    return ans;
+}
