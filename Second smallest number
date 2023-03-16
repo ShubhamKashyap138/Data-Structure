@@ -1,0 +1,58 @@
+// JAVA CODE
+
+    static String secondSmallest(int S, int D){
+        // code here
+        if(D==1 || S==1 || (D*9<=S))return "-1";
+        int []arr = new int[D];
+        for(int i=0;i<D-1;i++){
+            if(S>9){
+                arr[i]=9;
+                S-=9;
+            }
+            else{
+                arr[i]=S-1;
+                S=1;
+            }
+        }
+        arr[D-1]=S;
+        for(int i=1;i<D;i++){
+            if(arr[i]!=9){
+                arr[i]++;
+                arr[i-1]--;
+                break;
+            }
+        }
+        StringBuilder ans = new StringBuilder();
+        for(int i=D-1;i>=0;i--){
+            ans.append(arr[i]);
+        }
+        return ans.toString();
+    }
+    
+    
+//C++ CODE
+
+    string secondSmallest(int S, int D){
+        // code here
+        if(D==1 or S==1 or (D*9<=S))return "-1";
+        string ans="";
+        for(int i=0;i<D-1;i++){
+            if(S>9){
+                ans+='9';
+                S-=9;
+            }
+            else{
+                ans+=(S-1+'0');
+                S=1;
+            }
+        }
+        ans+=(S+'0');
+        for(int i=1;i<D;i++){
+            if(ans[i]!='9'){
+                ans[i]++;
+                ans[i-1]--;
+                reverse(ans.begin(),ans.end());
+                return ans;
+            }
+        }
+    }
