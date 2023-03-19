@@ -1,0 +1,41 @@
+// C++ CODE
+
+    vector<int> getDistinctDifference(int N, vector<int> &A) {
+        // code here
+        unordered_map<int,int> mm,mm2;
+        for(int i=0;i<N;i++)mm[A[i]]++;
+        vector<int> ans;
+        for(int i=0;i<N;i++){
+            int left = mm2.size();
+            mm[A[i]]--;
+            if(mm[A[i]]==0)mm.erase(A[i]);
+            int right = mm.size();
+            ans.push_back(left-right);
+            mm2[A[i]]++;
+        }
+        return ans;
+    }
+    
+    
+ // JAVA CODE
+ 
+     public static ArrayList<Integer> getDistinctDifference(int N, int[] A) {
+        // code here
+        HashMap<Integer,Integer> mm = new HashMap<>();
+        HashMap<Integer,Integer> mm2 = new HashMap<>();
+        ArrayList<Integer> ans = new ArrayList<>();
+        for(int i=0;i<N;i++){
+            mm.putIfAbsent(A[i],0);
+            mm.put(A[i],mm.get(A[i])+1);
+        }
+        for(int i=0;i<N;i++){
+            int left = mm2.size();
+            mm.put(A[i],mm.get(A[i])-1);
+            if(mm.get(A[i])==0)mm.remove(A[i]);
+            int right = mm.size();
+            ans.add(left-right);
+            mm2.putIfAbsent(A[i],0);
+            mm2.put(A[i],mm2.get(A[i])+1);
+        }
+        return ans;
+    }
