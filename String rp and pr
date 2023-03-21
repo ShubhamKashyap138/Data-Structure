@@ -1,0 +1,86 @@
+// C++ CODE
+
+    long long help(string s,int first,int second,string rem){
+        stack<char> st;
+        long long total=0;
+        for(int i=0;i<s.length();i++){
+            if(st.size() and s[i]==rem[1] and st.top()==rem[0]){
+                total+=first;
+                st.pop();
+            }
+            else{
+                st.push(s[i]);
+            }
+        }
+        s="";
+        while(st.size()){
+            s+=st.top();
+            st.pop();
+        }
+        for(int i=0;i<s.length();i++){
+            if(st.size() and s[i]==rem[1] and st.top()==rem[0]){
+                total+=second;
+                st.pop();
+            }
+            else{
+                st.push(s[i]);
+            }
+        }
+        return total;
+    }
+    long long solve(int X,int Y,string S){
+      //code here
+      long long ans = 0;
+      if(X>Y){
+          ans = help(S,X,Y,"pr");
+      }
+      else{
+          ans = help(S,Y,X,"rp");
+      }
+      return ans;
+    }
+    
+    
+    
+//JAVA CODE
+
+    static long help(String s,int first,int second,String rem){
+        Stack<Character> st = new Stack<Character>();
+        long total=0;
+        for(int i=0;i<s.length();i++){
+            if(st.size()!=0 && s.charAt(i)==rem.charAt(1) && st.peek()==rem.charAt(0)){
+                total+=first;
+                st.pop();
+            }
+            else{
+                st.push(s.charAt(i));
+            }
+        }
+        StringBuilder ss = new StringBuilder();
+        while(st.size()!=0){
+            ss.append(st.peek());
+            st.pop();
+        }
+        for(int i=0;i<ss.length();i++){
+            if(st.size()!=0 && ss.charAt(i)==rem.charAt(1) && st.peek()==rem.charAt(0)){
+                total+=second;
+                st.pop();
+            }
+            else{
+                st.push(ss.charAt(i));
+            }
+        }
+        return total;
+    }
+    static long solve(int X,int Y, String S)
+	{    
+	    // code here
+	  long ans = 0;
+      if(X>Y){
+          ans = help(S,X,Y,"pr");
+      }
+      else{
+          ans = help(S,Y,X,"rp");
+      }
+      return ans;
+	}
