@@ -1,0 +1,93 @@
+// JAVA CODE
+
+    
+    public static Shop shop;
+    Solution(Shop shop){
+        this.shop = shop;
+    }
+    long find(int n, long k){
+        // Return the number of chocolates Geek had
+        // enjoyed out of 'n' chocolates availabe in the
+        // 'shop'.
+        HashMap<Integer,Long> mm = new HashMap<>();
+        long ans = 0;
+        int low=0,high=n-1;
+        while(true){
+            int index = -1;
+            long temp;
+            while(low<=high){
+                int mid = (low+high)/2;
+                if(mm.get(mid)==null)
+                temp = this.shop.get(mid);
+                else temp=mm.get(mid);
+                if(temp==-1)return ans;
+                mm.put(mid,temp);
+                if(temp<=k){
+                    index=mid;
+                    low=mid+1;
+                }
+                else high=mid-1;
+            }
+            if(index!=-1){
+                if(mm.get(index)==null)
+                temp = this.shop.get(index);
+                else temp=mm.get(index);
+                if(temp==-1)return ans;
+                mm.put(index,temp);
+                ans+=k/temp;
+                k%=temp;
+            }
+            else break;
+            low = 0;
+            high = index-1;
+        }
+        return ans;
+    }
+    
+    
+ // C++ CODE
+ 
+     public:
+    Shop shop;
+    Solution(Shop s)
+    {
+        this->shop = s;
+    }
+    long long find(int n, long k){
+        // Return the number of chocolates Geek had
+        // enjoyed out of 'n' chocolates availabe in the
+        // 'shop'.
+        unordered_map<int,long long> mm;
+        long long ans=0;
+        int low=0,high=n-1;
+        while(true){
+            int index = -1;
+            long long temp;
+            while(low<=high){
+                int mid = (low+high)/2;
+                if(!mm[temp])
+                temp = this->shop.get(mid);
+                else temp = mm[mid];
+                if(temp==-1)return ans;
+                mm[mid]=temp;
+                if(temp<=k){
+                    index=mid;
+                    low=mid+1;
+                }
+                else high=mid-1;
+            }
+            if(index!=-1){
+                if(!mm[index])
+                temp = this->shop.get(index);
+                else temp = mm[index];
+                if(temp==-1)return ans;
+                mm[index]=temp;
+                ans+=k/temp;
+                k%=temp;
+            }
+            else return ans;
+            low=0;
+            high=index-1;
+        }
+        return ans;
+    }
