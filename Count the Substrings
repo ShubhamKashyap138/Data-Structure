@@ -1,0 +1,37 @@
+// JAVA CODE
+
+    int countSubstring(String S) 
+    { 
+        // code here
+        int ans = 0,sum=0;
+        HashMap<Integer,Integer> mm = new HashMap<>();
+        for(int i=0;i<S.length();i++){
+            if(S.charAt(i)>='A' && S.charAt(i)<='Z')sum++;
+            else sum--;
+            if(sum==0)ans++;
+            if(mm.get(sum)!=null){
+                ans+=mm.get(sum);
+                mm.put(sum,mm.get(sum)+1);
+            }
+            else mm.put(sum,1);
+        }
+        return ans;
+    }
+    
+    
+ //C++ CODE
+
+    int countSubstring(string S)
+    {
+        // code here
+        int ans = 0,sum=0;
+        unordered_map<int,int> mm;
+        for(int i=0;i<S.length();i++){
+            if(isupper(S[i]))sum++;
+            else sum--;
+            if(sum==0)ans++;
+            if(mm[sum])ans+=mm[sum];
+            mm[sum]++;
+        }
+        return ans;
+    }
