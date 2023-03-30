@@ -1,0 +1,26 @@
+// JAVA CODE
+
+    public static int minimumInteger(int N, int[] A) {
+        // code here
+        long sum=0;
+        int ans = Integer.MAX_VALUE;
+        for(int i=0;i<N;i++)sum+=A[i];
+        for(int i=0;i<N;i++){
+            if(sum<=(long)N*A[i])ans=Math.min(ans,A[i]);
+        }
+        return ans;
+    }
+    
+    
+//C++ CODE
+
+    int minimumInteger(int N, vector<int> &A) {
+        // code here
+        long long int sum=0;
+        int ans = INT_MAX;
+        sum = accumulate(A.begin(),A.end(),sum);
+        for(int i=0;i<N;i++){
+            if(sum<=(long long int)N*A[i])ans=min(ans,A[i]);
+        }
+        return ans;
+    }
