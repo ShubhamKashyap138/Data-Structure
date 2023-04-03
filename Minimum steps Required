@@ -1,0 +1,22 @@
+// JAVA CODE
+
+	int minSteps(String str) {
+		//Write your code here
+		int count=1;
+        for(int i=1;i<str.length();i++){
+            if(str.charAt(i)!=str.charAt(i-1))count++;
+        }
+        return (count/2)+1;
+	}
+  
+  
+//C++ CODE
+
+int minSteps(string str) {
+    // Write your code here.
+    int count=1;
+    for(int i=1;i<str.length();i++){
+        if(str[i]!=str[i-1])count++;
+    }
+    return (count/2)+1;
+}
