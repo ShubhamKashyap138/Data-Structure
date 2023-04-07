@@ -1,0 +1,40 @@
+//C++ CODE
+
+    int addMinChar(string str){    
+        //code here
+        int n=str.length();
+        int i=0,j=n-1,temp=n-1;
+        while(i<j){
+            if(str[i]==str[j]){
+                i++;
+            }
+            else{
+                j=temp;
+                i=0;
+                temp--;
+            }
+            j--;
+        }
+        return n-temp-1;
+    }
+    
+    
+ // JAVA CODE
+
+	public static int addMinChar(String str){
+		//code here
+		int n=str.length();
+        int i=0,j=n-1,temp=n-1;
+        while(i<j){
+            if(str.charAt(i)==str.charAt(j)){
+                i++;
+            }
+            else{
+                j=temp;
+                i=0;
+                temp--;
+            }
+            j--;
+        }
+        return n-temp-1;
+	}
