@@ -1,0 +1,54 @@
+//C++ CODE
+
+    vector<int> makeBeautiful(vector<int> arr) {
+        // code here
+        stack<int> st;
+        for(auto x:arr){
+            if(st.size()){
+                if((st.top()>=0 and x<0) or (st.top()<0 and x>=0)){
+                    st.pop();
+                }
+                else{
+                    st.push(x);
+                }
+            }
+            else{
+                st.push(x);
+            }
+        }
+        vector<int> ans;
+        while(st.size()){
+            ans.push_back(st.top());
+            st.pop();
+        }
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }
+    
+    
+//JAVA CODE
+
+    public static ArrayList<Integer> makeBeautiful(int[] arr) {
+        // code here
+        Stack<Integer> st = new Stack<>();
+        for(int x:arr){
+            if(st.size()!=0){
+                if((st.peek()>=0 && x<0) || (st.peek()<0 && x>=0)){
+                    st.pop();
+                }
+                else{
+                    st.push(x);
+                }
+            }
+            else{
+                st.push(x);
+            }
+        }
+        ArrayList<Integer> ans = new ArrayList<>();
+        while(st.size()!=0){
+            ans.add(st.peek());
+            st.pop();
+        }
+        Collections.reverse(ans);
+        return ans;
+    }
