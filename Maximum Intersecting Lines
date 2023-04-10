@@ -1,0 +1,37 @@
+// JAVA CODE
+
+    public int maxIntersections(int[][] lines, int N) {
+        // Code here
+        Map<Integer,Integer> mm = new TreeMap<>();
+        for(int[] x:lines){
+            mm.putIfAbsent(x[0],0);
+            mm.putIfAbsent(x[1]+1,0);
+            mm.put(x[0],mm.get(x[0])+1);
+            mm.put(x[1]+1,mm.get(x[1]+1)-1);
+        }
+        int ans = 1;
+        int total=0;
+        for(int x:mm.keySet()){
+            total+=mm.get(x);
+            ans=Math.max(ans,total);
+        }
+        return ans;
+    }
+    
+    
+// C++ CODE
+
+    int maxIntersections(vector<vector<int>> lines, int N) {
+        // Code here
+        map<int,int> mm;
+        for(auto x:lines){
+            mm[x[0]]++;
+            mm[x[1]+1]--;
+        }
+        int ans = 1,total=0;
+        for(auto x:mm){
+            total+=x.second;
+            ans=max(ans,total);
+        }
+        return ans;
+    }
