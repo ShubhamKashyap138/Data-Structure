@@ -1,0 +1,31 @@
+// JAVA CODE
+
+    public static int finLength(int N, int[] color, int[] radius) {
+        // code here
+        Stack<Integer> st = new Stack<>();
+        for(int i=0;i<N;i++){
+            if(st.size()!=0){
+                int index = st.peek();
+                if(color[index]==color[i] && radius[index]==radius[i])st.pop();
+                else st.push(i);
+            }
+            else st.push(i);
+        }
+        return st.size();
+    }
+    
+    
+// C++ CODE
+
+    int finLength(int N, vector<int> color, vector<int> radius) {
+        stack<int> st;
+        for(int i=0;i<N;i++){
+            if(st.size()){
+                int index = st.top();
+                if(color[index]==color[i] && radius[index]==radius[i])st.pop();
+                else st.push(i);
+            }
+            else st.push(i);
+        }
+        return st.size();
+    }
