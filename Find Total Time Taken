@@ -3,17 +3,14 @@
     public static long totalTime(int n,int arr[],int time[])
     {
         HashMap<Integer,Integer> mm = new HashMap<>();
-        HashMap<Integer,Long> mm2 = new HashMap<>();
         long ans=-1;
         for(int i=0;i<n;i++){
             ans++;
             if(mm.get(arr[i])!=null){
-                long t = ans-mm2.get(mm.get(arr[i]));
-                if(time[arr[i]-1]-t>0)
-                ans+=time[arr[i]-1]-t;
+                ans+=time[arr[i]-1];
+                ans--;
             }
             mm.put(arr[i],i+1);
-            mm2.put(i+1,ans);
         }
         return ans;
     }
@@ -23,18 +20,15 @@
 
     int totalTime(int n, vector<int> &arr, vector<int> &time) {
         // code here
-        unordered_map<int,int> mm,mm2;
+        unordered_map<int,int> mm;
         int ans = -1;
         for(int i=0;i<n;i++){
             ans++;
             if(mm[arr[i]]){
-                int t = ans-mm2[mm[arr[i]]];
-                if(time[arr[i]-1]-t>0){
-                    ans+=time[arr[i]-1]-t;
-                }
+                ans+=time[arr[i]-1];
+                ans--;
             }
-            mm[arr[i]]=i+1;
-            mm2[i+1]=ans;
+            mm[arr[i]]++;
         }
         return ans;
     }
