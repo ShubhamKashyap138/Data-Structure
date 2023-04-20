@@ -1,0 +1,102 @@
+// JAVA CODE
+
+    static int ladoos(Node root, int home, int k){
+        // Your code goes here
+        int ans = 0;
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        Node need = new Node(0);
+        Map<Node, Node> m = new HashMap<>();
+        while(q.size()!=0){
+            int s = q.size();
+            for(int i=0;i<s;i++){
+                Node temp = q.remove();
+                if(temp.data==home)need=temp;
+                if(temp.left!=null){
+                    q.add(temp.left);
+                    m.put(temp.left,temp);
+                }
+                if(temp.right!=null){
+                    q.add(temp.right);
+                    m.put(temp.right,temp);
+                }
+            }
+        }
+        Map<Node, Boolean> mm = new HashMap<>();
+        q.add(need);
+        int dis = 0;
+        while(q.size()!=0){
+            int s = q.size();
+            for(int i=0;i<s;i++){
+                Node temp = q.remove();
+                mm.put(temp,true);
+                ans+=temp.data;
+                if(temp.left!=null && mm.get(temp.left)==null){
+                    q.add(temp.left);
+                }
+                if(temp.right!=null && mm.get(temp.right)==null){
+                    q.add(temp.right);
+                }
+                if(m.get(temp)!=null && mm.get(m.get(temp))==null){
+                    q.add(m.get(temp));
+                }
+            }
+            dis++;
+            if(dis>k)break;
+        }
+        return ans;
+    }
+    
+    
+    
+ // C++ CODE
+ 
+     int ladoos(Node* root, int home, int k)
+    {
+        // Your code goes here
+        int ans=0;
+        queue<Node*> q;
+        q.push(root);
+        Node* need;
+        unordered_map<Node*,Node*> m;
+        while(q.size()){
+            int s = q.size();
+            for(int i=0;i<s;i++){
+                Node* temp = q.front();
+                q.pop();
+                if(temp->data==home)need=temp;
+                if(temp->left){
+                    q.push(temp->left);
+                    m[temp->left]=temp;
+                }
+                if(temp->right){
+                    q.push(temp->right);
+                    m[temp->right]=temp;
+                }
+            }
+        }
+        unordered_map<Node*,bool> mm;
+        q.push(need);
+        int dis=0;
+        while(q.size()){
+            int s = q.size();
+            for(int i=0;i<s;i++){
+                Node* temp = q.front();
+                q.pop();
+                mm[temp]=true;
+                ans+=temp->data;
+                if(temp->left && mm[temp->left]==false){
+                    q.push(temp->left);
+                }
+                if(temp->right && mm[temp->right]==false){
+                    q.push(temp->right);
+                }
+                if(m[temp] && mm[m[temp]]==false){
+                    q.push(m[temp]);
+                }
+            }
+            dis++;
+            if(dis>k)break;
+        }
+        return ans;
+    }
