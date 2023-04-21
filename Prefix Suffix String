@@ -3,20 +3,21 @@
     public int prefixSuffixString(String s1[],String s2[])
     {
         Map<String,Boolean> mm = new HashMap<>();
-        for(String x:s1){
-            StringBuilder temp = new StringBuilder();
+        String temp = "",x="";
+        for(int j=0;j<s1.length;j++){
+            x=s1[j];
             for(int i=0;i<x.length();i++){
-                temp.append(x.charAt(i));
-                mm.put(temp.toString(),true);
+                temp = x.substring(0,i+1);
+                mm.putIfAbsent(temp,true);
             }
-            temp.setLength(0);
             for(int i=x.length()-1;i>=0;i--){
-                temp.insert(0,x.charAt(i));
-                mm.put(temp.toString(),true);
+                temp = x.substring(i,x.length());
+                mm.putIfAbsent(temp,true);
             }
         }
         int ans=0;
-        for(String x:s2){
+        for(int i=0;i<s2.length;i++){
+            x=s2[i];
             if(mm.get(x)!=null)ans++;
         }
         return ans;
