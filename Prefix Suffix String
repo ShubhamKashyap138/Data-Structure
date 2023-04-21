@@ -1,0 +1,48 @@
+// JAVA CODE
+
+    public int prefixSuffixString(String s1[],String s2[])
+    {
+        Map<String,Boolean> mm = new HashMap<>();
+        for(String x:s1){
+            StringBuilder temp = new StringBuilder();
+            for(int i=0;i<x.length();i++){
+                temp.append(x.charAt(i));
+                mm.put(temp.toString(),true);
+            }
+            temp.setLength(0);
+            for(int i=x.length()-1;i>=0;i--){
+                temp.insert(0,x.charAt(i));
+                mm.put(temp.toString(),true);
+            }
+        }
+        int ans=0;
+        for(String x:s2){
+            if(mm.get(x)!=null)ans++;
+        }
+        return ans;
+    }
+    
+    
+ // C++ CODE
+ 
+     int prefixSuffixString(vector<string> &s1,vector<string> s2){
+        // Code here
+        unordered_map<string,bool> mm;
+        for(auto x:s1){
+            string temp="";
+            for(int i=0;i<x.length();i++){
+                temp+=x[i];
+                mm[temp]=true;
+            }
+            temp="";
+            for(int i=x.length()-1;i>=0;i--){
+                temp=x[i]+temp;
+                mm[temp]=true;
+            }
+        }
+        int ans=0;
+        for(auto x:s2){
+            if(mm[x])ans++;
+        }
+        return ans;
+    }
