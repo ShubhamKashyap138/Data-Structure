@@ -1,0 +1,109 @@
+// JAVA CODE
+
+    public int goodSubsets(int[] arr, int n) {
+        // Code here
+        int mm[]= new int[31];
+        mm[2] = 1;
+        mm[3] = 2;
+        mm[5] = 4;
+        mm[6] = 3;
+        mm[7] = 8;
+        mm[10] = 5;
+        mm[11] = 16;
+        mm[13] = 32;
+        mm[14] = 9;
+        mm[15] = 6;
+        mm[17] = 64;
+        mm[19] = 128;
+        mm[21] = 10;
+        mm[22] = 17;
+        mm[23] = 256;
+        mm[26] = 33;
+        mm[29] = 512;
+        mm[30] = 7;
+        int f[] = new int[31];
+        int c=0;
+        for(int x:arr){
+            if(x==1)c++;
+            else f[x]++;
+        }
+        long dp[] = new long[1024];
+        int mod = 1000000007;
+        dp[0]=1;
+        for(int j=2;j<31;j++){
+            if(f[j]!=0 && mm[j]!=0){
+                for(int i=0;i<1024;i++){
+                    if((mm[j]&i)==0){
+                        dp[(mm[j]|i)]+=(f[j]*dp[i]);
+                        dp[(mm[j]|i)]%=mod;
+                    }
+                }
+            }
+        }
+        int ans=0;
+        for(int i=1;i<1024;i++){
+            ans+=dp[i];
+            ans%=mod;
+        }
+        while(c!=0){
+            ans*=2;
+            ans%=mod;
+            c--;
+        }
+        return ans;
+    }
+    
+    
+// C++ CODE
+
+    int goodSubsets(vector<int> &arr, int n){
+        // Code here
+        int mm[31]={0};
+        mm[2] = 1;
+        mm[3] = 2;
+        mm[5] = 4;
+        mm[6] = 3;
+        mm[7] = 8;
+        mm[10] = 5;
+        mm[11] = 16;
+        mm[13] = 32;
+        mm[14] = 9;
+        mm[15] = 6;
+        mm[17] = 64;
+        mm[19] = 128;
+        mm[21] = 10;
+        mm[22] = 17;
+        mm[23] = 256;
+        mm[26] = 33;
+        mm[29] = 512;
+        mm[30] = 7;
+        unordered_map<int,int> f;
+        int c=0;
+        for(auto x:arr){
+            if(x==1)c++;
+            else f[x]++;
+        }
+        long long int dp[1024]={0};
+        int mod = 1e9+7;
+        dp[0]=1;
+        for(auto x:f){
+            if(mm[x.first]!=0){
+                for(int i=0;i<1024;i++){
+                    if((mm[x.first]&i)==0){
+                        dp[(mm[x.first]|i)]+=(x.second*dp[i]);
+                        dp[(mm[x.first]|i)]%=mod;
+                    }
+                }
+            }
+        }
+        long long int ans=0;
+        for(int i=1;i<1024;i++){
+            ans+=dp[i];
+            ans%=mod;
+        }
+        while(c--){
+            ans*=2;
+            ans%=mod;
+        }
+        return ans;
+    }
