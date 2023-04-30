@@ -1,0 +1,37 @@
+// JAVA CODE
+
+    public static int powerfullInteger(int n,int interval[][],int k)
+    {
+        Map<Integer,Integer> mm = new TreeMap<>();
+        for(int i=0;i<n;i++){
+            mm.putIfAbsent(interval[i][0],0);
+            mm.putIfAbsent(interval[i][1]+1,0);
+            mm.put(interval[i][0],mm.get(interval[i][0])+1);
+            mm.put(interval[i][1]+1,mm.get(interval[i][1]+1)-1);
+        }
+        int temp=0,ans=-1;
+        for (Map.Entry<Integer, Integer> entry : mm.entrySet()){
+            if(temp>=k && entry.getValue()<0)ans=entry.getKey()-1;
+            temp+=entry.getValue();
+            if(temp>=k)ans=entry.getKey();
+        }
+        return ans;
+    }
+    
+    // C++ CODE
+    
+        int powerfullInteger(int n,vector<vector<int>> &intervals,int k){
+        // Code here
+        map<int,int> mm;
+        for(auto x:intervals){
+            mm[x[0]]++;
+            mm[x[1]+1]--;
+        }
+        int temp=0,ans=-1;
+        for(auto x:mm){
+            if(temp>=k and x.second<0)ans=x.first-1;
+            temp+=x.second;
+            if(temp>=k)ans=x.first;
+        }
+        return ans;
+    }
