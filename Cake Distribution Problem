@@ -13,7 +13,7 @@
     }
 	int maxSweetness(int [] sweetness, int N, int K) {
 	    // Write your code here.
-        int low=Integer.MIN_VALUE,high=0,mid=0;
+        int low=Integer.MAX_VALUE,high=0,mid=0;
 	    for(int i=0;i<N;i++){
 	        high+=sweetness[i];
 	        low=Math.min(low,sweetness[i]);
