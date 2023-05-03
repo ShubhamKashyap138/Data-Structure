@@ -12,8 +12,8 @@
             StringBuilder t = new StringBuilder(x.getKey());
             t.reverse();
             String temp = t.toString();
-            if(temp==x.getKey()){
-                if(x.getValue()%2==1)odd++;
+            if(temp.equals(x.getKey())){
+                if((x.getValue()%2)==1)odd++;
                 if(odd>1)return false;
             }
             else if(mm.get(temp)!=x.getValue())return false;
