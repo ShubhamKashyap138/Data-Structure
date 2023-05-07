@@ -1,0 +1,34 @@
+// C++ CODE
+
+    string stringMirror(string str){
+        // Code here
+        string temp="";
+        temp+=str[0];
+        for(int i=1;i<str.length();i++){
+            if(str[i]<temp[i-1])temp+=str[i];\
+            else if(str[i]==temp[i-1] and i!=1)temp+=str[i];
+            else break;
+        }
+        string t = temp;
+        reverse(t.begin(),t.end());
+        temp+=t;
+        return temp;
+    }
+    
+    
+// JAVA CODE
+
+    public static String stringMirror(String str) {
+        // code here
+        StringBuilder temp = new StringBuilder();
+        temp.append(str.charAt(0));
+        for(int i=1;i<str.length();i++){
+            if(str.charAt(i)<temp.charAt(i-1))temp.append(str.charAt(i));
+            else if(str.charAt(i)==temp.charAt(i-1) && i!=1)temp.append(str.charAt(i));
+            else break;
+        }
+        StringBuilder t = new StringBuilder(temp);
+        t.reverse();
+        temp.append(t);
+        return temp.toString();
+    }
