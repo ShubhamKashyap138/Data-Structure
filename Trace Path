@@ -1,0 +1,41 @@
+// JAVA CODE
+
+    static int isPossible(int n, int m, String s){
+        // code here
+        int side=0,niche=0,maxSide=0,minSide=0,maxNiche=0,minNiche=0;
+        for(int i=0;i<s.length();i++){
+            char x = s.charAt(i);
+            if(x=='L')side--;
+            else if(x=='R')side++;
+            else if(x=='U')niche--;
+            else niche++;
+            maxSide=Math.max(maxSide,side);
+            minSide=Math.min(minSide,side);
+            maxNiche=Math.max(maxNiche,niche);
+            minNiche=Math.min(minNiche,niche);
+        }
+        if(maxSide+Math.abs(minSide)+1>m)return 0;
+        if(maxNiche+Math.abs(minNiche)+1>n)return 0;
+        return 1;
+    }
+    
+    
+// C++ CODE
+
+    int isPossible(int n, int m, string s){
+        // code here
+        int side=0,niche=0,maxSide=0,minSide=0,maxNiche=0,minNiche=0;
+        for(auto x:s){
+            if(x=='R')side++;
+            else if(x=='L')side--;
+            else if(x=='U')niche--;
+            else niche++;
+            maxSide=max(maxSide,side);
+            minSide=min(minSide,side);
+            maxNiche=max(maxNiche,niche);
+            minNiche=min(minNiche,niche);
+        }
+        if(maxSide+abs(minSide)+1>m)return 0;
+        if(maxNiche+abs(minNiche)+1>n)return 0;
+        return 1;
+    }
