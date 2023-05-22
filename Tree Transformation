@@ -10,6 +10,7 @@
         }
         int ans=0;
         for(int x:temp)if(x==1)ans++;
+        if(ans==N)return 0;
         return N-1-ans;
     }
     
@@ -25,5 +26,6 @@
         }
         int ans=0;
         for(auto x:temp)if(x==1)ans++;
+        if(ans==N)return 0;
         return N-1-ans;
     }
