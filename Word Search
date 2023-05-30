@@ -1,0 +1,50 @@
+// JAVA CODE
+
+    public boolean help(char[][] board,String word,int i,int j,int index){
+        if(index==word.length())return true;
+        if(i<0||j<0||i==board.length||j==board[0].length||board[i][j]!=word.charAt(index))return false;
+        board[i][j]='-';
+        index++;
+        boolean a = help(board,word,i+1,j,index)||help(board,word,i-1,j,index)||help(board,word,i,j+1,index)
+        ||help(board,word,i,j-1,index);
+        board[i][j]=word.charAt(index-1);
+        return a;
+    }
+    public boolean isWordExist(char[][] board, String word)
+    {
+        // Code here
+        for(int i=0;i<board.length;i++){
+            for(int j=0;j<board[i].length;j++){
+                if(board[i][j]==word.charAt(0)){
+                    boolean a = help(board,word,i,j,0);
+                    if(a==true)return a;
+                }
+            }
+        }
+        return false;
+    }
+    
+// C++ CODE
+
+    bool help(vector<vector<char>> &board,string word,int i,int j,int index){
+        if(index==word.length())return true;
+        if(i<0 or j<0 or i==board.size() or j==board[0].size() or board[i][j]!=word[index])return false;
+        board[i][j]='-';
+        index++;
+        bool a=help(board,word,i+1,j,index) || help(board,word,i-1,j,index)||help(board,word,i,j+1,index)
+               ||help(board,word,i,j-1,index);
+        board[i][j]=word[index-1];
+        return a;
+    }
+    bool isWordExist(vector<vector<char>>& board, string word) {
+        // Code here
+        for(int i=0;i<board.size();i++){
+            for(int j=0;j<board[0].size();j++){
+                if(board[i][j]==word[0]){
+                    bool a = help(board,word,i,j,0);
+                    if(a)return a;
+                }
+            }
+        }
+        return false;
+    }
