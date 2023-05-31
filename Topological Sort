@@ -1,0 +1,56 @@
+// JAVA CODE
+
+    public static void dfs(int node,boolean vis[],ArrayList<Integer> temp,
+    ArrayList<ArrayList<Integer>> adj){
+        vis[node]=true;
+        for(int i=0;i<adj.get(node).size();i++){
+            if(vis[adj.get(node).get(i)]==false){
+                dfs(adj.get(node).get(i),vis,temp,adj);
+            }
+        }
+        temp.add(node);
+    }
+    static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
+    {
+        // add your code here
+        boolean vis[] = new boolean[V];
+        Arrays.fill(vis,false);
+        ArrayList<Integer> temp = new ArrayList<>();
+        for(int i=0;i<V;i++){
+            if(vis[i]==false){
+                dfs(i,vis,temp,adj);
+            }
+        }
+        Collections.reverse(temp);
+        int ans[] = new int[V];
+        for(int i=0;i<V;i++){
+            ans[i]=temp.get(i);
+        }
+        return ans;
+    }
+    
+    
+ // C++ CODE
+ 
+ 	void dfs(int node,vector<bool> &vis,vector<int> &ans,vector<int> adj[]){
+	    vis[node]=true;
+	    for(int x:adj[node]){
+	        if(!vis[x]){
+	            dfs(x,vis,ans,adj);
+	        }
+	    }
+	    ans.push_back(node);
+	}
+	vector<int> topoSort(int V, vector<int> adj[]) 
+	{
+	    // code here
+	    vector<bool> vis(V,false);
+	    vector<int> ans;
+	    for(int i=0;i<V;i++){
+	        if(!vis[i]){
+	            dfs(i,vis,ans,adj);
+	        }
+	    }
+	    reverse(ans.begin(),ans.end());
+	    return ans;
+	}
