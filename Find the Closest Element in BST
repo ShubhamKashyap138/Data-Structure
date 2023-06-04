@@ -1,0 +1,33 @@
+// JAVA CODE
+
+    static int ans=Integer.MAX_VALUE;
+    static void help(Node root,int K){
+        if(root==null)return;
+        ans=Math.min(ans,Math.abs(root.data-K));
+        if(root.data>K)help(root.left,K);
+        else help(root.right,K);
+    }
+    static int minDiff(Node  root, int K) 
+    { 
+        // Write your code here
+        ans=Integer.MAX_VALUE;
+        help(root,K);
+        return ans;
+    } 
+    
+    
+// C++ CODE
+
+	void help(Node *root,int &ans,int K){
+	    if(!root)return;
+	    ans=min(ans,abs(root->data-K));
+	    if(root->data>K)help(root->left,ans,K);
+	    else help(root->right,ans,K);
+	}
+  int minDiff(Node *root, int K)
+  {
+      //Your code here
+      int ans=INT_MAX;
+      help(root,ans,K);
+      return ans;
+  }
