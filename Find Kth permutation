@@ -1,0 +1,81 @@
+// Java Code
+
+    public static String kthPermutation(int n,int k) {
+        // code here
+        int fact[] = new int[n+1];
+        Arrays.fill(fact,1);
+        for(int i=1;i<=n;i++)fact[i]=i*fact[i-1];
+        boolean vis[] = new boolean[n+1];
+        Arrays.fill(vis,false);
+        StringBuilder ans = new StringBuilder();
+        int i=n;
+        while(ans.length()!=n){
+            int row = k/fact[i-1];
+            if(k%fact[i-1]!=0)row++;
+            for(int j=1;j<=n;j++){
+                if(vis[j]==false){
+                    row--;
+                }
+                if(row==0){
+                    vis[j]=true;
+                    char a = (char)(j+'0');
+                    ans.append(a);
+                    break;
+                }
+            }
+            k = k%fact[i-1];
+            if(k==0)k=fact[i-1];
+            i--;
+        }
+        return ans.toString();
+    };
+    
+    
+// C++ CODE
+
+    string kthPermutation(int n, int k)
+    {
+        // code here
+        vector<int> fact(n+1,1);
+        for(int i=1;i<=n;i++)fact[i]=i*fact[i-1];
+        vector<bool> vis(n+1,false);
+        string ans="";
+        int i=n;
+        while(ans.length()!=n){
+            int row = k/fact[i-1];
+            if(k%fact[i-1])row++;
+            for(int j=1;j<=n;j++){
+                if(vis[j]==false){
+                    row--;
+                }
+                if(row==0){
+                    vis[j]=true;
+                    ans+=(j+'0');
+                    break;
+                }
+            }
+            k = k%fact[i-1];
+            if(k==0)k=fact[i-1];
+            i--;
+        }
+        return ans;
+    }
+    
+    
+// C++ Brute Approach
+
+    string kthPermutation(int n, int k)
+    {
+        // code here
+        vector<int> temp(n);
+        for(int i=0;i<n;i++)temp[i]=i+1;
+        k--;
+        while(k--){
+            next_permutation(temp.begin(),temp.end());
+        }
+        string ans="";
+        for(auto x:temp){
+            ans+=(x+'0');
+        }
+        return ans;
+    }
