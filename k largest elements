@@ -13,11 +13,10 @@
 	        }
 	    }
 	    int ans[]=new int[k];
-	    int i=0;
+	    int i=k-1;
 	    while(pq.size()!=0){
-	        ans[k-1-i]=pq.peek();
+	        ans[i--]=pq.peek();
 	        pq.poll();
-	        i++;
 	    }
 	    return ans;
     }
@@ -36,11 +35,10 @@
 	        }
 	    }
 	    vector<int> ans(k,0);
-	    int i=0;
+	    int i=k-1;
 	    while(pq.size()){
-	        ans[k-1-i]=pq.top();
+	        ans[i--]=pq.top();
 	        pq.pop();
-	        i++;
 	    }
 	    return ans;
 	}
