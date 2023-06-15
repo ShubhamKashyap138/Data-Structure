@@ -64,8 +64,6 @@
     }
     long long minTime(int n, vector<int> &locations, vector<int> &types) {
         // code here
-        mm1.clear();
-        mm2.clear();
         int mx = *max_element(types.begin(),types.end());
         vector<int> ele(mx+1,0);
         for(int i=0;i<n;i++){
