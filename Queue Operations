@@ -1,0 +1,64 @@
+// C++ CODE
+
+    unordered_map<int,int> mm;
+    void insert(queue<int> &q, int k){
+        // Your code here
+        q.push(k);
+        mm[k]++;
+    }
+    
+    // Function to find frequency of an element
+    // return the frequency of k
+    int findFrequency(queue<int> &q, int k){
+        // Your code here
+        return mm[k];
+    }
+    
+// JAVA CODE
+
+    static HashMap<Integer,Integer> mm;
+    static boolean a=false;
+    static void insert(Queue<Integer> q, int k){
+        
+        // Your code here
+        if(a==false){
+            mm=new HashMap<>();
+            a=true;
+        }
+        q.add(k);
+        mm.putIfAbsent(k,0);
+        mm.put(k,mm.get(k)+1);
+    }
+    
+    // Function to find frequency of an element
+    // rteturn the frequency of k
+    static int findFrequency(Queue<Integer> q, int k){
+        
+        // Your code here
+        a=false;
+        if(mm.get(k)==null)return 0;
+        return mm.get(k);
+    }
+    
+  
+// Brute CODE C++
+
+    void insert(queue<int> &q, int k){
+        // Your code here
+        q.push(k);
+    }
+    
+    // Function to find frequency of an element
+    // return the frequency of k
+    int findFrequency(queue<int> &q, int k){
+        // Your code here
+        int ans=0;
+        int s=q.size();
+        while(s--){
+            int t=q.front();
+            q.pop();
+            if(t==k)ans++;
+            q.push(t);
+        }
+        return ans;
+    }
