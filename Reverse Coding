@@ -1,0 +1,14 @@
+// JAVA CODE
+    static int sumOfNaturals(int n) {
+        // code here
+        int mod = 1000000007;
+        return (int)((long) n*(n+1)%mod/2)%mod;
+    }
+    
+// C++ CODE
+
+    int sumOfNaturals(int n) {
+        // code here
+        int mod = 1e9+7;
+        return (((long long)n*(n+1)%mod)/2)%mod;
+    }
