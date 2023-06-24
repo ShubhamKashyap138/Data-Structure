@@ -1,0 +1,43 @@
+// JAVA CODE
+
+    public static ArrayList<ArrayList<Integer>> uniqueRow(int a[][],int r, int c)
+    {
+        //add code here.
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+        HashMap<String,Integer> mm = new HashMap<>();
+        for(int i=0;i<r;i++){
+            StringBuilder s = new StringBuilder();
+            ArrayList<Integer> temp = new ArrayList<>();
+            for(int j=0;j<c;j++){
+                s.append('0'+a[i][j]);
+                temp.add(a[i][j]);
+            }
+            if(mm.get(s.toString())==null){
+                mm.put(s.toString(),1);
+                ans.add(temp);
+            }
+        }
+        return ans;
+    }
+
+// C++ CODE    
+
+vector<vector<int>> uniqueRow(int M[MAX][MAX],int row,int col)
+    {
+        //Your code here
+        unordered_map<string,int> mm;
+        vector<vector<int>> ans;
+        for(int i=0;i<row;i++){
+            string s="";
+            vector<int> temp;
+            for(int j=0;j<col;j++){
+                s.push_back('0'+M[i][j]);
+                temp.push_back(M[i][j]);
+            }
+            if(!mm[s]){
+                mm[s]++;
+                ans.push_back(temp);
+            }
+        }
+        return ans;
+    }
