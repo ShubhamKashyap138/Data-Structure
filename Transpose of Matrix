@@ -1,0 +1,25 @@
+// JAVA CODE
+
+    public void transpose(int n,int a[][])
+    {
+        int temp=0;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<i;j++){
+                temp = a[i][j];
+                a[i][j]=a[j][i];
+                a[j][i]=temp;
+            }
+        }
+    }
+
+// C++ CODE
+
+    void transpose(vector<vector<int> >& matrix, int n)
+    { 
+        // code here 
+        for(int i=0;i<n;i++){
+            for(int j=0;j<i;j++){
+                swap(matrix[i][j],matrix[j][i]);
+            }
+        }
+    }
