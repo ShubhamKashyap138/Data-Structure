@@ -1,0 +1,29 @@
+// JAVA CODE
+
+    public static boolean isFrequencyUnique(int n, int[] arr) {
+        // code here
+        HashMap<Integer,Integer> mm = new HashMap<>();
+        HashMap<Integer,Integer> mm2 = new HashMap<>();
+        for(int x:arr){
+            mm.putIfAbsent(x,0);
+            mm.put(x,mm.get(x)+1);
+        }
+        for(Map.Entry<Integer,Integer> x:mm.entrySet()){
+            if(mm2.get(x.getValue())!=null)return false;
+            mm2.put(x.getValue(),1);
+        }
+        return true;
+    }
+
+// C++ CODE
+
+    bool isFrequencyUnique(int n, int arr[])
+    {
+        unordered_map<int,int> mm,mm2;
+        for(int i=0;i<n;i++)mm[arr[i]]++;
+        for(auto x:mm){
+            if(mm2[x.second])return false;
+            mm2[x.second]++;
+        }
+        return true;
+    }
