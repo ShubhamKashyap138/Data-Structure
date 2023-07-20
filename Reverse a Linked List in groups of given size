@@ -1,0 +1,49 @@
+// JAVA CODE
+
+    public static Node reverse(Node node, int k)
+    {
+        //Your code here
+        Node pichli=null,curr=node,agli=null,fhead=null,temp=null;
+        int c=0;
+        while(node!=null){
+            while(curr!=null && c<k){
+                agli=curr.next;
+                curr.next=pichli;
+                pichli=curr;
+                curr=agli;
+                c++;
+            }
+            if(fhead==null)fhead=pichli;
+            if(temp!=null)temp.next=pichli;
+            temp=node;
+            pichli=null;
+            node=curr;
+            c=0;
+        }
+        return fhead;
+    }
+
+// C++ CODE
+
+    struct node *reverse (struct node *head, int k)
+    { 
+        // Complete this method
+        node *pichli=NULL,*curr=head,*agli,*fhead=NULL,*temp=NULL;
+        int c=0;
+        while(head){
+            while(curr and c<k){
+                agli=curr->next;
+                curr->next=pichli;
+                pichli=curr;
+                curr=agli;
+                c++;
+            }
+            if(!fhead)fhead=pichli;
+            if(temp)temp->next=pichli;
+            temp=head;
+            pichli=NULL;
+            head=curr;
+            c=0;
+        }
+        return fhead;
+    }
