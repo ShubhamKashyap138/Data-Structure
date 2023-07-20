@@ -1,0 +1,27 @@
+// JAVA CODE
+
+    static char nonrepeatingCharacter(String S)
+    {
+        //Your code here
+        HashMap<Character,Integer> mm = new HashMap<>();
+        for(int i=0;i<S.length();i++){
+            char c = S.charAt(i);
+            mm.putIfAbsent(c,0);
+            mm.put(c,mm.get(c)+1);
+        }
+        for(int i=0;i<S.length();i++){
+            if(mm.get(S.charAt(i))==1)return S.charAt(i);
+        }
+        return '$';
+    }
+
+// C++ CODE
+
+    char nonrepeatingCharacter(string S)
+    {
+       //Your code here
+       unordered_map<char,int> mm;
+       for(auto x:S)mm[x]++;
+       for(auto x:S)if(mm[x]==1)return x;
+       return '$';
+    }
