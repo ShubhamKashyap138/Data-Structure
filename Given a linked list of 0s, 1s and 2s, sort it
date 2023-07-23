@@ -21,10 +21,7 @@
                 temp.data=1;
                 o--;
             }
-            else{
-                temp.data=2;
-                t--;
-            }
+            else temp.data=2;
             temp=temp.next;
         }
         return head;
@@ -54,10 +51,7 @@
                 temp->data=1;
                 o--;
             }
-            else{
-                temp->data=2;
-                t--;
-            }
+            else temp->data=2;
             temp=temp->next;
         }
         return head;
