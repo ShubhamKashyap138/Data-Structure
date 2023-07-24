@@ -1,0 +1,41 @@
+// JAVA CODE
+
+    int taken=0;
+    void help(Node node,int cur,ArrayList<Integer> ans){
+        if(node==null)return;
+        if(taken<cur){
+            ans.add(node.data);
+            taken++;
+        }
+        cur++;
+        help(node.right,cur,ans);
+        help(node.left,cur,ans);
+    }
+    ArrayList<Integer> rightView(Node node) {
+        //add code here.
+        ArrayList<Integer> ans = new ArrayList<>();
+        int cur=1;
+        help(node,cur,ans);
+        return ans;
+    }
+
+// C++ CODE
+
+    void help(Node* root,int cur,int &taken,vector<int> &ans){
+        if(!root)return;
+        if(taken<cur){
+            ans.push_back(root->data);
+            taken++;
+        }
+        cur++;
+        help(root->right,cur,taken,ans);
+        help(root->left,cur,taken,ans);
+    }
+    vector<int> rightView(Node *root)
+    {
+       // Your Code here
+       vector<int> ans;
+       int cur=1,taken=0;
+       help(root,cur,taken,ans);
+       return ans;
+    }
