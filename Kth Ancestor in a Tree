@@ -1,0 +1,43 @@
+// JAVA CODE
+
+    int ans=-1;
+    void help(Node root,int k,int node,ArrayList<Integer> temp){
+        if(root==null)return;
+        if(root.data==node && temp.size()>=k){
+            ans = temp.get(temp.size()-k);
+            return;
+        }
+        temp.add(root.data);
+        help(root.left,k,node,temp);
+        help(root.right,k,node,temp);
+        temp.remove(temp.size()-1);
+    }
+    public int kthAncestor(Node root, int k, int node)
+    {
+        //Write your code here
+        ArrayList<Integer> temp = new ArrayList<>();
+        help(root,k,node,temp);
+        return ans;
+    }
+
+// C++ CODE
+
+void help(Node *root,int k,int node,int &ans, vector<int> &temp){
+    if(!root)return;
+    if(root->data==node && temp.size()>=k){
+        ans = temp[temp.size()-k];
+        return;
+    }
+    temp.push_back(root->data);
+    help(root->left,k,node,ans,temp);
+    help(root->right,k,node,ans,temp);
+    temp.pop_back();
+}
+int kthAncestor(Node *root, int k, int node)
+{
+    // Code here
+    vector<int> temp;
+    int ans=-1;
+    help(root,k,node,ans,temp);
+    return ans;
+}
