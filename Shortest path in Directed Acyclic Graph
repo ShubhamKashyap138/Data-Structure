@@ -1,0 +1,97 @@
+// JAVA CODE
+
+class pair{
+    int first,second;
+    pair(int a,int b){
+        first=a;
+        second=b;
+    }
+}
+class Solution {
+  	void dfs(int node,boolean vis[],ArrayList<Integer> topo,ArrayList<pair> adj[]){
+	    vis[node]=true;
+	    for(pair x:adj[node]){
+	        if(vis[x.first]==false){
+	            dfs(x.first,vis,topo,adj);
+	        }
+	    }
+	    topo.add(node);
+	}
+	public int[] shortestPath(int N,int M, int[][] edges) {
+		//Code here
+		boolean vis[] = new boolean[N];
+		Arrays.fill(vis,false);
+	    ArrayList<Integer> topo = new ArrayList<>();
+	    ArrayList<pair> adj[]=new ArrayList[N];
+	    for(int i=0;i<N;i++) {
+			adj[i]=new ArrayList<>();
+		}
+	    for(int i=0;i<M;i++){
+	        adj[edges[i][0]].add(new pair(edges[i][1],edges[i][2]));
+	    }
+	    for(int i=0;i<N;i++){
+	        if(vis[i]==false){
+	            dfs(i,vis,topo,adj);
+	        }
+	    }
+	    Collections.reverse(topo);
+	    int dis[] = new int[N];
+	    Arrays.fill(dis,Integer.MAX_VALUE);
+	    dis[0]=0;
+	    for(int i=0;i<N;i++){
+	        if(dis[topo.get(i)]!=Integer.MAX_VALUE){
+	            for(pair x:adj[topo.get(i)]){
+	                if(dis[topo.get(i)]+x.second<dis[x.first]){
+	                    dis[x.first]=dis[topo.get(i)]+x.second;
+	                }
+	            }
+	        }
+	    }
+	    for(int i=0;i<N;i++){
+	        if(dis[i]==Integer.MAX_VALUE)dis[i]=-1;
+	    }
+	    return dis;
+	}
+
+// C++ CODE
+
+class Solution {
+  public:
+  void dfs(int node,vector<bool> &vis,vector<int> &topo,vector<pair<int,int>> adj[]){
+      vis[node]=true;
+      for(auto x:adj[node]){
+          if(!vis[x.first])dfs(x.first,vis,topo,adj);
+      }
+      topo.push_back(node);
+  }
+     vector<int> shortestPath(int N,int M, vector<vector<int>>& edges){
+        // code here
+        vector<pair<int,int>> adj[N];
+        for(auto x:edges){
+            adj[x[0]].push_back({x[1],x[2]});
+        }
+        vector<bool> vis(N,false);
+        vector<int> topo;
+        for(int i=0;i<N;i++){
+            if(!vis[i]){
+                dfs(i,vis,topo,adj);
+            }
+        }
+        reverse(topo.begin(),topo.end());
+        vector<int> dis(N,INT_MAX);
+        dis[0]=0;
+        for(int i=0;i<N;i++){
+            if(dis[topo[i]]!=INT_MAX){
+                for(auto x:adj[topo[i]]){
+                    if(dis[topo[i]]+x.second<dis[x.first]){
+                        dis[x.first]=dis[topo[i]]+x.second;
+                    }
+                }
+            }
+        }
+        for(int i=0;i<N;i++){
+            if(dis[i]==INT_MAX)dis[i]=-1;
+        }
+        return dis;
+    }
+};
