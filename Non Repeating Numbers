@@ -1,0 +1,53 @@
+// JAVA CODE
+
+    public int[] singleNumber(int[] nums)
+    {
+        // Code here
+        int x = 0,setBit=0;
+        for(int y:nums)x^=y;
+        for(int i=0;i<=32;i++){
+            int num = 1<<i;
+            if((num&x)!=0){
+                setBit=num;
+                break;
+            }
+        }
+        int first=0,second=0;
+        for(int y:nums){
+            if((y&setBit)!=0)first^=y;
+            else second^=y;
+        }
+        int ans[] = new int[2];
+        if(first<=second){
+            ans[0]=first;
+            ans[1]=second;
+        }
+        else{
+            ans[0]=second;
+            ans[1]=first;
+        }
+        return ans;
+    }
+
+// C++ CODE
+
+    vector<int> singleNumber(vector<int> Arr) 
+    {
+        // Code here.
+        int x = 0,setBit=0;
+        for(auto y:Arr)x^=y;
+        for(int i=0;i<=32;i++){
+            int num = 1<<i;
+            if(num&x){
+                setBit=num;
+                break;
+            }
+        }
+        int first=0,second=0;
+        for(auto x:Arr){
+            if(x&setBit)first^=x;
+            else second^=x;
+        }
+        if(first<=second)return {first,second};
+        return {second,first};
+    }
