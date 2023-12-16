@@ -1,0 +1,20 @@
+// C++ Code
+
+long long int countStr(long long int n){
+    //complete the function here q
+    long long int a = 1,b=n,c=n,d=(n*(n-1))/2,e=n*(n-1),f=(n*(n-1)*(n-2))/2;
+    return a+b+c+d+e+f;
+}
+
+
+//JAVA CODE
+
+class Solution 
+{ 
+    static long countStr(long n)
+	{
+	    // code here
+	    long a = 1,b=n,c=n,d=(n*(n-1))/2,e=n*(n-1),f=(n*(n-1)*(n-2))/2;
+        return a+b+c+d+e+f;
+	}
+} 
