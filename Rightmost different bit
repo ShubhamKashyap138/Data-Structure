@@ -1,0 +1,45 @@
+// C++ CODE
+
+    int posOfRightMostDiffBit(int m, int n)
+    {
+        // Your code here
+        int a=0,b=0,pos=0;
+        while(m || n){
+            pos++;
+            if(m){
+                a=m&1;
+                m>>=1;
+            }
+            if(n){
+                b=n&1;
+                n>>=1;
+            }
+            if(a!=b)return pos;
+            a=0;
+            b=0;
+        }
+        return -1;
+    }
+
+// JAVA CODE
+
+    public static int posOfRightMostDiffBit(int m, int n)
+    {
+        // Your code here
+        int a=0,b=0,pos=0;
+        while(m!=0 || n!=0){
+            pos++;
+            if(m!=0){
+                a=m&1;
+                m>>=1;
+            }
+            if(n!=0){
+                b=n&1;
+                n>>=1;
+            }
+            if(a!=b)return pos;
+            a=0;
+            b=0;
+        }
+        return -1;
+    }
