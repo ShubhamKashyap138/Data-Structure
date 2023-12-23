@@ -1,0 +1,33 @@
+//In File Name Z = N/K
+
+//C++ CODE
+
+    int countOccurence(int arr[], int n, int k) {
+        // Your code here
+        unordered_map<int,int> mm;
+        for(int i=0;i<n;i++)mm[arr[i]]++;
+        int ans=0;
+        for(auto x:mm){
+            if(x.second>n/k)ans++;
+        }
+        return ans;
+    }
+
+// JAVA CODE
+
+    public int countOccurence(int[] arr, int n, int k) 
+    {
+        // your code here,return the answer
+        HashMap<Integer,Integer> mm = new HashMap<>();
+        for(int i=0;i<n;i++){
+            mm.putIfAbsent(arr[i],0);
+            mm.put(arr[i],mm.get(arr[i])+1);
+        }
+        int ans=0;
+        for(Map.Entry<Integer,Integer> x:mm.entrySet()){
+            if(x.getValue()>n/k){
+                ans++;
+            }
+        }
+        return ans;
+    }
