@@ -1,0 +1,58 @@
+// C++ CODE
+
+    int buyMaximumProducts(int n, int k, int price[]){
+        //Write your code here
+        int ans=0;
+        vector<pair<int,int>> temp;
+        for(int i=0;i<n;i++){
+            temp.push_back({price[i],i+1});
+        }
+        sort(temp.begin(),temp.end());
+        for(auto x:temp){
+            if(x.first<=k){
+                int canBuy = k/x.first;
+                if(canBuy<=x.second){
+                    ans+=canBuy;
+                    k-=canBuy*x.first;
+                }
+                else{
+                    ans+=x.second;
+                    k-=x.second*x.first;
+                }
+            }
+            else return ans;
+        }
+        return ans;
+    }
+
+
+// JAVA CODE
+
+class Pair{
+    int first;
+    int second;
+    public Pair(int a,int b){
+        this.first=a;
+        this.second=b;
+    }
+}
+class Solution {
+    public static int buyMaximumProducts(int n, int k, int[] price) {
+        // code here
+        Pair temp[]=new Pair[n];
+        int ans=0,mn=0,i=0;
+        for(i=0;i<n;i++)temp[i]=new Pair(price[i],i+1);
+        Arrays.sort(temp,new Comparator<>(){
+            @Override
+            public int compare(Pair a,Pair b){
+                return a.first-b.first;
+            }
+        });
+        for(i=0;i<n;i++){
+            mn = Math.min(k/temp[i].first,temp[i].second);
+            ans+=mn;
+            k-=mn*temp[i].first;
+        }
+        return ans;
+    }
+}
