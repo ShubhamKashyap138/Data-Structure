@@ -1,0 +1,90 @@
+// C++ CODE
+
+vector<vector<int>> sumZeroMatrix(vector<vector<int>> a){
+      //Code Here
+      vector<vector<int>> ans;
+      int n=a.size(),m=a[0].size(),area=0,rowStart=-1,rowEnd=-1,colStart=-1,colEnd=-1;
+      for(int i=0;i<m;i++){
+          int arr[n]={0};
+          for(int j=i;j<m;j++){
+              for(int k=0;k<n;k++){
+                  arr[k]+=a[k][j];
+              }
+              unordered_map<int,int> mm;
+              int len=0,sum=0,start=-1,end=-1;
+              mm[0]=0;
+              for(int l=0;l<n;l++){
+                  sum+=arr[l];
+                  if((sum==0 || mm[sum]) && len<l+1-mm[sum]){
+                      len=l+1-mm[sum];
+                      start=mm[sum];
+                      end=l;
+                  }
+                  else if(!mm[sum])mm[sum]=l+1;
+              }
+              if(start!=-1 and end!=-1 and area<len*(j-i+1)){
+                  area=len*(j-i+1);
+                  rowStart=start;
+                  rowEnd=end;
+                  colStart=i;
+                  colEnd=j;
+              }
+          }
+      }
+      if(rowStart!=-1 && rowEnd!=-1 && colStart!=-1 && colEnd!=-1){
+          for(int i=rowStart;i<=rowEnd;i++){
+              vector<int> temp;
+              for(int j=colStart;j<=colEnd;j++){
+                  temp.push_back(a[i][j]);
+              }
+              ans.push_back(temp);
+          }
+      }
+      return ans;
+  }
+
+
+// JAVA CODE
+
+    public static ArrayList<ArrayList<Integer>> sumZeroMatrix(int[][] a) {
+        // code here
+      int n=a.length,m=a[0].length,area=0,rowStart=-1,rowEnd=-1,colStart=-1,colEnd=-1;
+      for(int i=0;i<m;i++){
+          int arr[]=new int[n];
+          for(int j=i;j<m;j++){
+              for(int k=0;k<n;k++){
+                  arr[k]+=a[k][j];
+              }
+              HashMap<Integer,Integer> mm=new HashMap<>();
+              int sum=0,start=-1,end=-1,len=0;
+              mm.put(0,0);
+              for(int l=0;l<n;l++){
+                 sum+=arr[l];
+                 if((sum==0 || mm.get(sum)!=null) && (len<l+1-mm.get(sum))){
+                      len=l+1-mm.get(sum);
+                      start=mm.get(sum);
+                      end=l;
+                 }
+                 else if(mm.get(sum)==null)mm.put(sum,l+1);
+              }
+              if(start!=-1 && end!=-1 && area<len*(j-i+1)){
+                  area=len*(j-i+1);
+                  rowStart=start;
+                  rowEnd=end;
+                  colStart=i;
+                  colEnd=j;
+              }
+          }
+      }
+      ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
+      if(rowStart!=-1 && rowEnd!=-1 && colStart!=-1 && colEnd!=-1){
+          for(int i=rowStart;i<=rowEnd;i++){
+              ArrayList<Integer> temp = new ArrayList<>();
+              for(int j=colStart;j<=colEnd;j++){
+                  temp.add(a[i][j]);
+              }
+              ans.add(temp);
+          }
+      }
+      return ans;
+    }
