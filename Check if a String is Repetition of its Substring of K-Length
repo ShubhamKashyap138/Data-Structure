@@ -1,0 +1,29 @@
+// C++ CODE
+
+	int kSubstrConcat (int n, string s, int k)
+	{
+	    // Your Code Here
+	    if(n%k!=0)return 0;
+	    unordered_map<string,int> mm;
+	    for(int i=0;i<n;i+=k){
+	        mm[s.substr(i,k)]++;
+	    }
+	    if(mm.size()<=2)return 1;
+	    return 0;
+	}
+
+
+// JAVA CODE
+
+    int kSubstrConcat(int n, String s, int k)
+    {
+        // Your Code Here   
+        if(n%k!=0)return 0;
+	    HashMap<String,Integer> mm = new HashMap<>();
+	    for(int i=0;i<n;i+=k){
+	        mm.putIfAbsent(s.substring(i,k+i),0);
+	        mm.put(s.substring(i,k+i),mm.get(s.substring(i,k+i))+1);
+	    }
+	    if(mm.size()<=2)return 1;
+	    return 0;
+    }
