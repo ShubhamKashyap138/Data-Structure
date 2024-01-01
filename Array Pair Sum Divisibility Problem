@@ -1,0 +1,37 @@
+// C++ CODE
+
+    bool canPair(vector<int> nums, int k) {
+        // Code here.
+        if(nums.size()%2)return false;
+        unordered_map<int,int> mm;
+        for(auto x:nums){
+            mm[x%k]++;
+        }
+        for(auto x:mm){
+            if(x.first==0 and x.second%2)return false;
+            if(x.first!=0){
+                if(x.second!=mm[k-x.first])return false;
+            }
+        }
+        return true
+    }
+
+
+// JAVA CODE
+
+    public boolean canPair(int[] nums, int k) {
+        // Code here
+        if(nums.length%2==1)return false;
+        HashMap<Integer,Integer> mm = new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            mm.putIfAbsent(nums[i]%k,0);
+            mm.put(nums[i]%k,mm.get(nums[i]%k)+1);
+        }
+        for(Map.Entry<Integer,Integer> x:mm.entrySet()){
+            if(x.getKey()==0 && x.getValue()%2==1)return false;
+            if(x.getKey()!=0){
+                if(x.getValue()!=mm.get(k-x.getKey()))return false;
+            }
+        }
+        return true;
+    }
