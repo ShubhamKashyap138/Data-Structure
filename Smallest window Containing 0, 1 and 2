@@ -1,0 +1,40 @@
+// C++ CODE
+
+    int smallestSubstring(string S) {
+        // Code here
+        int arr[3]={0};
+        int j=0,total=0,ans=INT_MAX;
+        for(int i=0;i<S.length();i++){
+            arr[S[i]-'0']++;
+            if(arr[S[i]-'0']==1)total++;
+            if(total==3){
+                while(j<i and arr[S[j]-'0']>1){
+                    arr[S[j]-'0']--;
+                    j++;
+                }
+                ans = min(ans,i-j+1);
+            }
+        }
+        return ans!=INT_MAX?ans:-1;
+    }
+
+// JAVA CODE
+
+    public int smallestSubstring(String S) {
+        // Code here
+        int ans = Integer.MAX_VALUE,j=0,total=0;
+        int arr[] = new int[3];
+        Arrays.fill(arr,0);
+        for(int i=0;i<S.length();i++){
+            arr[S.charAt(i)-'0']++;
+            if(arr[S.charAt(i)-'0']==1)total++;
+            if(total==3){
+                while(j<i && arr[S.charAt(j)-'0']>1){
+                    arr[S.charAt(j)-'0']--;
+                    j++;
+                }
+                ans=Math.min(ans,i-j+1);
+            }
+        }
+        return ans!=Integer.MAX_VALUE?ans:-1;
+    }
