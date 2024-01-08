@@ -28,18 +28,10 @@
             }
             ans=ans->next;
         }
-        while(node1){
-            ans->next=node1;
-            node1=node1->next;
-            ans=ans->next;
-        }
-        while(node2){
-            ans->next=node2;
-            node2=node2->next;
-            ans=ans->next;
-        }
+        if(node1)ans->next=node1;
+        if(node2)ans->next=node2;
         return temp->next;
-    }  
+    } 
 
 
 // JAVA CODE
@@ -73,15 +65,7 @@
             }
             ans=ans.next;
         }
-        while(node1!=null){
-            ans.next=node1;
-            node1=node1.next;
-            ans=ans.next;
-        }
-        while(node2!=null){
-            ans.next=node2;
-            node2=node2.next;
-            ans=ans.next;
-        }
+        if(node1!=null)ans.next=node1;
+        if(node2!=null)ans.next=node2;
         return temp.next;
     }
