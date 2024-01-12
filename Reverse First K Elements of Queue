@@ -1,0 +1,43 @@
+// C++ CODE
+
+    queue<int> modifyQueue(queue<int> q, int k) {
+        // add code here.
+        stack<int> st;
+        for(int i=0;i<k;i++){
+            st.push(q.front());
+            q.pop();
+        }
+        int temp = q.size();
+        while(st.size()){
+            q.push(st.top());
+            st.pop();
+        }
+        while(temp--){
+            int a = q.front();
+            q.pop();
+            q.push(a);
+        }
+        return q;
+    }
+
+// JAVA CODE
+
+    public Queue<Integer> modifyQueue(Queue<Integer> q, int k) {
+        // add code here.
+        Stack<Integer> st = new Stack<>();
+        for(int i=0;i<k;i++){
+            st.push(q.peek());
+            q.poll();
+        }
+        int temp = q.size();
+        while(!st.isEmpty()){
+            q.add(st.peek());
+            st.pop();
+        }
+        while(temp--!=0){
+            int a = q.peek();
+            q.poll();
+            q.add(a);
+        }
+        return q;
+    }
