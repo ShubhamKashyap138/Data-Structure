@@ -1,0 +1,60 @@
+// C++ CODE
+
+    Node *help(Node *ans,Node *temp){
+        if(!ans or ans->data>=temp->data){
+            temp->next=ans;
+            ans=temp;
+        }
+        else{
+            Node *temp2=ans;
+            while(temp2->next and temp2->next->data<temp->data){
+                temp2=temp2->next;
+            }
+            temp->next=temp2->next;
+            temp2->next=temp;
+        }
+        return ans;
+    }
+    Node* insertionSort(struct Node* head_ref)
+    {
+        //code here
+        Node *ans=NULL;
+        Node *temp=head_ref;
+        while(temp){
+            Node *nxt = temp->next;
+            ans=help(ans,temp);
+            temp=nxt;
+        }
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    static Node help(Node ans,Node temp){
+        if(ans==null || ans.data>=temp.data){
+            temp.next=ans;
+            ans=temp;
+        }
+        else{
+            Node temp2=ans;
+            while(temp2.next!=null && temp2.next.data<temp.data){
+                temp2=temp2.next;
+            }
+            temp.next=temp2.next;
+            temp2.next=temp;
+        }
+        return ans;
+    }
+    public static Node insertionSort(Node head_ref)
+    {
+        //code here
+        Node temp=head_ref;
+        Node ans=null;
+        while(temp!=null){
+            Node nxt = temp.next;
+            ans = help(ans,temp);
+            temp=nxt;
+        }
+        return ans;
+    }
