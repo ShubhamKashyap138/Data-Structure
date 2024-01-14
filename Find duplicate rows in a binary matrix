@@ -1,0 +1,45 @@
+// C++ CODE
+
+vector<int> repeatedRows(vector<vector<int>> matrix, int M, int N) 
+{ 
+    // Your code here
+    vector<int> ans;
+    unordered_map<string,int> mm;
+    for(int i=0;i<M;i++){
+        string temp="";
+        for(int j=0;j<N;j++){
+            if(matrix[i][j])temp+='1';
+            else temp+='0';
+        }
+        if(mm[temp]){
+            ans.push_back(i);
+        }
+        else{
+            mm[temp]=1;
+        }
+    }
+    return ans;
+} 
+
+// JAVA CODE
+
+    public static ArrayList<Integer> repeatedRows(int matrix[][], int m, int n)
+    {
+        //code here
+        ArrayList<Integer> ans = new ArrayList<>();
+        HashMap<String,Integer> mm = new HashMap<>();
+        for(int i=0;i<m;i++){
+            StringBuilder temp = new StringBuilder();
+            for(int j=0;j<n;j++){
+                if(matrix[i][j]==1)temp.append('1');
+                else temp.append('0');
+            }
+            if(mm.get(temp.toString())!=null){
+                ans.add(i);
+            }
+            else{
+                mm.put(temp.toString(),1);
+            }
+        }
+        return ans;
+    }
