@@ -1,0 +1,48 @@
+// C++ CODE
+
+    int help(int n,int total,int index, vector<int> &cost,vector<vector<int>> &dp){
+        if(total<=0 or index==n)return 0;
+        if(dp[index][total]!=-1)return dp[index][total];
+        int a=0,b=0;
+        if(total>=cost[index]){
+            a++;
+            int temp = total;
+            temp-=cost[index];
+            temp+=(cost[index]*9)/10;
+            a+=help(n,temp,index+1,cost,dp);
+        }
+        b=help(n,total,index+1,cost,dp);
+        return dp[index][total] = max(a,b);
+    }
+    int max_courses(int n, int total, vector<int> &cost)
+    {
+        //Code Here
+        vector<vector<int>> dp(n,vector<int>(total+1,-1));
+        return help(n,total,0,cost,dp);
+    }
+
+
+// JAVA CODE
+
+    static int help(int n,int total,int index,int cost[],int [][]dp){
+        if(total<=0 || index==n)return 0;
+        if(dp[index][total]!=-1)return dp[index][total];
+        int a=0,b=0;
+        if(total>=cost[index]){
+            a++;
+            int temp=total;
+            temp-=cost[index];
+            temp+=(cost[index]*9)/10;
+            a+= help(n,temp,index+1,cost,dp);
+        }
+        b = help(n,total,index+1,cost,dp);
+        return dp[index][total] = Math.max(a,b);
+    }
+    public int max_courses(int n, int total, int[] cost) {
+        // code here
+        int dp[][] = new int[n][total+1];
+        for(int []temp:dp){
+            Arrays.fill(temp,-1);
+        }
+        return help(n,total,0,cost,dp);
+    }
