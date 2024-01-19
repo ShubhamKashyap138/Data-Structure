@@ -1,0 +1,48 @@
+// C++ CODE
+
+   vector<vector<int>> kTop(vector<int>& arr, int N, int K) {
+        // code here
+        vector<int> temp;
+        vector<vector<int>> ans;
+        unordered_map<int,int> mm;
+        unordered_map<int,int> indexMap;
+        int low=0,lowNum=INT_MAX,index;
+        for(int i=0;i<N;i++){
+            mm[arr[i]]++;
+            bool a = false;
+            if(temp.size()<K){
+                a=true;
+                index=temp.size();
+                if(mm[arr[i]]==1){
+                    temp.push_back(arr[i]);
+                    indexMap[arr[i]]=index;
+                }
+                else index = indexMap[arr[i]];
+            }
+            else{
+                if(indexMap.find(arr[i])!=indexMap.end()){
+                    index = indexMap[arr[i]];
+                    a=true;
+                }
+                else if((mm[arr[i]]>mm[temp[K-1]]) or (mm[arr[i]]==mm[temp[K-1]] and arr[i]<temp[K-1])){
+                    indexMap.erase(temp[K-1]);
+                    temp.pop_back();
+                    temp.push_back(arr[i]);
+                    indexMap[arr[i]]=K-1;
+                    index = K-1;
+                    a=true;
+                }
+            }
+            if(a){
+                for(int j=index;j>0;j--){
+                    if((mm[temp[j-1]]<mm[temp[j]]) or (mm[temp[j-1]]==mm[temp[j]] and temp[j-1]>temp[j])){
+                        swap(temp[j-1],temp[j]);
+                        indexMap[arr[i]]=j-1;
+                        indexMap[temp[j]]=j;
+                    }
+                }
+            }
+            ans.push_back(temp);
+        }
+        return ans;
+    }
