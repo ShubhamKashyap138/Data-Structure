@@ -1,0 +1,35 @@
+// C++ CODE
+
+    int help(Node *root,int &ans){
+        if(!root)return 0;
+        int l = help(root->left,ans);
+        int r = help(root->right,ans);
+        ans+=abs(l)+abs(r);
+        return root->key-1+l+r;
+    }
+    int distributeCandy(Node* root)
+    {
+        //code here
+        int ans = 0;
+        help(root,ans);
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    static int ans = 0;
+    static int help(Node root){
+        if(root==null)return 0;
+        int l=help(root.left);
+        int r=help(root.right);
+        ans+=Math.abs(l)+Math.abs(r);
+        return root.data-1+l+r;
+    }
+    public static int distributeCandy(Node root)
+    {
+        //code here
+        ans=0;
+        help(root);
+        return ans;
+    }
