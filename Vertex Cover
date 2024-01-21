@@ -1,0 +1,64 @@
+// C++ CODE
+
+        int help(int count,int taken,int v,int n,int m,vector<int> adj[],vector<int> mm){
+            if(count==m){
+                return taken;
+            }
+            if(v==n+1){
+                return INT_MAX;
+            }
+            int a=INT_MAX,b=INT_MAX;
+            a = help(count,taken,v+1,n,m,adj,mm);
+            count+=adj[v].size();
+            for(auto x:adj[v]){
+                if(mm[x])count--;
+            }
+            mm[v]++;
+            b = help(count,taken+1,v+1,n,m,adj,mm);
+            return min(a,b);
+        }
+        int vertexCover(int n, vector<pair<int, int>> &edges) {
+            // code here
+            vector<int> adj[n+1];
+            for(auto x:edges){
+                adj[x.first].push_back(x.second);
+                adj[x.second].push_back(x.first);
+            }
+            vector<int> mm(n+1,0);
+            int m=edges.size(),count=0,taken=0,v=1;
+            return help(count,taken,v,n,m,adj,mm);
+        }
+
+// JAVA CODE
+
+    static int help(int count,int taken,int v,int n,int m,ArrayList<ArrayList<Integer>> adj,int []mm){
+            if(count==m){
+                return taken;
+            }
+            if(v==n+1)return Integer.MAX_VALUE;
+            boolean aa = false;
+            int a=Integer.MAX_VALUE,b=Integer.MAX_VALUE;
+            b = help(count,taken,v+1,n,m,adj,mm);
+            count+=adj.get(v).size();
+            for(Integer x:adj.get(v)){
+                if(mm[x]!=0)count--;
+            }
+            mm[v]++;
+            a = help(count,taken+1,v+1,n,m,adj,mm);
+            mm[v]--;
+            return Math.min(a,b);
+        }
+    public static int vertexCover(int n, int m, int[][] edges) {
+        // code here
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<ArrayList<Integer>>(n+1);
+        for (int i = 0; i <= n; i++)
+        adj.add(new ArrayList<Integer>());
+        for(int x[]:edges){
+            adj.get(x[0]).add(x[1]);
+            adj.get(x[1]).add(x[0]);
+        }
+        int mm[] = new int[n+1];
+        Arrays.fill(mm,0);
+        int count=0,taken=0,v=1;
+        return help(count,taken,v,n,m,adj,mm);
+    }
