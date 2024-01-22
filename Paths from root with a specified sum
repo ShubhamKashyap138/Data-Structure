@@ -1,0 +1,40 @@
+// C++ CODE
+
+    void help(Node *root,int s,int sum,vector<int> temp,vector<vector<int>> &ans){
+        if(!root)return;
+        s+=root->key;
+        temp.push_back(root->key);
+        if(s==sum)ans.push_back(temp);
+        help(root->left,s,sum,temp,ans);
+        help(root->right,s,sum,temp,ans);
+    }
+    vector<vector<int>> printPaths(Node *root, int sum)
+    {
+        //code here
+        vector<vector<int>> ans;
+        vector<int> temp;
+        help(root,0,sum,temp,ans);
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    static void help(Node root, ArrayList<ArrayList<Integer>> ans, ArrayList<Integer> temp,int s,int sum){
+        if(root==null) return;
+        s+=root.data;
+        temp.add(root.data);
+        if(s==sum) ans.add(new ArrayList<>(temp));
+        help(root.left,ans,temp,s,sum);
+        help(root.right,ans,temp,s,sum);
+        temp.remove(temp.size()-1);
+    }
+    public static ArrayList<ArrayList<Integer>> printPaths(Node root, int sum)
+    {
+        // code here
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<ArrayList<Integer>>();
+        ArrayList<Integer> temp = new ArrayList<Integer>();
+        int s = 0;
+        help(root,ans,temp,s,sum);
+        return ans;
+    }
