@@ -1,0 +1,64 @@
+// C++ CODE
+
+    vector<int> findOrder(int n, int m, vector<vector<int>> prerequisites) 
+    {
+        //code here
+        vector<int> adj[n];
+        int mm[n]={0};
+        for(auto x:prerequisites){
+            adj[x[1]].push_back(x[0]);
+            mm[x[0]]++;
+        }
+        queue<int> q;
+        for(int i=0;i<n;i++){
+            if(mm[i]==0)q.push(i);
+        }
+        vector<int> ans;
+        while(q.size()){
+            int temp = q.front();
+            q.pop();
+            ans.push_back(temp);
+            for(auto x:adj[temp]){
+                mm[x]--;
+                if(mm[x]==0)q.push(x);
+            }
+        }
+        if(ans.size()==n)return ans;
+        return {};
+    }
+
+// JAVA CODE
+
+    static int[] findOrder(int n, int m, ArrayList<ArrayList<Integer>> prerequisites) 
+    {
+        // add your code here
+        ArrayList<ArrayList<Integer>> adj = new ArrayList<>();
+	    int []ans = new int[n];
+	    int mm[] = new int[n];
+	    Arrays.fill(mm,0);
+	    for(int i = 0;i< n;i++) {
+            adj.add(new ArrayList<>());
+        }
+        for(ArrayList<Integer> x:prerequisites){
+            adj.get(x.get(1)).add(x.get(0));
+            mm[x.get(0)]++;
+        }
+        Queue<Integer> q = new LinkedList<>();
+        for(int i=0;i<n;i++){
+            if(mm[i]==0)q.add(i);
+        }
+        int total=0;
+        while(!q.isEmpty()){
+            int temp = q.poll();
+            ans[total]=temp;
+            total++;
+            for(int x:adj.get(temp)){
+                mm[x]--;
+                if(mm[x]==0){
+                    q.add(x);
+                }
+            }
+        }
+        if(total==n)return ans;
+        return new int[0];
+    }
