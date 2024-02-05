@@ -1,0 +1,43 @@
+// C++ CODE
+
+    Node *sortedInsert(Node* head, int data)
+    {
+       //Your code here 
+       Node *ans = new Node(data);
+       if(!head){
+           ans->next=ans;
+           return ans;
+       }
+       Node *temp=head,*temp2=NULL;
+       do{
+           temp2=temp;
+           temp=temp->next;
+           if(data>=temp2->data and data<=temp->data)break;
+       }while(temp!=head);
+       temp2->next=ans;
+       ans->next=temp;
+       if(data<head->data)return ans;
+       return head;
+    }
+
+// JAVA CODE
+
+    public Node sortedInsert(Node head, int data) {
+        // code here
+       Node ans=new Node(data);
+       if(head==null){
+           ans.next=ans;
+           return ans;
+       }
+       Node temp=head;
+       Node temp2=null;
+       do{
+           temp2=temp;
+           temp=temp.next;
+           if(data<=temp.data && data>=temp2.data)break;
+       }while(temp!=head);
+       temp2.next=ans;
+       ans.next=temp;
+       if(data<head.data)return ans;
+       return head;
+    }
