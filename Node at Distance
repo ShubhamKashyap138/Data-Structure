@@ -49,3 +49,7 @@
     	help(root,k,vec,s,0);
     	return s.size();
     }
+
+
+Time Complexity:- O(N)
+Space Complexity:- O(H)
