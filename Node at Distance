@@ -1,0 +1,51 @@
+// C++ CODE
+
+    void help(Node *root,int k,vector<Node*> &vec,unordered_set<Node*> &s,int level){
+        if(!root)return;
+        if(!root->left and !root->right){
+            if(k==0){
+                s.insert(root);
+            }
+            else if(level-k>=0){
+                s.insert(vec[level-k]);
+            }
+            return;
+        }
+        vec.push_back(root);
+        help(root->left,k,vec,s,level+1);
+        help(root->right,k,vec,s,level+1);
+        vec.pop_back();
+    }
+    //Function to return count of nodes at a given distance from leaf nodes.
+    int printKDistantfromLeaf(Node* root, int k)
+    {
+    	//Add your code here.
+    	vector<Node*> vec;
+    	unordered_set<Node*> s;
+    	help(root,k,vec,s,0);
+    	return s.size();
+    }
+
+// JAVA CODE
+
+    static void help(Node root,int k,ArrayList<Node> vec,Set<Node> s,int level){
+        if(root==null)return;
+        if(root.left==null && root.right==null){
+            if(k==0)s.add(root);
+            else if(level-k>=0)s.add(vec.get(level-k));
+            return;
+        }
+        vec.add(root);
+        help(root.left,k,vec,s,level+1);
+        help(root.right,k,vec,s,level+1);
+        vec.remove(vec.size()-1);
+    }
+    //Function to return count of nodes at a given distance from leaf nodes.
+    int printKDistantfromLeaf(Node root, int k)
+    {
+        // Write your code here
+    	ArrayList<Node> vec = new ArrayList<>();
+    	Set<Node> s = new HashSet<>();
+    	help(root,k,vec,s,0);
+    	return s.size();
+    }
