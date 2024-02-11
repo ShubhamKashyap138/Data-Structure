@@ -1,0 +1,45 @@
+// C++ CODE
+
+    vector<int> recamanSequence(int n){
+        // code here
+        vector<int> ans;
+        ans.push_back(0);
+        unordered_map<int,int> mm;
+        mm[0]=1;
+        for(int i=1;i<n;i++){
+            if(ans[i-1]-i>0 and !mm[ans[i-1]-i]){
+                ans.push_back(ans[i-1]-i);
+                mm[ans[i-1]-i]=1;
+            }
+            else{
+                ans.push_back(ans[i-1]+i);
+                mm[ans[i-1]+i]=1;
+            }
+        }
+        return ans;
+    }
+
+// JAVA CODE
+
+    static ArrayList<Integer> recamanSequence(int n){
+        // code here
+        ArrayList<Integer> ans = new ArrayList<>();
+        HashMap<Integer,Integer> mm = new HashMap<>();
+        ans.add(0);
+        mm.put(0,1);
+        for(int i=1;i<n;i++){
+            if(ans.get(i-1)-i>0 && mm.get(ans.get(i-1)-i)==null){
+                ans.add(ans.get(i-1)-i);
+                mm.put(ans.get(i-1)-i,1);
+            }
+            else{
+                ans.add(ans.get(i-1)+i);
+                mm.put(ans.get(i-1)+i,1);
+            }
+        }
+        return ans;
+    }
+
+
+Time Complexity:- O(N)
+Space Complexity:- O(N)
