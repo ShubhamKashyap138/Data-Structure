@@ -1,0 +1,44 @@
+// C++ CODE
+
+    Node *ans=NULL,*prev=NULL;
+    void help(Node *root){
+        if(!root)return;
+        help(root->left);
+        if(prev){
+            prev->left=NULL;
+            prev->right=root;
+        }
+        else ans=root;
+        prev=root;
+        help(root->right);
+        prev->left=NULL;
+    }
+    Node *flattenBST(Node *root)
+    {
+        // code here;
+        help(root);
+        return ans;
+    }
+
+// JAVA CODE
+
+    static Node prev=null,ans=null;
+    void help(Node root){
+        if(root==null)return;
+        help(root.left);
+        if(prev!=null){
+            prev.right=root;
+            prev.left=null;
+        }
+        else ans=root;
+        prev=root;
+        help(root.right);
+        prev.left=null;
+    }
+    public Node flattenBST(Node root) {
+        // Code here
+        ans=null;
+        prev=null;
+        help(root);
+        return ans;
+    }
