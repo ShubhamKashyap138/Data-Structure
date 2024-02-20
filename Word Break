@@ -1,0 +1,42 @@
+// C++ CODE
+
+    bool help(string A,vector<string> &B,int index){
+        if(index==A.length())return true;
+        string temp="";
+        bool a = false;
+        for(int i=index;i<A.length();i++){
+            temp+=A[i];
+            for(int j=0;j<B.size();j++){
+                if(B[j]==temp){
+                    a = a|help(A,B,i+1);
+                    break;
+                }
+            }
+        }
+        return a;
+    }
+    int wordBreak(string A, vector<string> &B) {
+        //code here
+        return help(A,B,0);
+    }
+
+// JAVA CODE
+
+    static boolean help(String A,ArrayList<String> B,int index){
+        if(index==A.length())return true;
+        String temp="";
+        boolean a=false;
+        for(int i=index;i<A.length();i++){
+            temp+=A.charAt(i);
+            if(B.contains(temp)==true){
+                a = a|help(A,B,i+1);
+            }
+        }
+        return a;
+    }
+    public static int wordBreak(String A, ArrayList<String> B )
+    {
+        //code here
+        boolean ans = help(A,B,0);
+        return ans==true?1:0;
+    }
