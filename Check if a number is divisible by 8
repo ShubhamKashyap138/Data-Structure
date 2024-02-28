@@ -1,0 +1,28 @@
+// C++ CODE
+
+    int DivisibleByEight(string s){
+        //code here
+        int num=0;
+        int i=s.length()-3>=0?s.length()-3:0;
+        while(i<s.length()){
+            num=num*10+(s[i]-'0');
+            i++;
+        }
+        return num%8==0?1:-1;
+    }
+
+// JAVA CODE
+
+    int DivisibleByEight(String s){
+        //code here
+        int num = 0;
+        int i = s.length()-3>=0?s.length()-3:0;
+        while(i<s.length()){
+            num=num*10+(s.charAt(i)-'0');
+            i++;
+        }
+        return num%8==0?1:-1;
+    }
+
+Time Complexity:- O(1)
+Space Complexity:- O(1)
