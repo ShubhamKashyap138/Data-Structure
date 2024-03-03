@@ -1,0 +1,33 @@
+// C++ CODE
+
+	static bool func(string a,string b){
+	    return a+b>b+a;
+	}
+	string printLargest(int n, vector<string> &arr) {
+	    // code here
+	    sort(arr.begin(),arr.end(),func);
+	    string ans="";
+	    for(auto x:arr)ans+=x;
+	    return ans;
+	}
+
+// JAVA CODE
+
+    String printLargest(int n, String[] arr) {
+        // code here
+        StringBuilder temp = new StringBuilder();
+        Arrays.sort(arr,new Comparator<String>(){
+            @Override 
+            public int compare(String x, String y){
+                String a = x+y;
+                String b = y+x;
+                return b.compareTo(a);
+            }
+        });
+        for(String x:arr)temp.append(x);
+        return temp.toString();
+    }
+
+
+// Time Complexity:- O(NLogN)
+// Space Complexity:- O(M)
