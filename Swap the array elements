@@ -1,0 +1,23 @@
+// C++ CODE
+
+    void swapElements(int arr[], int n){
+        
+        // Your code here
+        for(int i=0;i<n-2;i++)swap(arr[i],arr[i+2]);
+    }
+
+// JAVA CODE
+
+    public void swapElements(int[] arr, int n)
+    {
+        // Code here
+        for(int i=0;i<n-2;i++){
+            int temp = arr[i];
+            arr[i]=arr[i+2];
+            arr[i+2]=temp;
+        }
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
