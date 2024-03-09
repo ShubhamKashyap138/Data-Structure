@@ -1,0 +1,38 @@
+// C++ CODE
+
+    char nthCharacter(string s, int r, int n) {
+        //code here
+        string temp="";
+        while(r--){
+            for(auto x:s){
+                if(x=='1')temp+="10";
+                else temp+="01";
+                if(temp.length()>n)break;
+            }
+            s=temp;
+            temp="";
+        }
+        return s[n];
+    }
+
+// JAVA CODE
+
+    public char nthCharacter(String s, int r, int n)
+    {
+        //code here
+        StringBuilder temp = new StringBuilder();
+        while(r!=0){
+            for(int i=0;i<s.length();i++){
+                if(s.charAt(i)=='1')temp.append("10");
+                else temp.append("01");
+                if(temp.length()>n)break;
+            }
+            s=temp.toString();
+            temp.setLength(0);
+            r--;
+        }
+        return s.charAt(n);
+    }
+
+// Time Complexity:- O(r*|s|)
+// Space Complexity:- O(|s|)
