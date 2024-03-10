@@ -1,0 +1,29 @@
+// C++ CODE
+
+	string removeDuplicates(string str) {
+	    // code here
+	    string ans = "";
+	    unordered_map<char,int> mm;
+	    for(auto x:str){
+	        if(!mm[x])ans+=x;
+	        mm[x]++;
+	    }
+	    return ans;
+	}
+
+// JAVA CODE
+
+    String removeDuplicates(String str) {
+        StringBuilder ans = new StringBuilder();
+        HashMap<Character,Integer> mm = new HashMap<>();
+        for(int i=0;i<str.length();i++){
+            if(mm.get(str.charAt(i))==null){
+                ans.append(str.charAt(i));
+                mm.put(str.charAt(i),1);
+            }
+        }
+        return ans.toString();
+    }
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(256)
