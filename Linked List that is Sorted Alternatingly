@@ -27,14 +27,38 @@
              prev=curr;
              curr=nxt;
          }
-         temp1->next=prev;
+         temp=prev;
          while(prev){
              if(prev->next==head2){
                  prev->next=NULL;
              }
              prev=prev->next;
          }
-         *head=head1->next;
+         Node *ans = new Node(0);
+         head2=ans;
+         head1=head1->next;
+         while(head1 and temp){
+             if(head1->data<=temp->data){
+                 ans->next=head1;
+                 head1=head1->next;
+             }
+             else{
+                 ans->next=temp;
+                 temp=temp->next;
+             }
+             ans=ans->next;
+         }
+         while(head1){
+             ans->next=head1;
+             head1=head1->next;
+             ans=ans->next;
+         }
+         while(temp){
+             ans->next=temp;
+             temp=temp->next;
+             ans=ans->next;
+         }
+         *head=head2->next;
     }
 
 // JAVA CODE
@@ -65,14 +89,38 @@
              prev=curr;
              curr=nxt;
          }
-         temp1.next=prev;
+         temp=prev;
          while(prev!=null){
              if(prev.next==head2){
                  prev.next=null;
              }
              prev=prev.next;
          }
-         return head1.next;
+         Node ans = new Node(0);
+         head2=ans;
+         head1=head1.next;
+         while(head1!=null && temp!=null){
+             if(head1.data<=temp.data){
+                 ans.next=head1;
+                 head1=head1.next;
+             }
+             else{
+                 ans.next=temp;
+                 temp=temp.next;
+             }
+             ans=ans.next;
+         }
+         while(head1!=null){
+             ans.next=head1;
+             head1=head1.next;
+             ans=ans.next;
+         }
+         while(temp!=null){
+             ans.next=temp;
+             temp=temp.next;
+             ans=ans.next;
+         }
+         return head2.next;
    }
 
 // Time Complexity:- O(N)
