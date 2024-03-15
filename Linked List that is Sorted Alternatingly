@@ -1,0 +1,79 @@
+// C++ CODE
+
+    void sort(Node **head)
+    {
+         // Code here
+         Node *head1=new Node(0),*head2=new Node(0);
+         Node *temp1=head1,*temp2=head2,*temp=*head;
+         bool indication=true;
+         while(temp){
+             if(indication){
+                 temp1->next=temp;
+                 temp1=temp1->next;
+             }
+             else{
+                 temp2->next=temp;
+                 temp2=temp2->next;
+             }
+             temp=temp->next;
+             indication=!indication;
+         }
+         temp1->next=NULL;
+         temp2->next=NULL;
+         Node *curr=head2,*prev=NULL,*nxt=head2->next;
+         while(curr){
+             nxt=curr->next;
+             curr->next=prev;
+             prev=curr;
+             curr=nxt;
+         }
+         temp1->next=prev;
+         while(prev){
+             if(prev->next==head2){
+                 prev->next=NULL;
+             }
+             prev=prev->next;
+         }
+         *head=head1->next;
+    }
+
+// JAVA CODE
+
+   public Node sort(Node head){
+        //your code here, return the head of the sorted list
+         Node head1 = new Node(0),head2 = new Node(0);
+         Node temp1=head1,temp2=head2,temp=head;
+         boolean indication=true;
+         while(temp!=null){
+             if(indication){
+                 temp1.next=temp;
+                 temp1=temp1.next;
+             }
+             else{
+                 temp2.next=temp;
+                 temp2=temp2.next;
+             }
+             temp=temp.next;
+             indication=!indication;
+         }
+         temp1.next=null;
+         temp2.next=null;
+         Node curr=head2,prev=null,nxt=head2.next;
+         while(curr!=null){
+             nxt=curr.next;
+             curr.next=prev;
+             prev=curr;
+             curr=nxt;
+         }
+         temp1.next=prev;
+         while(prev!=null){
+             if(prev.next==head2){
+                 prev.next=null;
+             }
+             prev=prev.next;
+         }
+         return head1.next;
+   }
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
