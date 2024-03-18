@@ -1,0 +1,35 @@
+// C++ CODE
+
+    vector<int> levelOrder(Node* root)
+    {
+      //Your code here
+      vector<int> ans;
+      queue<Node*> q;
+      q.push(root);
+      while(!q.empty()){
+          Node *temp = q.front();
+          q.pop();
+          ans.push_back(temp->data);
+          if(temp->left)q.push(temp->left);
+          if(temp->right)q.push(temp->right);
+      }
+      return ans;
+    }
+
+// JAVA CODE
+
+    static ArrayList <Integer> levelOrder(Node root) 
+    {
+        // Your code here
+          ArrayList<Integer> ans = new ArrayList<>();
+          Queue<Node> q = new LinkedList<>();
+          q.add(root);
+          while(!q.isEmpty())
+          {
+              Node n=q.remove();
+              if(n.left!=null)q.add(n.left);
+              if(n.right!=null)q.add(n.right);
+              ans.add(n.data);
+          }
+          return ans;
+    }
