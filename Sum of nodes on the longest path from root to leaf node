@@ -1,0 +1,58 @@
+// C++ CODE
+
+    void help(Node *root,int &ans,int &mxCount,int count,int sum){
+        if(!root){
+            if(count>mxCount){
+                ans=sum;
+                mxCount=count;
+            }
+            else if(count==mxCount){
+                ans=max(ans,sum);
+            }
+            return;
+        }
+        sum+=root->data;
+        count++;
+        help(root->left,ans,mxCount,count,sum);
+        help(root->right,ans,mxCount,count,sum);
+    }
+    int sumOfLongRootToLeafPath(Node *root)
+    {
+        //code here
+        int ans = INT_MIN,mxCount=0,count=0,sum=0;
+        help(root,ans,mxCount,count,sum);
+        return ans;
+    }
+
+// JAVA CODE
+
+    static int ans = Integer.MIN_VALUE,mxCount=0; 
+    static void help(Node root, int sum, int count){
+        if(root==null){
+            if(count>mxCount){
+                ans=sum;
+                mxCount=count;
+            }
+            else if(count==mxCount){
+                ans=Math.max(ans,sum);
+            }
+            return;
+        }
+        sum+=root.data;
+        count++;
+        help(root.left,sum,count);
+        help(root.right,sum,count);
+        
+    }
+    public int sumOfLongRootToLeafPath(Node root)
+    {
+        //code here
+        int sum=0,count=0;
+        ans=Integer.MIN_VALUE;
+        mxCount=0;
+        help(root,sum,count);
+        return ans;
+    }
+
+// Time Complexity: -O(N)
+// Space Complexity:- O(H)
