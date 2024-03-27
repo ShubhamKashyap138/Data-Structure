@@ -1,0 +1,96 @@
+// C++ CODE
+
+    int findShortestPath(vector<vector<int>> &mat)
+    {
+       // code here
+       int r = mat.size(), c = mat[0].size();
+       vector<vector<int>> arr(r,vector<int>(c,1));
+       int direRow[]={-1,0,1,0};
+       int direCol[]={0,1,0,-1};
+       for(int i=0;i<r;i++){
+           for(int j=0;j<c;j++){
+               if(mat[i][j]==0){
+                   arr[i][j]=0;
+                   for(int k=0;k<4;k++){
+                       int nr = direRow[k]+i;
+                       int nc = direCol[k]+j;
+                       if(nr>=0 and nr<r and nc>=0 and nc<c){
+                           arr[nr][nc]=0;
+                       }
+                   }
+               }
+           }
+       }
+       vector<vector<int>> vis(r,vector<int>(c,0));
+       queue<pair<int,pair<int,int>>> q;
+       for(int i=0;i<r;i++){
+           if(arr[i][0])q.push({1,{i,0}});
+       }
+       while(q.size()){
+           auto temp = q.front();
+           q.pop();
+           int i = temp.second.first;
+           int j = temp.second.second;
+           int dis = temp.first;
+           if(j==c-1)return dis;
+           vis[i][j]=1;
+           for(int k=0;k<4;k++){
+               int nr = direRow[k]+i;
+               int nc = direCol[k]+j;
+               if(nr>=0 and nr<r and nc>=0 and nc<c and vis[nr][nc]==0 and arr[nr][nc]==1){
+                   q.push({dis+1,{nr,nc}});
+               }
+           }
+       }
+       return -1;
+    }
+
+// JAVA CODE
+
+    public static int findShortestPath(int[][] mat) {
+        // code here
+       int r = mat.length, c = mat[0].length;
+       int arr[][] = new int[r][c];
+       for(int x[]:arr)Arrays.fill(x,1);
+       int direRow[]={-1,0,1,0};
+       int direCol[]={0,-1,0,1};
+       for(int i=0;i<r;i++){
+           for(int j=0;j<c;j++){
+               if(mat[i][j]==0){
+                   arr[i][j]=0;
+                   for(int k=0;k<4;k++){
+                       int nr = direRow[k]+i;
+                       int nc = direCol[k]+j;
+                       if(nr>=0 && nr<r && nc>=0 && nc<c){
+                           arr[nr][nc]=0;
+                       }
+                   }
+               }
+           }
+       }
+       Queue<int[]> q = new LinkedList<>();
+       int vis[][] = new int[r][c];
+       for(int x[]:vis)Arrays.fill(x,0);
+       for(int i=0;i<r;i++){
+           if(arr[i][0]==1)q.add(new int[]{1,i,0});
+       }
+       while(!q.isEmpty()){
+           int[] temp = q.poll();
+           int i = temp[1];
+           int j = temp[2];
+           int dis = temp[0];
+           vis[i][j]=1;
+           if(j==c-1)return dis;
+           for(int k=0;k<4;k++){
+               int nr = direRow[k]+i;
+               int nc = direCol[k]+j;
+               if(nr>=0 && nr<r && nc>=0 && nc<c && vis[nr][nc]==0 && arr[nr][nc]==1){
+                   q.add(new int[]{dis+1,nr,nc});
+               }
+           }
+       }
+       return -1;
+    }
+
+// Time Complexity:- O(R*C)
+// Space Complexity:- O(R*C)
