@@ -1,0 +1,39 @@
+// C++ CODE
+
+    void help(Node *root,int &ans,int &previous){
+        if(!root)return;
+        help(root->left,ans,previous);
+        if(previous!=-1)ans=min(ans,abs(root->data-previous));
+        previous=root->data;
+        help(root->right,ans,previous);
+    }
+    int absolute_diff(Node *root)
+    {
+        //Your code here
+        int ans = INT_MAX,previous=-1;
+        help(root,ans,previous);
+        return ans;
+    }
+
+// JAVA CODE
+
+    static int ans = Integer.MAX_VALUE,previous=-1;
+    static void help(Node root){
+        if(root==null)return;
+        help(root.left);
+        if(previous!=-1)ans=Math.min(ans,Math.abs(root.data-previous));
+        previous=root.data;
+        help(root.right);
+    }
+    int absolute_diff(Node root)
+    {
+        //Your code here
+        ans = Integer.MAX_VALUE;
+        previous=-1;
+        help(root);
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(H)
