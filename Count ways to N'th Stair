@@ -1,0 +1,17 @@
+// C++ CODE
+
+    long long countWays(int n) {
+        // your code here
+        return n/2+1;
+    }
+
+// JAVA CODE
+
+    Long countWays(int n) {
+        // your code here
+        return (long)n/2+1;
+    }
+
+
+// Time Complexity:- O(1)
+// Space Complexity:- O(1)
