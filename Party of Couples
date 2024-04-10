@@ -1,0 +1,20 @@
+// C++ CODE
+
+    int findSingle(int n, int arr[]){
+        // code here
+        int x=0;
+        for(int i=0;i<n;i++)x^=arr[i];
+        return x;
+    }
+
+// JAVA CODE
+
+    static int findSingle(int n, int arr[]){
+        // code here
+        int x=0;
+        for(int i=0;i<n;i++)x^=arr[i];
+        return x;
+    }
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
