@@ -1,0 +1,35 @@
+// C++ CODE
+
+    Node* deleteMid(Node* head)
+    {
+        // Your Code Here
+        if(head->next==NULL)return NULL;
+        Node *slow=head,*fast=head,*temp=NULL;
+        while(fast && fast->next){
+            temp=slow;
+            slow=slow->next;
+            fast=fast->next->next;
+        }
+        temp->next=slow->next;
+        return head;
+    }
+
+// JAVA CODE
+
+    Node deleteMid(Node head) {
+        // This is method only submission.
+        // You only need to complete the method.
+        if(head.next==null)return null;
+        Node slow=head,fast=head,temp=null;
+        while(fast!=null && fast.next!=null){
+            temp=slow;
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        temp.next=slow.next;
+        return head;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
