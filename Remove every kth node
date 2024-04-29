@@ -1,0 +1,41 @@
+// C++ CODE
+
+    Node* deleteK(Node *head,int K){
+      //Your code here
+      if(K==1)return NULL;
+      Node *temp=head,*prev=NULL;
+      int c=1;
+      while(temp){
+          if(c==K){
+              prev->next=temp->next;
+              c=0;
+          }
+          else prev=temp;
+          c++;
+          temp=temp->next;
+      }
+      return head;
+    }
+
+// JAVA CODE
+
+    Node delete(Node head, int k)
+    {
+	  // Your code here
+	  if(k==1)return null;
+      Node temp=head,prev=null;
+      int c=1;
+      while(temp!=null){
+          if(c==k){
+              c=0;
+              prev.next=temp.next;
+          }
+          else prev=temp;
+          c++;
+          temp=temp.next;
+      }
+      return head;
+    }
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
