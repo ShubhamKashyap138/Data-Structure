@@ -1,0 +1,47 @@
+// C++ CODE
+
+    int mn=INT_MAX,mx=INT_MIN;
+    void help(Node *root,unordered_map<int,int> &mm,int vLevel){
+        if(!root)return;
+        mn=min(mn,vLevel);
+        mx=max(mx,vLevel);
+        mm[vLevel]+=root->data;
+        help(root->left,mm,vLevel-1);
+        help(root->right,mm,vLevel+1);
+    }
+    vector <int> verticalSum(Node *root) {
+        // add code here.
+        unordered_map<int,int> mm;
+        help(root,mm,0);
+        vector<int> ans;
+        for(int i=mn;i<=mx;i++){
+            if(mm[i])ans.push_back(mm[i]);
+        }
+        return ans;
+    }
+
+// JAVA CODE
+
+  int mn = Integer.MAX_VALUE,mx=Integer.MIN_VALUE;
+  void help(Node root,HashMap<Integer,Integer> mm,int vLevel){
+      if(root==null)return;
+      mn=Math.min(mn,vLevel);
+      mx=Math.max(mx,vLevel);
+      mm.put(vLevel,mm.getOrDefault(vLevel,0)+root.data);
+      help(root.left,mm,vLevel-1);
+      help(root.right,mm,vLevel+1);
+  }
+    public ArrayList <Integer> verticalSum(Node root) {
+        // add your code here
+        HashMap<Integer,Integer> mm = new HashMap<>();
+        help(root,mm,0);
+        ArrayList<Integer> ans = new ArrayList<>();
+        for(int i=mn;i<=mx;i++){
+            if(mm.get(i)!=null)ans.add(mm.get(i));
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(N)
