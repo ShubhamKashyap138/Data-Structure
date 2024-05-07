@@ -1,0 +1,39 @@
+// C++ CODE
+
+vector<int> reverseLevelOrder(Node *root)
+{
+    // code here
+    queue<Node*> q;
+    vector<int> ans;
+    q.push(root);
+    while(q.size()){
+        Node *temp = q.front();
+        q.pop();
+        ans.push_back(temp->data);
+        if(temp->right)q.push(temp->right);
+        if(temp->left)q.push(temp->left);
+    }
+    reverse(ans.begin(),ans.end());
+    return ans;
+}
+
+// JAVA CODE
+
+    public ArrayList<Integer> reverseLevelOrder(Node node) 
+    {
+        // code here
+        ArrayList<Integer> ans = new ArrayList<>();
+        Queue<Node> q = new LinkedList<>();
+        q.add(node);
+        while(q.size()!=0){
+            Node temp=q.remove();
+            ans.add(temp.data);
+            if(temp.right!=null)q.add(temp.right);
+            if(temp.left!=null)q.add(temp.left);
+        }
+        Collections.reverse(ans);
+        return ans;
+    }
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(N)
