@@ -1,0 +1,49 @@
+// C++ CODE
+
+  void help(Node *root,vector<vector<int>> &ans,vector<int> temp){
+      if(!root)return;
+      if(!root->left and !root->right){
+          temp.push_back(root->data);
+          ans.push_back(temp);
+          return;
+      }
+      temp.push_back(root->data);
+      help(root->left,ans,temp);
+      help(root->right,ans,temp);
+  }
+    vector<vector<int>> Paths(Node* root) {
+        // code here+
+        vector<vector<int>> ans;
+        vector<int> temp;
+        help(root,ans,temp);
+        return ans;
+    }
+
+// JAVA CODE
+
+      static void help(Node root, ArrayList<ArrayList<Integer>> ans, ArrayList<Integer> temp){
+         if(root==null) return;
+         if(root.left==null&&root.right==null){
+             temp.add(root.data);
+             ArrayList<Integer> temp2 = new ArrayList<>();
+             temp2.addAll(temp);
+             ans.add(temp2);
+             temp.remove(temp.size()-1);
+             return;
+         }
+         temp.add(root.data);
+         help(root.left,ans,temp);
+         help(root.right,ans,temp);
+         temp.remove(temp.size()-1);
+     }
+    public static ArrayList<ArrayList<Integer>> Paths(Node root) {
+        // code here
+        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
+        ArrayList<Integer> temp = new ArrayList<>();
+        help(root,ans,temp);
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(H*L)     where H is height and L is number of leaf nodes
