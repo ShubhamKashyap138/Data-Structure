@@ -1,0 +1,17 @@
+// C++ CODE
+
+    bool divisorGame(int n) {
+        // code here
+        return n%2==0;
+    }
+
+// JAVA CODE
+
+    public static boolean divisorGame(int n) {
+        // code here
+        return n%2==0;
+    }
+
+
+// Time Complexity:- O(1)
+// Space Complexity:- O(1)
