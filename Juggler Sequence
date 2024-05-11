@@ -1,0 +1,38 @@
+// C++ CODE
+
+    vector<long long> jugglerSequence(long long n) {
+        // code here
+        vector<long long> ans;
+        while(n!=1){
+            ans.push_back(n);
+            if(n%2){
+                n=pow(sqrt(n),3);
+            }
+            else{
+                n=sqrt(n);
+            }
+        }
+        ans.push_back(1);
+        return ans;
+    }
+
+// JAVA CODE
+
+    static List<Long> jugglerSequence(long n) {
+        // code here
+        List<Long> ans = new ArrayList<Long>();
+        while(n!=1){
+            ans.add(n);
+            if(n%2==1){
+                n=(long)Math.pow(Math.sqrt(n),3);
+            }
+            else{
+                n=(long)Math.sqrt(n);
+            }
+        }
+        ans.add(1L);
+        return ans;
+    }
+
+// Time Complexity:- O(NLogN)
+// Space Complexity:- O(N)
