@@ -1,0 +1,69 @@
+// C++ CODE
+
+    int help(vector<int> adj[],vector<int> &vis,int &ans,int node){
+        vis[node]=1;
+        int size=1;
+        for(int x:adj[node]){
+            if(!vis[x]){
+                int temp = help(adj,vis,ans,x);
+                size+=temp;
+                if(temp%2==0)ans++;
+            }
+        }
+        return size;
+    }
+	int minimumEdgeRemove(int n, vector<vector<int>>edges){
+	    // Code here
+	    vector<int> adj[n+1];
+	    for(auto x:edges){
+	        adj[x[0]].push_back(x[1]);
+	        adj[x[1]].push_back(x[0]);
+	    }
+	    vector<int> vis(n+1,0);
+	    int ans=0;
+	    for(int i=1;i<=n;i++){
+	        if(!vis[i]){
+	            help(adj,vis,ans,i);
+	        }
+	    }
+	    return ans;
+	}
+
+// JAVA CODE
+
+    static int ans=0;
+    int help(ArrayList<ArrayList<Integer>> adj,int vis[],int node){
+        vis[node]=1;
+        int size=1;
+        for(int x:adj.get(node)){
+            if(vis[x]==0){
+                int temp = help(adj,vis,x);
+                size+=temp;
+                if(temp%2==0)ans++;
+            }
+        }
+        return size;
+    }
+    public int minimumEdgeRemove(int n, int[][] edges) {
+        // code here
+        ans=0;
+        ArrayList<ArrayList<Integer>> adj= new ArrayList<>();
+        for(int i=0;i<=n;i++) {
+            adj.add(new ArrayList<>());
+        }
+        for(int x[]:edges){
+            adj.get(x[0]).add(x[1]);
+            adj.get(x[1]).add(x[0]);
+        }
+	    int vis[] = new int[n+1];
+	    Arrays.fill(vis,0);
+	    for(int i=1;i<=n;i++){
+	        if(vis[i]==0){
+	            int temp = help(adj,vis,i);
+	        }
+	    }
+	    return ans;
+    }
+
+// Time Complexity:- O(Max(N,M))
+// Space Complexity:- O(Max(N,M))
