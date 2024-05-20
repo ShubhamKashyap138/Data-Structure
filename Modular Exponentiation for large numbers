@@ -1,0 +1,31 @@
+// C++ CODE
+
+		long long int PowMod(long long int x,long long int n,long long int M)
+		{
+		    // Code here
+		    long long int ans=1;
+		    while(n){
+		        if(n%2)ans=(ans*x)%M;
+		        x=(x*x)%M;
+		        n/=2;
+		    }
+		    return ans;
+		}
+
+// JAVA CODE
+
+    public long PowMod(long x, long n, long m)
+    {
+        // Code here
+        long ans =1;
+	    while(n>0){
+	        if(n%2==1)ans=(ans*x)%m;
+	        x=(x*x)%m;
+	        n/=2;
+	    }
+	    return ans;
+    }
+
+
+// Time Complexity:- O(Log(N))
+// Space Complexity:- O(1)
