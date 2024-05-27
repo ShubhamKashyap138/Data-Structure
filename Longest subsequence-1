@@ -1,0 +1,29 @@
+// C++ CODE
+
+    int longestSubseq(int n, vector<int> &a) {
+        // code here
+        int ans=0;
+        unordered_map<int,int> mm;
+        for(int i=0;i<n;i++){
+            mm[a[i]]=max(mm[a[i]-1],mm[a[i]+1])+1;
+            ans=max(ans,mm[a[i]]);
+        }
+        return ans;
+    }
+
+// JAVA CODE
+
+    public static int longestSubseq(int n, int[] a) {
+        // code here
+        Map<Integer,Integer> mm = new HashMap<>();
+        int ans=0;
+        for(int i=0;i<n;i++){
+            mm.put(a[i],1+Math.max(mm.getOrDefault(a[i]-1,0),mm.getOrDefault(a[i]+1,0)));
+            ans=Math.max(ans,mm.get(a[i]));
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(N)
