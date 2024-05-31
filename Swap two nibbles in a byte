@@ -1,0 +1,16 @@
+// C++ CODE
+
+    int swapNibbles(int n) {
+        // code here
+        return (n&0x0F)<<4 | (n>>4);
+    }
+
+// JAVA CODE
+
+    static int swapNibbles(int n) {
+        // code here
+        return (n&0x0F)<<4|(n>>4);
+    }
+
+// Time Complexity:- O(1)
+// Space Complexity:- O(1)
