@@ -1,0 +1,51 @@
+// C++ CODE
+
+    string binaryNextNumber(string s) {
+        // code here.
+        bool indication=true;
+        for(int i=s.length();i>=0;i--){
+            if(s[i]=='0'){
+                indication=false;
+                s[i]='1';
+                break;
+            }
+            else s[i]='0';
+        }
+        if(indication){
+            s='1'+s;
+        }
+        else{
+            while(s[0]=='0')s.erase(s.begin());
+        }
+        return s;
+    }
+
+// JAVA CODE
+
+    String binaryNextNumber(String s) {
+        // code here.
+        boolean indication=true;
+        char[] temp = s.toCharArray();
+        for(int i=s.length()-1;i>=0;i--){
+            if(temp[i]=='0'){
+                temp[i]='1';
+                indication=false;
+                break;
+            }
+            else temp[i]='0';
+        }
+        StringBuilder ans = new StringBuilder();
+        if(indication==true){
+            ans.append('1');
+            ans.append(temp);
+        }
+        else{
+            int index=0;
+            while(index<s.length() && temp[index]=='0')index++;
+            ans.append(temp,index,s.length()-index);
+        }
+        return ans.toString();
+    }
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(N)
