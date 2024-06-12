@@ -1,0 +1,41 @@
+// C++ CODE
+
+    int countNumberswith4(int n) {
+        // code here
+        int ans=0;
+        for(int i=4;i<=n;i++){
+            int j=i;
+            while(j){
+                if(j%10==4){
+                    ans++;
+                    break;
+                }
+                j/=10;
+            }
+        }
+        return ans;
+    }
+
+// C++ CODE
+
+    public static int countNumberswith4(int n) {
+        // code here
+        int ans=0;
+        for(int i=4;i<=n;i++)
+        {
+            int j=i;
+            while(j>0)
+            {
+                if(j%10==4){
+                    ans++;
+                    break;
+                }
+                j/=10;
+            }
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(N*M)
+// Space Complexity:- O(1)
