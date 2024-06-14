@@ -1,0 +1,28 @@
+// C++ CODE
+
+    string armstrongNumber(int n){
+        // code here
+        int ans=0,temp=n;
+        while(temp){
+            int digit=temp%10;
+            ans+=digit*digit*digit;
+            temp/=10;
+        }
+        return ans==n?"Yes":"No";
+    }
+
+// JAVA CODE
+
+    static String armstrongNumber(int n){
+        // code here
+        int num=0,temp=n;
+        while(temp!=0){
+            int digit=temp%10;
+            num+=digit*digit*digit;
+            temp/=10;
+        }
+        return num==n?"Yes":"No";
+    }
+
+// Time Complexity:- O(1)
+// Space Complexity:- O(1)
