@@ -1,133 +1,38 @@
 // JAVA CODE
+//Slightly better looking code
 
-    public void Rearrange(int a[], int n)
-    {
-        // Your code goes here
-        ArrayList<Integer> temp = new ArrayList<>();
-        for(int i=0;i<n;i++){
-            if(a[i]<0)temp.add(a[i]);
-        }
-        for(int i=0;i<n;i++){
-            if(a[i]>=0)temp.add(a[i]);
-        }
-        int i=0;
-        for(int x:temp){
-            a[i++]=x;
-        }
-    }
-    
-    
-// C++ CODE
+static void swap(int arr[], int i, int j) {
+		while (i < j) {
+			int t = arr[i];
+			arr[i] = arr[j];
+			arr[j] = t;
+			i++;
+			j--;
+		}
+	}
+	static void merge(int arr[], int start, int mid, int end) {
+		int i = start;
+		while (i <= mid && arr[i] < 0)
+			i++;// in first part the first positive index
+		int j = mid + 1;
+		while (j <= end && arr[j] < 0)
+			j++;// in second part the positive positive index
 
-        void Rearrange(int arr[], int n)
-        {
-            // Your code goes here
-            vector<int> temp;
-            for(int i=0;i<n;i++){
-                if(arr[i]<0)temp.push_back(arr[i]);
-            }
-            for(int i=0;i<n;i++){
-                if(arr[i]>=0)temp.push_back(arr[i]);
-            }
-            for(int i=0;i<n;i++){
-                arr[i]=temp[i];
-            }
-        }
-        
-        
-Merge Sort Code
+		swap(arr, i, mid);
 
-// JAVA CODE
+		swap(arr, mid + 1, j - 1);
+		swap(arr, i, j - 1);
+	}
 
-    static void merging(int arr[],int start,int mid,int end){
-            int i=start;
-            while(i<=mid && arr[i]<0)i++;
-            int j = mid+1;
-            while(j<=end && arr[j]<0)j++;
-            int k=i,l=j-1;
-            int temp = mid;
-            while(i<temp){
-                int t = arr[i];
-                arr[i]=arr[temp];
-                arr[temp]=t;
-                i++;
-                temp--;
-            }
-            temp=mid+1;
-            j--;
-            while(temp<j){
-                int t = arr[temp];
-                arr[temp]=arr[j];
-                arr[j]=t;
-                temp++;
-                j--;
-            }
-            while(k<l){
-                int t= arr[k];
-                arr[k]=arr[l];
-                arr[l]=t;
-                k++;
-                l--;
-            }
-    }
-    static void mergesort(int arr[],int start,int end){
-            if(start<end){
-                int mid = (start+end)/2;
-                mergesort(arr,start,mid);
-                mergesort(arr,mid+1,end);
-                merging(arr,start,mid,end);
-            }
-    }
-    public void Rearrange(int a[], int n)
-    {
-        // Your code goes 
-        mergesort(a,0,n-1);
-    }
-    
-    
-// C++ CODE
+	static void mergesort(int arr[], int start, int end) {
+		if (start < end) {
+			int mid = (start + end) >> 2;
+			mergesort(arr, start, mid);
+			mergesort(arr, mid + 1, end);
+			merge(arr, start, mid, end);
+		}
+	}
 
-    static void merging(int arr[],int start,int mid,int end){
-            int i=start;
-            while(i<=mid && arr[i]<0)i++;
-            int j = mid+1;
-            while(j<=end && arr[j]<0)j++;
-            int k=i,l=j-1;
-            int temp = mid;
-            while(i<temp){
-                int t = arr[i];
-                arr[i]=arr[temp];
-                arr[temp]=t;
-                i++;
-                temp--;
-            }
-            temp=mid+1;
-            j--;
-            while(temp<j){
-                int t = arr[temp];
-                arr[temp]=arr[j];
-                arr[j]=t;
-                temp++;
-                j--;
-            }
-            while(k<l){
-                int t= arr[k];
-                arr[k]=arr[l];
-                arr[l]=t;
-                k++;
-                l--;
-            }
-    }
-    static void mergesort(int arr[],int start,int end){
-            if(start<end){
-                int mid = (start+end)/2;
-                mergesort(arr,start,mid);
-                mergesort(arr,mid+1,end);
-                merging(arr,start,mid,end);
-            }
-    }
-    public void Rearrange(int a[], int n)
-    {
-        // Your code goes 
-        mergesort(a,0,n-1);
-    }
+	public void Rearrange(int a[], int n) {
+		mergesort(a, 0, n - 1);
+	}
