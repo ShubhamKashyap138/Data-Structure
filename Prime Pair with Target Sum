@@ -1,0 +1,49 @@
+// C++ CODE
+
+    vector<int> getPrimes(int n) {
+        // code here
+        bool prime[n+1];
+        memset(prime,true,sizeof prime);
+        prime[0]=false;
+        prime[1]=false;
+        for(int i=2;i*i<=n;i++){
+            if(prime[i]){
+                for(int j=i*i;j<=n;j+=i)prime[j]=false;
+            }
+        }
+        for(int i=2;i<=n;i++){
+            if(prime[i] and prime[n-i])return {i,n-i};
+        }
+        return {-1,-1};
+    }
+
+
+// JAVA CODE
+
+    public static ArrayList<Integer> getPrimes(int n) {
+        // code here
+        boolean prime[] = new boolean[n+1];
+        Arrays.fill(prime,true);
+        prime[0]=false;
+        prime[1]=false;
+        ArrayList<Integer> ans = new ArrayList<Integer>();
+        for (int i=2;i*i<=n;i++) {
+            if(prime[i]) {
+                for(int j=i*i;j<=n;j+=i)prime[j]=false;
+            }
+        }
+        for(int i=2;i<=n;i++){
+            if(prime[i] && prime[n-i]){
+                ans.add(i);
+                ans.add(n-i);
+                return ans;
+            }
+        }
+        ans.add(-1);
+        ans.add(-1);
+        return ans;
+    }
+
+
+// Time Complexity:- O(NLog(Log(N)))
+// Space Complexity:- O(N)
