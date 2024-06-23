@@ -1,0 +1,45 @@
+// C++ CODE
+
+    vector<int> bracketNumbers(string str) {
+        // Your code goes here
+        vector<int> ans;
+        stack<int> st;
+        int count=0;
+        for(int i=0;i<str.length();i++){
+            if(str[i]=='('){
+                count++;
+                ans.push_back(count);
+                st.push(count);
+            }
+            else if(str[i]==')'){
+                ans.push_back(st.top());
+                st.pop();
+            }
+        }
+        return ans;
+    }
+
+// JAVA CODE
+
+    ArrayList<Integer> bracketNumbers(String str) {
+        // code here
+        ArrayList<Integer> ans = new ArrayList<>();
+        Stack<Integer> st = new Stack<>();
+        int count=0;
+        for(int i=0;i<str.length();i++){
+            if(str.charAt(i)=='('){
+                count++;
+                ans.add(count);
+                st.push(count);
+            }
+            else if(str.charAt(i)==')'){
+                ans.add(st.peek());
+                st.pop();
+            }
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(N)
