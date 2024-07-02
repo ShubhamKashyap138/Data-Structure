@@ -1,0 +1,43 @@
+// C++ CODE
+
+    bool compute(Node* head) {
+        // Your code goes here
+        string temp="";
+        while(head){
+            temp+=head->data;
+            head=head->next;
+        }
+        int i=0,j=temp.size()-1;
+        while(i<j){
+            if(temp[i]!=temp[j])return false;
+            i++;
+            j--;
+        }
+        return true;
+    }
+
+
+// JAVA CODE
+
+
+    public boolean compute(Node root) {
+        StringBuilder temp = new StringBuilder();
+        while(root!=null){
+            temp.append(root.data);
+            root=root.next;
+        }
+        String concat = temp.toString();
+        int i=0,j=concat.length()-1;
+        while(i<j){
+            if(concat.charAt(i)!=concat.charAt(j))return false;
+            i++;
+            j--;
+        }
+        return true;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(N)
+
+Where N is total number of characters
