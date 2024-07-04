@@ -1,0 +1,39 @@
+// C++ CODE
+
+    string help(Node *root,vector<Node*> &ans,unordered_map<string,int> &mm){
+        if(!root)return "#";
+        string temp = to_string(root->data)+' '+help(root->left,ans,mm)+' '+help(root->right,ans,mm);
+        if(mm[temp]==1)ans.push_back(root);
+        mm[temp]++;
+        return temp;
+        
+    }
+    vector<Node*> printAllDups(Node* root) {
+        // Code here
+        vector<Node*> ans;
+        unordered_map<string,int> mm;
+        help(root,ans,mm);
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    String help(Node root,List<Node> ans,HashMap<String,Integer> mm){
+        if(root==null)return "#";
+        String temp = Integer.toString(root.data)+" "+help(root.left,ans,mm)+" "+help(root.right,ans,mm);
+        if(mm.get(temp)!=null && mm.get(temp)==1)ans.add(root);
+        mm.put(temp,mm.getOrDefault(temp,0)+1);
+        return temp;
+    }
+    public List<Node> printAllDups(Node root) {
+        // code here
+        List<Node> ans = new ArrayList<>();
+        HashMap<String,Integer> mm = new HashMap<>();
+        help(root,ans,mm);
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(M)
