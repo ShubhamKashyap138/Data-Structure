@@ -1,0 +1,28 @@
+// C++ CODE
+
+    Node *nxt=NULL;
+    void populateNext(Node *root) {
+        // code here
+        if(!root)return;
+        populateNext(root->right);
+        root->next=nxt;
+        nxt=root;
+        populateNext(root->left);
+    }
+
+
+// JAVA CODE
+
+    Node nxt=null;
+    public void populateNext(Node root) {
+        // code here
+        if(root==null)return;
+        populateNext(root.right);
+        root.next=nxt;
+        nxt=root;
+        populateNext(root.left);
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(H)
