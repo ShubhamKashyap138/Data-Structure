@@ -1,0 +1,50 @@
+// C++ CODE
+
+    vector<int> ans;
+    void help(Node *root,int target,vector<int> &temp){
+        if(!root)return;
+        if(root->data==target){
+            ans=temp;
+            return;
+        }
+        temp.push_back(root->data);
+        help(root->left,target,temp);
+        help(root->right,target,temp);
+        temp.pop_back();
+    }
+    // Function should return all the ancestor of the target node
+    vector<int> Ancestors(struct Node *root, int target) {
+        // Code here
+        vector<int> temp;
+        help(root,target,temp);
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    ArrayList<Integer> ans;
+    void help(Node root,int target,ArrayList<Integer> temp){
+        if(root==null)return;
+        if(root.data==target){
+            ans.addAll(temp);
+            return;
+        }
+        temp.add(root.data);
+        help(root.left,target,temp);
+        help(root.right,target,temp);
+        temp.remove(temp.size()-1);
+    }
+    public ArrayList<Integer> Ancestors(Node root, int target) {
+        // add your code here
+        ans = new ArrayList<>();
+        ArrayList<Integer> temp = new ArrayList<>();
+        help(root,target,temp);
+        Collections.reverse(ans);
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(H)
