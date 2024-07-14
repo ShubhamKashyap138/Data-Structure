@@ -1,0 +1,34 @@
+// C++ CODE
+
+    void segregate0and1(vector<int> &arr) {
+        // code here
+        int zero=0,one=arr.size()-1;
+        while(zero<one){
+            if(arr[zero]){
+                swap(arr[zero],arr[one]);
+                one--;
+            }
+            else zero++;
+        }
+    }
+
+
+// JAVA CODE
+
+    void segregate0and1(int[] arr) {
+        // code here        
+        int zero=0,one=arr.length-1;
+        while(zero<one){
+            if(arr[zero]==1){
+                int temp=arr[zero];
+                arr[zero]=arr[one];
+                arr[one]=temp;
+                one--;
+            }
+            else zero++;
+        }
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
