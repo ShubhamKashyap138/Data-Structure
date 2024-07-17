@@ -1,0 +1,44 @@
+// C++ CODE
+
+    Node *createTree(vector<int> parent) {
+        // Your code here
+        int n = parent.size();
+        vector<Node*> temp;
+        for(int i=0;i<n;i++){
+            temp.push_back(new Node(i));
+        }
+        Node *head=NULL;
+        for(int i=0;i<n;i++){
+            if(parent[i]!=-1){
+                if(!temp[parent[i]]->left)temp[parent[i]]->left=temp[i];
+                else temp[parent[i]]->right=temp[i];
+            }
+            else head=temp[i];
+        }
+        return head;
+    }
+
+
+// JAVA CODE
+
+    public Node createTree(int parent[]) {
+        // Your code here
+        int n = parent.length;
+        Node temp[] = new Node[n];
+        for(int i=0;i<n;i++){
+            temp[i]=new Node(i);
+        }
+        Node head=null;
+        for(int i=0;i<n;i++){
+            if(parent[i]!=-1){
+                if(temp[parent[i]].left==null)temp[parent[i]].left=temp[i];
+                else temp[parent[i]].right=temp[i];
+            }
+            else head=temp[i];
+        }
+        return head;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(N)
