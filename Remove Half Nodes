@@ -1,0 +1,28 @@
+// C++ CODE
+
+    Node *RemoveHalfNodes(Node *root) {
+        // code here
+        if(!root)return NULL;
+        root->left = RemoveHalfNodes(root->left);
+        root->right = RemoveHalfNodes(root->right);
+        if(!root->left and root->right)return root->right;
+        if(root->left and !root->right)return root->left;
+        return root;
+    }
+
+
+// JAVA CODE
+
+    public Node RemoveHalfNodes(Node root) {
+        // Code Here
+        if(root==null)return null;
+        root.left = RemoveHalfNodes(root.left);
+        root.right = RemoveHalfNodes(root.right);
+        if(root.left==null && root.right!=null)return root.right;
+        if(root.left!=null && root.right==null)return root.left;
+        return root;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- (H)
