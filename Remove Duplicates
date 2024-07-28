@@ -1,0 +1,35 @@
+// C++ CODE
+
+    string removeDups(string str) {
+        // Your code goes here
+        string ans="";
+        bool temp[26];
+        for(auto x:str){
+            if(!temp[x-'a']){
+                ans+=x;
+                temp[x-'a']=true;
+            }
+        }
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    String removeDups(String str) {
+        // code here
+        StringBuilder ans = new StringBuilder();
+        boolean temp[]=new boolean[26];
+        for(int i=0;i<str.length();i++){
+            char x = str.charAt(i);
+            if(!temp[x-'a']){
+                ans.append(x);
+                temp[x-'a']=true;
+            }
+        }
+        return ans.toString();
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(26)
