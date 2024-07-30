@@ -1,0 +1,49 @@
+// C++ CODE
+
+    void help(vector<vector<int>> &matrix,int n,int i,int j,vector<string> &ans,string temp){
+        if(i<0 or j<0 or i==n or j==n or matrix[i][j]==0)return;
+        if(i==n-1 and j==n-1){
+            ans.push_back(temp);
+            return;
+        }
+        matrix[i][j]=0;
+        help(matrix,n,i+1,j,ans,temp+'D');
+        help(matrix,n,i-1,j,ans,temp+'U');
+        help(matrix,n,i,j+1,ans,temp+'R');
+        help(matrix,n,i,j-1,ans,temp+'L');
+        matrix[i][j]=1;
+    }
+    vector<string> findPath(vector<vector<int>> &mat) {
+        // Your code goes here
+        vector<string> ans;
+        help(mat,mat.size(),0,0,ans,"");
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    void help(int[][] matrix,int n,int i,int j,ArrayList<String> ans,String temp){
+        if(i<0||j<0||i==n||j==n||matrix[i][j]==0)return;
+        if(i==n-1 && j==n-1){
+            ans.add(temp);
+            return;
+        }
+        matrix[i][j]=0;
+        help(matrix,n,i+1,j,ans,temp+'D');
+        help(matrix,n,i-1,j,ans,temp+'U');
+        help(matrix,n,i,j+1,ans,temp+'R');
+        help(matrix,n,i,j-1,ans,temp+'L');
+        matrix[i][j]=1;
+    }
+    public ArrayList<String> findPath(int[][] mat) {
+        // Your code here
+        ArrayList<String> ans = new ArrayList<>();
+        help(mat,mat.length,0,0,ans,"");
+        return ans;
+    }
+
+
+// Time Complexity:- O(4^N^2)
+// Space Complexity:- O(L*X)
+Where L is average length of path and X is number of paths.
