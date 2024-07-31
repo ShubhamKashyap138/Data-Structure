@@ -2,13 +2,7 @@
 
     string longestCommonPrefix(vector<string> arr) {
         // your code here
-        int small=0;
-        for(int i=0;i<arr.size();i++){
-            if(arr[i].length()<arr[small].length()){
-                small=i;
-            }
-        }
-        string temp = arr[small];
+        string temp = arr[0];
         int i=0,j=0;
         while(i<temp.length()){
             for(j=0;j<arr.size();j++){
@@ -26,13 +20,7 @@
 
     public String longestCommonPrefix(String arr[]) {
         // code here
-        int small=0;
-        for(int i=0;i<arr.length;i++){
-            if(arr[i].length()<arr[small].length()){
-                small=i;
-            }
-        }
-        String temp = arr[small];
+        String temp = arr[0];
         int i=0,j=0;
         while(i<temp.length()){
             for(j=0;j<arr.length;j++){
