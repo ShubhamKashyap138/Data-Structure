@@ -1,0 +1,51 @@
+// C++ CODE
+
+    string longestCommonPrefix(vector<string> arr) {
+        // your code here
+        int small=0;
+        for(int i=0;i<arr.size();i++){
+            if(arr[i].length()<arr[small].length()){
+                small=i;
+            }
+        }
+        string temp = arr[small];
+        int i=0,j=0;
+        while(i<temp.length()){
+            for(j=0;j<arr.size();j++){
+                if(temp[i]!=arr[j][i])break;
+            }
+            if(j!=arr.size())break;
+            i++;
+        }
+        if(i==0)return "-1";
+        return temp.substr(0,i);
+    }
+
+
+// JAVA CODE
+
+    public String longestCommonPrefix(String arr[]) {
+        // code here
+        int small=0;
+        for(int i=0;i<arr.length;i++){
+            if(arr[i].length()<arr[small].length()){
+                small=i;
+            }
+        }
+        String temp = arr[small];
+        int i=0,j=0;
+        while(i<temp.length()){
+            for(j=0;j<arr.length;j++){
+                if(temp.charAt(i)!=arr[j].charAt(i))break;
+            }
+            if(j!=arr.length)break;
+            i++;
+        }
+        if(i==0)return "-1";
+        return temp.substring(0,i);
+        
+    }
+
+
+// Time Complexity:- O(N*Min(|Arr[i]|))
+// Space Complexity:- O(Min(|Arr[i]|))
