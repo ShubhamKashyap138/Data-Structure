@@ -1,0 +1,60 @@
+// C++ CODE
+
+    vector <int> bottomView(Node *root) {
+        // Your Code Here
+        vector<int> ans;
+        queue<pair<Node*,int>> q;
+        unordered_map<int,int> mm;
+        q.push({root,0});
+        int mn=0,mx=0;
+        while(!q.empty()){
+            auto a = q.front();
+            q.pop();
+            Node *temp = a.first;
+            mm[a.second]=temp->data;
+            mn=min(mn,a.second);
+            mx=max(mx,a.second);
+            if(temp->left)q.push({temp->left,a.second-1});
+            if(temp->right)q.push({temp->right,a.second+1});
+        }
+        for(int i=mn;i<=mx;i++){
+            ans.push_back(mm[i]);
+        }
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    public ArrayList <Integer> bottomView(Node root)
+    {
+        // Code here
+        ArrayList<Integer> ans = new ArrayList<>();
+        Queue<Node> q = new LinkedList<>();
+        Map<Integer,Integer> mm = new HashMap<>();
+        root.hd=0;
+        q.add(root);
+        int mn=0,mx=0;
+        while(!q.isEmpty()){
+            Node temp = q.remove();
+            mm.put(temp.hd,temp.data);
+            mn=Math.min(mn,temp.hd);
+            mx=Math.max(mx,temp.hd);
+            if(temp.left!=null){
+                temp.left.hd=temp.hd-1;
+                q.add(temp.left);
+            }
+            if(temp.right!=null){
+                temp.right.hd=temp.hd+1;
+                q.add(temp.right);
+            }
+        }
+        for(int i=mn;i<=mx;i++){
+            ans.add(mm.get(i));
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(N)
