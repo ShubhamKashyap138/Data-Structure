@@ -1,0 +1,32 @@
+// C++ CODE
+
+    bool canSplit(vector<int>& arr) {
+        // code here
+        int sum = 0, firstSum = 0;
+        for(auto x:arr)sum+=x;
+        for(auto x:arr){
+            sum-=x;
+            firstSum+=x;
+            if(sum==firstSum)return true;
+        }
+        return false;
+    }
+
+
+// JAVA CODE
+
+    public boolean canSplit(int arr[]) {
+        // code here
+        int sum = 0,firstSum=0;
+        for(int x:arr)sum+=x;
+        for(int x:arr){
+            sum-=x;
+            firstSum+=x;
+            if(firstSum==sum)return true;
+        }
+        return false;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
