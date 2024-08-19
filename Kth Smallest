@@ -1,0 +1,36 @@
+// C++ CODE
+
+    int kthSmallest(vector<int> &arr, int k) {
+        // code here
+        int mx = INT_MIN;
+        for(auto x:arr)mx=max(x,mx);
+        int hash[mx+1];
+        memset(hash,0,sizeof hash);
+        for(auto x:arr)hash[x]=1;
+        for(int i=1;i<=mx;i++){
+            k-=hash[i];
+            if(!k)return i;
+        }
+        return 0;
+    }
+
+
+// JAVA CODE
+
+    public static int kthSmallest(int[] arr, int k) {
+        // Your code here
+        int mx = Integer.MIN_VALUE;
+        for(int x:arr)mx=Math.max(x,mx);
+        int hash[] = new int[mx+1];
+        Arrays.fill(hash,0);
+        for(int x:arr)hash[x]=1;
+        for(int i=1;i<=mx;i++){
+            k-=hash[i];
+            if(k==0)return i;
+        }
+        return 0;
+    }
+
+
+// Time Complexity:- O(N+Max_Element)
+// Space Complexity:- O(Max_Element)
