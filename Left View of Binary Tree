@@ -1,0 +1,47 @@
+//C++ CODE
+
+void help(Node *root,vector<int> &ans,int level,unordered_map<int,int> &mm){
+    if(!root)return;
+    if(!mm[level]){
+        ans.push_back(root->data);
+        mm[level]=1;
+    }
+    level++;
+    help(root->left,ans,level,mm);
+    help(root->right,ans,level,mm);
+}
+//Function to return a list containing elements of left view of the binary tree.
+vector<int> leftView(Node *root)
+{
+   // Your code here
+   vector<int> ans;
+   unordered_map<int,int> mm;
+   help(root,ans,0,mm);
+   return ans;
+}
+
+
+// JAVA CODE
+
+    void help(Node root,ArrayList<Integer> ans,int level,Map<Integer,Integer> mm){
+        if(root==null)return;
+        if(mm.get(level)==null){
+            ans.add(root.data);
+            mm.put(level,1);
+        }
+        level++;
+        help(root.left,ans,level,mm);
+        help(root.right,ans,level,mm);
+    }
+    ArrayList<Integer> leftView(Node root)
+    {
+      // Your code here
+       ArrayList<Integer> ans = new ArrayList<>();
+       Map<Integer,Integer> mm = new HashMap<>();
+       help(root,ans,0,mm);
+       return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(N)
