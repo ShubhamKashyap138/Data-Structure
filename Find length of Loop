@@ -1,0 +1,43 @@
+// C++ CODE
+
+    int countNodesinLoop(struct Node *head) {
+        // Code here
+        Node *slow=head, *fast = head->next;
+        while(fast and fast->next){
+            slow=slow->next;
+            fast = fast->next->next;
+            if(slow==fast)break;
+        }
+        if(!fast or !fast->next)return 0;
+        int ans=0;
+        Node *temp = slow->next;
+        while(temp!=slow){
+            temp=temp->next;
+            ans++;
+        }
+        return ans+1;
+    }
+
+
+// JAVA CODE
+
+    public int countNodesinLoop(Node head) {
+        // Add your code here.
+        Node slow=head, fast=head.next;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast = fast.next.next;
+            if(slow==fast)break;
+        }
+        if(fast==null || fast.next==null)return 0;
+        int ans=0;
+        Node temp=slow.next;
+        while(temp!=slow){
+            temp=temp.next;
+            ans++;
+        }
+        return ans+1;
+    }
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
