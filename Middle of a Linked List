@@ -1,0 +1,29 @@
+// C++ CODE
+
+    int getMiddle(Node* head) {
+        // code here
+        Node *slow = head, *fast = head->next;
+        while(fast and fast->next){
+            slow=slow->next;
+            fast=fast->next->next;
+        }
+        return fast!=NULL?slow->next->data:slow->data;
+    }
+
+
+// JAVA CODE
+
+    int getMiddle(Node head) {
+        // Your code here.
+        Node slow = head, fast = head.next;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        return fast!=null?slow.next.data:slow.data;
+    }
+
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
