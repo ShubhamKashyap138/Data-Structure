@@ -1,0 +1,26 @@
+// C++ CODE
+
+    void mirror(Node* node) {
+        // code here
+        if(!node)return;
+        mirror(node->left);
+        mirror(node->right);
+        swap(node->left,node->right);
+    }
+
+
+// JAVA CODE
+
+    void mirror(Node node) {
+        // Your code here
+        if(node==null)return;
+        mirror(node.left);
+        mirror(node.right);
+        Node temp = node.left;
+        node.left=node.right;
+        node.right=temp;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(H)
