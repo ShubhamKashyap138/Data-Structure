@@ -1,0 +1,41 @@
+// C++ CODE
+
+    void rearrange(vector<int> &arr) {
+        // code here
+        vector<int> positive,negative;
+        for(auto x:arr){
+            if(x>=0)positive.push_back(x);
+            else negative.push_back(x);
+        }
+        int i=0,j=0,k=0;
+        while(i<positive.size() and j<negative.size()){
+            if(k%2)arr[k++]=negative[j++];
+            else arr[k++]=positive[i++];
+        }
+        while(i<positive.size())arr[k++]=positive[i++];
+        while(j<negative.size())arr[k++]=negative[j++];
+    }
+
+
+// JAVA CODE
+
+    void rearrange(ArrayList<Integer> arr) {
+        // code here
+        ArrayList<Integer> positive = new ArrayList<>();
+        ArrayList<Integer> negative = new ArrayList<>();
+        for(int x:arr){
+            if(x>=0)positive.add(x);
+            else negative.add(x);
+        }
+        int i=0,j=0,k=0;
+        while(i<positive.size() && j<negative.size()){
+            if(k%2==1)arr.set(k++,negative.get(j++));
+            else arr.set(k++,positive.get(i++));
+        }
+        while(i<positive.size())arr.set(k++,positive.get(i++));
+        while(j<negative.size())arr.set(k++,negative.get(j++));
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(N)
