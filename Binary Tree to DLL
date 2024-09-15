@@ -1,0 +1,42 @@
+// C++ CODE
+
+    Node *head = NULL, *lastNode = NULL;
+    void help(Node *root){
+        if(!root)return;
+        help(root->left);
+        if(!head)head=root;
+        if(lastNode)lastNode->right=root;
+        root->left=lastNode;
+        lastNode=root;
+        help(root->right);
+    }
+    Node* bToDLL(Node* root) {
+        // code here
+        help(root);
+        return head;
+    }
+
+
+// JAVA CODE
+
+    Node head = null, lastNode = null;
+    void help(Node root){
+        if(root==null)return;
+        help(root.left);
+        if(head==null)head=root;
+        if(lastNode!=null)lastNode.right=root;
+        root.left=lastNode;
+        lastNode=root;
+        help(root.right);
+    }
+    //Function to convert binary tree to doubly linked list and return it.
+    Node bToDLL(Node root)
+    {
+	  //  Your code here	
+	    help(root);
+	    return head;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(H)
