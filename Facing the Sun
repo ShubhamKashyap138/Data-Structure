@@ -1,0 +1,32 @@
+// C++ CODE
+
+    int countBuildings(vector<int> &height) {
+        // code here
+        int ans = 1, mx = height[0];
+        for(auto x:height){
+            if(x>mx){
+                mx=x;
+                ans++;
+            }
+        }
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    public int countBuildings(int[] height) {
+        // code here
+        int ans = 1, mx = height[0];
+        for(int x:height){
+            if(x>mx){
+                mx=x;
+                ans++;
+            }
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
