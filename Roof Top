@@ -1,0 +1,35 @@
+// C++ CODE
+
+    int maxStep(vector<int>& arr) {
+        // Your code here
+        int ans = 0, increaseCount = 0;
+        for(int i=1;i<arr.size();i++){
+            if(arr[i]>arr[i-1])increaseCount++;
+            else{
+                ans=max(ans,increaseCount);
+                increaseCount=0;
+            }
+        }
+        ans=max(ans,increaseCount);
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    public int maxStep(int arr[]) {
+        // Your code here
+        int ans = 0,increaseCount = 0;
+        for(int i=1;i<arr.length;i++){
+            if(arr[i]>arr[i-1])increaseCount++;
+            else{
+                ans=Math.max(ans,increaseCount);
+                increaseCount=0;
+            }
+        }
+        ans=Math.max(ans,increaseCount);
+        return ans;
+    }
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
