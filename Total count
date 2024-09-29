@@ -1,0 +1,26 @@
+//C++ CODE
+
+    int totalCount(int k, vector<int>& arr) {
+        // code here
+        int ans = 0;
+        for(auto x : arr) {
+            ans += (x + k - 1) / k;
+        }
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    int totalCount(int k, int[] arr) {
+        // code here
+        int ans = 0;
+        for(int x : arr) {
+            ans += (x + k - 1) / k;
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
