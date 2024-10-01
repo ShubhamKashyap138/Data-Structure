@@ -1,0 +1,38 @@
+// C++ CODE
+
+    long long listToNum(Node *node){
+        long long num=0,mod=1e9+7;
+        while(node){
+            num=(num*10+node->data)%mod;
+            node=node->next;
+        }
+        return num;
+    }
+    long long multiplyTwoLists(Node *first, Node *second) {
+        // code here
+        long long num1 = listToNum(first);
+        long long num2 = listToNum(second);
+        return (num1*num2)%1000000007;
+    }
+
+
+// JAVA CODE
+
+    public static long listToNum(Node node){
+        long num = 0,mod=1000000007;
+        while(node!=null){
+            num = (num*10+node.data)%mod;
+            node=node.next;
+        }
+        return num;
+    }
+    public long multiplyTwoLists(Node first, Node second) {
+        // Code here
+        long num1 = listToNum(first);
+        long num2 = listToNum(second);
+        return (num1*num2)%1000000007;
+    }
+
+
+// Time Complexity:- O(Max(N,M))
+// Space Complexity:- O(1)
