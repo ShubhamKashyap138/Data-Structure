@@ -1,0 +1,24 @@
+// C++ CODE
+
+    int rotateDelete(vector<int> &arr) {
+        // Your code here
+        int n = arr.size(), temp = n/2;
+        int i = 3*(temp/2);
+        if(temp%2)i++;
+        return arr[n-i];
+    }
+
+
+// JAVA CODE
+
+    public static int rotateDelete(ArrayList<Integer> arr) {
+        // code here
+        int n = arr.size(), temp = n/2;
+        int i = 3*(temp/2);
+        if(temp%2==1)i++;
+        return arr.get(n-i);
+    }
+
+
+// Time Complexity:- O(1)
+// Space Complexity:- O(1)
