@@ -1,0 +1,28 @@
+// C++ CODE
+
+    long long findSmallest(vector<int> &arr) {
+        // Your code goes here.
+        long long ans = 1;
+        for(int x:arr){
+            if(x>ans)return ans;
+            ans+=x;
+        }
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    public long findSmallest(int[] arr) {
+        // Your code goes here
+        long ans = 1;
+        for(int x:arr){
+            if(x>ans)return ans;
+            ans+=x;
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
