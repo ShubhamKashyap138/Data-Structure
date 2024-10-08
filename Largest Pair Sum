@@ -1,0 +1,34 @@
+// C++ CODE
+
+    int pairsum(vector<int> &arr) {
+        // code here
+        int largest = INT_MIN, secondLargest = INT_MIN;
+        for(int x:arr){
+            if(x>largest){
+                secondLargest=largest;
+                largest=x;
+            }
+            else if(x>secondLargest)secondLargest=x;
+        }
+        return largest+secondLargest;
+    }
+
+
+// JAVA CODE
+
+    public static int pairsum(int[] arr) {
+        // code here
+        int largest = Integer.MIN_VALUE, secondLargest = Integer.MIN_VALUE;
+        for(int x:arr){
+            if(x>largest){
+                secondLargest=largest;
+                largest=x;
+            }
+            else if(x>secondLargest)secondLargest=x;
+        }
+        return largest+secondLargest;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
