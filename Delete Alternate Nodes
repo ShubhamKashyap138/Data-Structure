@@ -1,0 +1,24 @@
+// C++ CODE
+
+    void deleteAlt(struct Node *head) {
+        // Code here
+        while(head and head->next){
+            head->next = head->next->next;
+            head=head->next;
+        }
+    }
+
+
+// JAVA CODE
+
+    public void deleteAlt(Node head) {
+        // Code Here
+        while(head!=null && head.next!=null){
+            head.next = head.next.next;
+            head=head.next;
+        }
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
