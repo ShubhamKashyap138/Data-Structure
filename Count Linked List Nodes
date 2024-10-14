@@ -1,0 +1,28 @@
+// C++ CODE
+
+    int getCount(struct Node* head) {
+        // Code here
+        int ans = 0;
+        while(head){
+            ans++;
+            head=head->next;
+        }
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    public int getCount(Node head) {
+        // code here
+        int ans = 0;
+        while(head!=null){
+            ans++;
+            head=head.next;
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
