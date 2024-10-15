@@ -1,0 +1,33 @@
+// C++ CODE
+
+    int subArraySum(vector<int>& arr, int tar) {
+        // Your code here
+        unordered_map<int,int> mm;
+        int ans=0,sum=0;
+        for(int x:arr){
+            sum+=x;
+            if(sum==tar)ans++;
+            if(mm.find(sum - tar) != mm.end())ans+=mm[sum-tar];
+            mm[sum]++;
+        }
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    static int subArraySum(int arr[], int tar) {
+        // add your code here
+        Map<Integer,Integer> mm = new HashMap<>();
+        int ans=0,sum=0;
+        for(int x:arr){
+            sum+=x;
+            if(sum==tar)ans++;
+            if(mm.get(sum-tar)!=null)ans+=mm.get(sum-tar);
+            mm.put(sum,mm.getOrDefault(sum,0)+1);
+        }
+        return ans;
+    }
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(N)
