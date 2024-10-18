@@ -1,0 +1,22 @@
+// C++ CODE
+
+    int getSingle(vector<int>& arr) {
+        // code here
+        int ans = 0;
+        for(int x:arr)ans^=x;
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    int getSingle(int arr[]) {
+        // code here
+        int ans = 0;
+        for(int x:arr)ans^=x;
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- o(1)
