@@ -1,0 +1,44 @@
+// C++ CODE
+
+    int sumOfLastN_Nodes(struct Node* head, int n) {
+        // Code here
+        Node *temp = head;
+        int count=0,sum=0;
+        while(temp){
+            count++;
+            temp=temp->next;
+        }
+        count-=n;
+        temp=head;
+        while(temp){
+            if(!count)sum+=temp->data;
+            else count--;
+            temp=temp->next;
+        }
+        return sum;
+    }
+
+
+// JAVA CODE
+
+    public int sumOfLastN_Nodes(Node head, int n) {
+        // write code here
+        Node temp = head;
+        int count=0,sum=0;
+        while(temp!=null){
+            count++;
+            temp=temp.next;
+        }
+        count-=n;
+        temp=head;
+        while(temp!=null){
+            if(count==0)sum+=temp.data;
+            else count--;
+            temp=temp.next;
+        }
+        return sum;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
