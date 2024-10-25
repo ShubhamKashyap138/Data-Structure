@@ -1,0 +1,34 @@
+// C++ CODE
+
+    vector<int> alternateSort(vector<int>& arr) {
+        // Your code goes here
+        int n = arr.size();
+        vector<int> ans(n);
+        sort(arr.begin(),arr.end());
+        int i=0,j=n-1;
+        for(int k=0;k<n;k++){
+            if(k%2)ans[k]=arr[i++];
+            else ans[k]=arr[j--];
+        }
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    public static ArrayList<Integer> alternateSort(int[] arr) {
+        // Your code goes here
+        int n = arr.length;
+        ArrayList<Integer> ans = new ArrayList<>();
+        Arrays.sort(arr);
+        int i=0,j=n-1;
+        for(int k=0;k<n;k++){
+            if(k%2==1)ans.add(arr[i++]);
+            else ans.add(arr[j--]);
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(NLogN)
+// Space Complexity:- O(N)
