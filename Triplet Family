@@ -1,0 +1,41 @@
+// C++ CODE
+
+    bool findTriplet(vector<int>& arr) {
+        // Your code
+        sort(arr.begin(),arr.end());
+        int n=arr.size();
+        if (n < 3) return false;
+        for(int i=n-1;i>=2;i--){
+            int j=i-1,k=0;
+            while(k<j){
+                int sum = arr[k]+arr[j];
+                if(sum==arr[i])return true;
+                else if(sum>arr[i])j--;
+                else k++;
+            }
+        }
+        return false;
+    }
+
+
+// JAVA CODE
+
+    public boolean findTriplet(int[] arr) {
+        int n = arr.length;
+        if(n<3)return false;
+        Arrays.sort(arr);
+        for(int i=n-1;i>=2;i--){
+            int j=i-1,k=0;
+            while(k<j){
+                int sum = arr[k]+arr[j];
+                if(sum==arr[i])return true;
+                else if(sum<arr[i])k++;
+                else j--;
+            }
+        }
+        return false;
+    }
+
+
+// Time Complexity:- O(N^2)
+// Space Complexity:- O(1)
