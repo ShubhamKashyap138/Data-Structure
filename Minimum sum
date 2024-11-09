@@ -1,0 +1,70 @@
+// C++ CODE
+
+    string minSum(vector<int> &arr) {
+        // code here
+        int n = arr.size();
+        sort(arr.begin(),arr.end());
+        string num1="",num2="";
+        for(int i=0;i<n;i++){
+            if(i%2)num1+='0'+arr[i];
+            else num2+='0'+arr[i];
+        }
+        n=num1.size();
+        int m = num2.size(),i=n-1,j=m-1,carry=0;
+        string ans="";
+        while(i>-1 || j>-1 || carry){
+            int temp1=i>-1?num1[i]-'0':0;
+            int temp2=j>-1?num2[j]-'0':0;
+            int num = temp1+temp2+carry;
+            ans+='0'+num%10;
+            carry=num/10;
+            i--;
+            j--;
+        }
+        reverse(ans.begin(),ans.end());
+        for(i=0;i<ans.length();i++){
+            if(ans[i]!='0')break;
+        }
+        return ans.substr(i);
+    }
+
+
+// JAVA CODE
+
+    String minSum(int[] arr) {
+        // code here
+        int n = arr.length;
+        Arrays.sort(arr);
+        StringBuilder num1=new StringBuilder();
+        StringBuilder num2=new StringBuilder();
+        for(int i=0;i<n;i++)
+        {
+            if(i%2==0)num1.append(""+arr[i]);
+            else num2.append(""+arr[i]);
+        }
+        StringBuilder ans=new StringBuilder();
+        int m = num2.length();
+        n = num1.length();
+        String str1 = num1.toString();
+        String str2 = num2.toString();
+        int i=n-1,j=m-1,carry =0;
+        while(i>-1 || j>-1 || carry!=0){
+            int temp1 = i>-1?str1.charAt(i)-'0':0;
+            int temp2 = j>-1?str2.charAt(j)-'0':0;
+            int num = temp1+temp2+carry;
+            ans.append(""+num%10);
+            carry = num/10;
+            i--;
+            j--;
+        }
+        ans.reverse();
+        str1 = ans.toString();
+        for(i=0;i<str1.length();i++){
+            if(str1.charAt(i)!='0')break;
+        }
+        return str1.substring(i);
+    }
+
+
+// Time Complexity:- O(NLogN)
+// Space Complexity:- O(N)
