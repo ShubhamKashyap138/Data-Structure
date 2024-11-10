@@ -1,0 +1,57 @@
+// C++ CODE
+
+    vector<int> findUnion(vector<int> &a, vector<int> &b) {
+        // Your code here
+        // return vector with correct order of elements
+        int i=0,j=0,n=a.size(),m=b.size();
+        vector<int> ans;
+        while(i<n || j<m){
+            int num1 = i<n?a[i]:INT_MAX;
+            int num2 = j<m?b[j]:INT_MAX;
+            if(num1<num2){
+                ans.push_back(num1);
+                i++;
+            }
+            else if(num2<num1){
+                ans.push_back(num2);
+                j++;
+            }
+            else{
+                ans.push_back(num1);
+                i++;
+                j++;
+            }
+        }
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    public static ArrayList<Integer> findUnion(int a[], int b[]) {
+        // add your code here
+        int i=0,j=0,n=a.length,m=b.length;
+        ArrayList<Integer> ans = new ArrayList<>();
+        while(i<n || j<m){
+            int num1 = i<n?a[i]:Integer.MAX_VALUE;
+            int num2 = j<m?b[j]:Integer.MAX_VALUE;
+            if(num1<num2){
+                ans.add(num1);
+                i++;
+            }
+            else if(num2<num1){
+                ans.add(num2);
+                j++;
+            }
+            else{
+                ans.add(num1);
+                i++;
+                j++;
+            }
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(N+M)
+// Space Complexity:- O(N+M)
