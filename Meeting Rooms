@@ -1,0 +1,28 @@
+// C++ CODE
+
+    bool canAttend(vector<vector<int>> &arr) {
+        // Your Code Here
+        int n = arr.size();
+        sort(arr.begin(),arr.end());
+        for(int i=1;i<n;i++){
+            if(arr[i-1][1]>arr[i][0])return false;
+        }
+        return true;
+    }
+
+
+// JAVA CODE
+
+    static boolean canAttend(int[][] arr) {
+        // Your code here
+        int n = arr.length;
+        Arrays.sort(arr, (a,b)->Integer.compare(a[0],b[0]));
+        for(int i=1;i<n;i++){
+            if(arr[i-1][1]>arr[i][0])return false;
+        }
+        return true;
+    }
+
+
+// Time Complexity:- O(NLogN)
+// Space Complexity:- O(1)
