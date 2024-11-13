@@ -1,28 +1,67 @@
-    int intersectPoint(Node* head1, Node* head2)
-    {
-        // Your Code Here
-        int len1=0,len2=0;
-        Node* temp=head1;
-        while(temp){
-            len1++;
-            temp=temp->next;
+// C++ CODE
+
+    static int findLength(Node *head){
+        int len=0;
+        while(head){
+            len++;
+            head=head->next;
         }
-        temp=head2;
-        while(temp){
-            len2++;
-            temp=temp->next;
+        return len;
+    }
+    // Function to find intersection point in Y shaped Linked Lists.
+    int intersectPoint(Node* head1, Node* head2) {
+        // Your Code Here
+        int len1 = findLength(head1);
+        int len2 = findLength(head2);
+        while(len1>len2){
+            head1=head1->next;
+            len1--;
         }
         while(len2>len1){
             head2=head2->next;
             len2--;
         }
-        while(len1>len2){
-            head1=head1->next;
-            len1--;
-        }
-        while(head1!=head2){
+        while(head1 && head2){
+            if(head1==head2)return head1->data;
             head1=head1->next;
             head2=head2->next;
         }
-        return head1->data;
+        return -1;
     }
+
+
+// JAVA CODE
+
+    static int findLength(Node head){
+        Node temp=head;
+        int len=0;
+        while(temp!=null){
+            len++;
+            temp=temp.next;
+        }
+        return len;
+    }
+    // Function to find intersection point in Y shaped Linked Lists.
+    int intersectPoint(Node head1, Node head2) {
+        // code here
+        int len1=findLength(head1);
+        int len2=findLength(head2);
+        while(len1>len2){
+            head1=head1.next;
+            len1--;
+        }
+        while(len2>len1){
+            head2=head2.next;
+            len2--;
+        }
+        while(head1!=null && head2!=null){
+            if(head1==head2)return head1.data;
+            head1=head1.next;
+            head2=head2.next;
+        }
+        return -1;
+    }
+
+
+// Time Complexity:- O(N+M)
+// Space Complexity:- O(1)
