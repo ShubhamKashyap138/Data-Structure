@@ -1,0 +1,36 @@
+// C++ CODE
+
+    void nearlySorted(vector<int>& arr, int k) {
+        // code
+        int j=0,n=arr.size();
+        priority_queue<int,vector<int>,greater<int>> pq;
+        for(int i=0;i<n;i++){
+            pq.push(arr[i]);
+            if(i>=k){
+                arr[j++]=pq.top();
+                pq.pop();
+            }
+        }
+        while(!pq.empty()){
+            arr[j++]=pq.top();
+            pq.pop();
+        }
+    }
+
+
+// JAVA CODE
+
+    public void nearlySorted(int[] arr, int k) {
+        // code
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+        int j=0,n=arr.length;
+        for(int i=0;i<n;i++)
+        {
+            pq.offer(arr[i]);
+            if(i>=k)arr[j++]=pq.poll();
+        }
+        while(!pq.isEmpty())arr[j++]=pq.poll();
+    }
+
+// Time Complexity:- O(NLogK)
+// Space Complexity:- O(K)
