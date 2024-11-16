@@ -1,0 +1,28 @@
+// C++ CODE
+
+    void pushZerosToEnd(vector<int>& arr) {
+        // code here
+        int j=0,n=arr.size();
+        for(int i=0;i<n;i++){
+            if(arr[i])swap(arr[i],arr[j++]);
+        }
+    }
+
+
+// JAVA CODE
+
+    void pushZerosToEnd(int[] arr) {
+        // code here
+        int j=0,n=arr.length;
+        for(int i=0;i<n;i++){
+            if(arr[i]!=0){
+                int temp = arr[i];
+                arr[i]=arr[j];
+                arr[j++]=temp;
+            }
+        }
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
