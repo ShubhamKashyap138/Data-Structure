@@ -1,0 +1,36 @@
+// C++ CODE
+
+    int maximumProfit(vector<int> &prices) {
+        // code here
+        int n=prices.size(),buy=prices[0],profit=0;
+        for(int i=1;i<n;i++){
+            if(prices[i]<=buy){
+                buy=prices[i];
+            }
+            else{
+                profit=max(profit,prices[i]-buy);
+            }
+        }
+        return profit;
+    }
+
+
+// JAVA CODE
+
+    public int maximumProfit(int prices[]) {
+        // Code here
+        int n=prices.length,buy=prices[0],profit=0;
+        for(int i=1;i<n;i++){
+            if(prices[i]<=buy){
+                buy=prices[i];
+            }
+            else{
+                profit=Math.max(profit,prices[i]-buy);
+            }
+        }
+        return profit;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
