@@ -1,0 +1,34 @@
+// C++ CODE
+
+    int maxProduct(vector<int> &arr) {
+        // Your Code Here
+        int ans=INT_MIN,productStart=1,productEnd=1,n=arr.size();
+        for(int i=0;i<n;i++){
+            productStart*=arr[i];
+            productEnd*=arr[n-1-i];
+            ans=max({ans,productStart,productEnd});
+            if(productStart==0)productStart=1;
+            if(productEnd==0)productEnd=1;
+        }
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    int maxProduct(int[] arr) {
+        // code here
+        int ans=Integer.MIN_VALUE,productStart=1,productEnd=1,n=arr.length;
+        for(int i=0;i<n;i++){
+            productStart*=arr[i];
+            productEnd*=arr[n-1-i];
+            ans=Math.max(ans,Math.max(productStart,productEnd));
+            if(productStart==0)productStart=1;
+            if(productEnd==0)productEnd=1;
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
