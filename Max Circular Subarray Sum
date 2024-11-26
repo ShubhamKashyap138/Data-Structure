@@ -1,0 +1,36 @@
+// C++ CODE
+
+    int circularSubarraySum(vector<int> &arr) {
+
+        // your code here
+        int n = arr.size(),mn=INT_MAX,mx=INT_MIN,sum1=0,sum2=0,total=0;
+        for(int i=0;i<n;i++){
+            total+=arr[i];
+            sum2=min(arr[i],sum2+arr[i]);
+            mn=min(mn,sum2);
+            sum1=max(arr[i],sum1+arr[i]);
+            mx=max(mx,sum1);
+        }
+        return max(mx,total-mn);
+    }
+
+
+// JAVA CODE
+
+    public int circularSubarraySum(int arr[]) {
+
+        // Your code here
+        int n = arr.length,mn=Integer.MAX_VALUE,mx=Integer.MIN_VALUE,sum1=0,sum2=0,total=0;
+        for(int i=0;i<n;i++){
+            total+=arr[i];
+            sum2=Math.min(arr[i],sum2+arr[i]);
+            mn=Math.min(mn,sum2);
+            sum1=Math.max(arr[i],sum1+arr[i]);
+            mx=Math.max(mx,sum1);
+        }
+        return Math.max(mx,total-mn);
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
