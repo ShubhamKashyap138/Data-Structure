@@ -1,0 +1,28 @@
+// C++ CODE
+
+    bool areAnagrams(string& s1, string& s2) {
+        // Your code here
+        vector<int> freq(26,0);
+        for(auto x:s1)freq[x-'a']++;
+        for(auto x:s2)freq[x-'a']--;
+        for(int x:freq)if(x!=0)return false;
+        return true;
+    }
+
+
+// JAVA CODE
+
+    public static boolean areAnagrams(String s1, String s2) {
+
+        // Your code here
+        int freq[]=new int[26];
+        Arrays.fill(freq,0);
+        for(int i=0;i<s1.length();i++)freq[s1.charAt(i)-'a']++;
+        for(int i=0;i<s2.length();i++)freq[s2.charAt(i)-'a']--;
+        for(int x:freq)if(x!=0)return false;
+        return true;
+    }
+
+
+// Time Complexity:- O(N+M)
+// Space Complexity:- O(1)
