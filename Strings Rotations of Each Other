@@ -1,0 +1,43 @@
+// C++ CODE
+
+    bool areRotations(string &s1, string &s2) {
+        // Your code here
+        string str = s2+'$'+s1+s1;
+        int n = str.length(),i=0,j=1,m=s2.length();
+        vector<int> lps(n,0);
+        while(j<n){
+            if(str[i]==str[j]){
+                lps[j++]=++i;
+                if(i==m)return true;
+            }
+            else if(i)i=lps[i-1];
+            else j++;
+        }
+        return false;
+    }
+
+
+// JAVA CODE
+
+    public static boolean areRotations(String s1, String s2) {
+        // Your code here
+        StringBuilder temp = new StringBuilder(s2);
+        temp.append('$').append(s1).append(s1);
+        int n = temp.length(),i=0,j=1,m=s2.length();
+        int lps[] = new int[n];
+        Arrays.fill(lps,0);
+        String str = temp.toString();
+        while(j<n){
+            if(str.charAt(i)==str.charAt(j)){
+                lps[j++]=++i;
+                if(i==m)return true;
+            }
+            else if(i!=0)i=lps[i-1];
+            else j++;
+        }
+        return false;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(N)
