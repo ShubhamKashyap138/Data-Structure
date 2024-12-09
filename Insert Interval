@@ -1,0 +1,63 @@
+// C++ CODE
+
+    vector<vector<int>> insertInterval(vector<vector<int>> &intervals,
+                                       vector<int> &newInterval) {
+        // code here
+        vector<vector<int>> ans;
+        bool merged=false;
+        int start=newInterval[0],end=newInterval[1];
+        for(auto x:intervals){
+            if(x[1]<newInterval[0])ans.push_back(x);
+            else if(x[0]>newInterval[1]){
+                if(!merged){
+                    ans.push_back({start,end});
+                    merged=true;
+                }
+                ans.push_back(x);
+            }
+            else{
+                start=min(start,x[0]);
+                end=max(end,x[1]);
+            }
+        }
+        if(!merged)ans.push_back({start,end});
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    static ArrayList<int[]> insertInterval(int[][] intervals, int[] newInterval) {
+        // code here
+        ArrayList<int[]> ans = new ArrayList<>();
+        boolean merged=false;
+        int start=newInterval[0],end=newInterval[1];
+        for(int x[]:intervals){
+            if(x[1]<newInterval[0])ans.add(x);
+            else if(x[0]>newInterval[1]){
+                if(!merged){
+                    int temp[] = new int[2];
+                    temp[0]=start;
+                    temp[1]=end;
+                    ans.add(temp);
+                    merged=true;
+                }
+                ans.add(x);
+            }
+            else{
+                start=Math.min(x[0],start);
+                end=Math.max(x[1],end);
+            }
+        }
+        if(!merged){
+            int temp[] = new int[2];
+            temp[0]=start;
+            temp[1]=end;
+            ans.add(temp);
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(N)
