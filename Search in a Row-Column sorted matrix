@@ -1,0 +1,32 @@
+// C++ CODE
+
+    bool matSearch(vector<vector<int>> &mat, int x) {
+        // your code here
+        int i=0,j=mat[0].size()-1,n=mat.size();
+        while(i<n and j>=0){
+            int temp = mat[i][j];
+            if(temp==x)return true;
+            else if(temp<x)i++;
+            else j--;
+        }
+        return false;
+    }
+
+
+// JAVA CODE
+
+    public static boolean matSearch(int mat[][], int x) {
+        // your code here
+        int i=0,j=mat[0].length-1,N=mat.length;
+	    while(i<N && j>=0){
+	        int temp=mat[i][j];
+	        if(temp==x)return true;
+	        else if(temp<x)i++;
+	        else j--;
+	    }
+	    return false;
+    }
+
+
+// Time Complexity:- O(N+M)
+// Space Complexity:- O(1)
