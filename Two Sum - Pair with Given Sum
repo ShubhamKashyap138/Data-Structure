@@ -1,0 +1,27 @@
+// C++ CODE
+
+    bool twoSum(vector<int>& arr, int target) {
+        // code here
+        unordered_map<int,int> mm;
+        for(int x:arr){
+            if(mm[target-x])return true;
+            mm[x]=1;
+        }
+        return false;
+    }
+
+// JAVA CODE
+
+    boolean twoSum(int arr[], int target) {
+        // code here
+        HashMap<Integer,Integer> mm = new HashMap<>();
+        for(int x:arr){
+            if(mm.get(target-x)!=null)return true;
+            mm.put(x,1);
+        }
+        return false;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(N)
