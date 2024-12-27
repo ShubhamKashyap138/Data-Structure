@@ -1,0 +1,29 @@
+// C++ CODE
+
+    int countPairs(vector<int> &arr, int target) {
+        // Code here
+        int ans=0;
+        unordered_map<int,int> mm;
+        for(int x:arr){
+            if(mm[target-x])ans+=mm[target-x];
+            mm[x]++;
+        }
+        return ans;
+    }
+
+// JAVA CODE
+
+    int countPairs(int arr[], int target) {
+        // Your code here
+        int ans=0;
+        HashMap<Integer,Integer> mm = new HashMap<>();
+        for(int x:arr){
+            if(mm.get(target-x)!=null)ans+=mm.get(target-x);
+            mm.put(x,mm.getOrDefault(x,0)+1);
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(N)
