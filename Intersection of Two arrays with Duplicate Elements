@@ -1,0 +1,35 @@
+// C++ CODE
+
+    vector<int> intersectionWithDuplicates(vector<int>& a, vector<int>& b) {
+        // code here
+        vector<int> ans;
+        unordered_map<int,int> mm;
+        for(int x:a)mm[x]=1;
+        for(int x:b){
+            if(mm[x]){
+                ans.push_back(x);
+                mm[x]=0;
+            }
+        }
+        return ans;
+    }
+
+// JAVA CODE
+
+    public ArrayList<Integer> intersectionWithDuplicates(int[] a, int[] b) {
+        // code here
+        ArrayList<Integer> ans = new ArrayList<>();
+        HashMap<Integer,Integer> mm = new HashMap<>();
+        for(int x:a)mm.put(x,1);
+        for(int x:b){
+            if(mm.get(x)!=null && mm.get(x)!=0){
+                ans.add(x);
+                mm.put(x,0);
+            }
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(N+M)
+// Space Complexity:- O(N)
