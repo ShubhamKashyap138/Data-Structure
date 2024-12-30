@@ -1,0 +1,38 @@
+// C++ CODE
+
+    int findUnion(vector<int>& a, vector<int>& b) {
+        // code here
+        int ans=0;
+        unordered_map<int,int> mm;
+        for(int x:a){
+            if(!mm[x])ans++;
+            mm[x]=1;
+        }
+        for(int x:b){
+            if(!mm[x])ans++;
+            mm[x]=1;
+        }
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    public static int findUnion(int a[], int b[]) {
+        // code here
+        int ans=0;
+        HashMap<Integer,Integer> mm = new HashMap<>();
+        for(int x:a){
+            if(mm.get(x)==null)ans++;
+            mm.put(x,1);
+        }
+        for(int x:b){
+            if(mm.get(x)==null)ans++;
+            mm.put(x,1);
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(N+M)
+// Space Complexity:- O(N+M)
