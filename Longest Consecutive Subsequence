@@ -1,0 +1,44 @@
+// C++ CODE
+
+    int longestConsecutive(vector<int>& arr) {
+        // Your code here
+        int ans=1;
+        unordered_map<int,int> mm;
+        for(int x:arr){
+            if(!mm[x]){
+                int left = mm[x-1];
+                int right = mm[x+1];
+                int total = left+right+1;
+                mm[x]=total;
+                mm[x-left]=total;
+                mm[x+right]=total;
+                ans=max(ans,total);
+            }
+        }
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    public int longestConsecutive(int[] arr) {
+        // code here
+        int ans=1;
+        HashMap<Integer,Integer> mm = new HashMap<>();
+        for(int x:arr){
+            if(mm.get(x)==null){
+                int left = mm.getOrDefault(x-1,0);
+                int right = mm.getOrDefault(x+1,0);
+                int total = left+right+1;
+                mm.put(x,total);
+                mm.put(x-left,total);
+                mm.put(x+right,total);
+                ans=Math.max(ans,total);
+            }
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(N)
