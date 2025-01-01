@@ -1,0 +1,41 @@
+// C++ CODE
+
+    vector<vector<string>> anagrams(vector<string>& arr) {
+        // code here
+        vector<vector<string>> ans;
+        unordered_map<string,vector<string>> mm;
+        for(string x:arr){
+            string temp = x;
+            sort(temp.begin(),temp.end());
+            mm[temp].push_back(x);
+        }
+        for(auto x:mm){
+            ans.push_back(x.second);
+        }
+        return ans;
+    }
+
+
+// JAVA CODE
+
+    public ArrayList<ArrayList<String>> anagrams(String[] arr) {
+        // code here
+        ArrayList<ArrayList<String>> ans = new ArrayList<>();
+        HashMap<String,ArrayList<String>> mm = new HashMap<>();
+        for(String x:arr)
+        {
+            char[] temp = x.toCharArray();
+            Arrays.sort(temp);
+            String str = new String(temp);
+            mm.putIfAbsent(str,new ArrayList<>());
+            mm.get(str).add(x);
+        }
+        for(ArrayList<String> x:mm.values())
+        {
+            ans.add(x);
+        }
+        return ans;
+    }
+
+// Time Complexity:- O(N*MLogM)
+// Space Complexity:- O(N*M)
