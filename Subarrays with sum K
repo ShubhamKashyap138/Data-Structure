@@ -1,0 +1,33 @@
+// C++ CODE
+
+    int countSubarrays(vector<int> &arr, int k) {
+        // code here
+        int sum=0,ans=0;
+        unordered_map<int,int> mm;
+        for(int x:arr){
+            sum+=x;
+            if(sum==k)ans++;
+            ans+=mm[sum-k];
+            mm[sum]++;
+        }
+        return ans;
+    }
+
+// JAVA CODE
+
+    public int countSubarrays(int arr[], int k) {
+        // code here
+        int sum=0,ans=0;
+        HashMap<Integer,Integer> mm = new HashMap<>();
+        for(int x:arr){
+            sum+=x;
+            if(sum==k)ans++;
+            ans+=mm.getOrDefault(sum-k,0);
+            mm.put(sum,mm.getOrDefault(sum,0)+1);
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(N)
