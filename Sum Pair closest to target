@@ -1,0 +1,47 @@
+// C++ CODE
+
+    vector<int> sumClosest(vector<int>& arr, int target) {
+        // code here
+        sort(arr.begin(),arr.end());
+        int i=0,j=arr.size()-1,diff=INT_MAX,first=-1,second=-1;
+        while(i<j){
+            int sum=arr[i]+arr[j];
+            if((diff>abs(sum-target)) || ((diff==abs(sum-target)) && arr[j]-arr[i]>second-first)){
+                first=arr[i];
+                second=arr[j];
+                diff=abs(sum-target);
+            }
+            if(sum<=target)i++;
+            else j--;
+        }
+        if(first==-1 and second==-1)return {};
+        return {first,second};
+    }
+
+
+// JAVA CODE
+
+    public List<Integer> sumClosest(int[] arr, int target) {
+        // code here
+        Arrays.sort(arr);
+        int i=0,j=arr.length-1,diff=Integer.MAX_VALUE,first=-1,second=-1;
+        List<Integer> ans = new ArrayList<>();
+        while(i<j){
+            int sum = arr[i]+arr[j];
+            if((diff>Math.abs(sum-target)) || ((diff==Math.abs(sum-target)) && arr[j]-arr[i]>second-first)){
+                first=arr[i];
+                second=arr[j];
+                diff=Math.abs(sum-target);
+            }
+            if(sum<=target)i++;
+            else j--;
+        }
+        if(first==-1 && second==-1)return ans;
+        ans.add(first);
+        ans.add(second);
+        return ans;
+    }
+
+
+// Time Complexity:- O(NLogN)
+// Space Complexity:- O(1)
