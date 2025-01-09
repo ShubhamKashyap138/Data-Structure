@@ -1,0 +1,36 @@
+// C++ CODE
+
+    vector<int> subarraySum(vector<int> &arr, int target) {
+        // code here
+        int n=arr.size(),j=0,sum=0;
+        for(int i=0;i<n;i++){
+            sum+=arr[i];
+            while(sum>target and j<i)sum-=arr[j++];
+            if(sum==target)return {j+1,i+1};
+        }
+        return {-1};
+    }
+
+
+// JAVA CODE
+
+    static ArrayList<Integer> subarraySum(int[] arr, int target) {
+        // code here
+        ArrayList<Integer> ans = new ArrayList<>();
+        int n=arr.length,j=0,sum=0;
+        for(int i=0;i<n;i++){
+            sum+=arr[i];
+            while(sum>target && j<i)sum-=arr[j++];
+            if(sum==target){
+                ans.add(j+1);
+                ans.add(i+1);
+                return ans;
+            }
+        }
+        ans.add(-1);
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
