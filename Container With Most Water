@@ -1,12 +1,29 @@
-long long maxArea(long long A[], int len)
-{
-    // Your code goes here
-    int i=0,j=len-1;
-    long long ans=0;
-    while(i<j){
-        ans = max(ans,(j-i)*(min(A[i],A[j])));
-        if(A[i]<A[j])i++;
-        else j--;
+// C++ CODE
+
+    int maxWater(vector<int> &arr) {
+        // code here
+        int n=arr.size(),i=0,j=n-1, ans=0;
+        while(i<j){
+            ans = max(ans,(j-i)*(min(arr[i],arr[j])));
+            if(arr[i]<arr[j])i++;
+            else j--;
+        }
+        return ans;
     }
-    return ans;
-}
+
+// JAVA CODE
+
+    public int maxWater(int arr[]) {
+        // Code Here
+        int n=arr.length,i=0,j=n-1, ans=0;
+        while(i<j){
+            ans = Math.max(ans,(j-i)*(Math.min(arr[i],arr[j])));
+            if(arr[i]<arr[j])i++;
+            else j--;
+        }
+        return ans;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
