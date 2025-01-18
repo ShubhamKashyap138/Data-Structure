@@ -1,0 +1,33 @@
+// C++ CODE
+
+    Node* reverseList(struct Node* head) {
+        // code here
+        Node *prev=NULL,*nxt=NULL,*cur=head;
+        while(cur){
+            nxt=cur->next;
+            cur->next=prev;
+            prev=cur;
+            cur=nxt;
+        }
+        return prev;
+    }
+
+
+// JAVA CODE
+
+    Node reverseList(Node head) {
+        // code here
+        Node nxt=null,prev=null,cur=head;
+        while(cur!=null)
+        {
+            nxt=cur.next;
+            cur.next=prev;
+            prev=cur;
+            cur=nxt;
+        }
+        return prev;
+    }
+
+
+// Time Complexity:- O(N)
+// Space Complexity:- O(1)
